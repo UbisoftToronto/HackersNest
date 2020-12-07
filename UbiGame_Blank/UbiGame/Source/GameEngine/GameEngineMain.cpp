@@ -20,8 +20,8 @@ sf::Clock		GameEngineMain::sm_gameClock;
 
 GameEngineMain::GameEngineMain()
 	: m_renderTarget(nullptr)	
-	, m_windowInitialised(false)
 	, m_gameBoard(nullptr)
+	, m_windowInitialised(false)
 {
 	CreateAndSetUpWindow();
 	//Load predefined textures

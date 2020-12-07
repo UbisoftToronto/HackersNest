@@ -6,8 +6,8 @@
 using namespace GameEngine;
 
 CollidableComponent::CollidableComponent()
-	: m_AABBBox()
-	, m_useDefaultBox(true)
+	: m_useDefaultBox(true)
+	, m_AABBBox()
 {
 
 }

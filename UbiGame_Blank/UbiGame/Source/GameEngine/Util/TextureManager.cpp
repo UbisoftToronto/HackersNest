@@ -42,3 +42,11 @@ void TextureManager::UnLoadTextures()
 		m_textures[a] = nullptr;
 	}
 }
+
+namespace TextureHelper
+{
+	sf::Vector2f GetTextureTileSize(GameEngine::eTexture::type texture)
+	{
+		return sf::Vector2f(-1.f, -1.f);
+	}
+}

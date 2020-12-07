@@ -6,8 +6,8 @@
 using namespace GameEngine;
 
 AnimationComponent::AnimationComponent()
-	: m_currentFrame(0)
-	, m_currentAnim(EAnimationId::None)
+	: m_currentAnim(EAnimationId::None)
+	, m_currentFrame(0)
 	, m_currentFrameDT(0.f)
 	, m_isLooping(true)
 {
