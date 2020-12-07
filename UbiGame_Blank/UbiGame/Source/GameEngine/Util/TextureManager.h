@@ -41,9 +41,6 @@ namespace GameEngine
 
 namespace TextureHelper
 {
-	static sf::Vector2f GetTextureTileSize(GameEngine::eTexture::type texture)
-	{
-		return sf::Vector2f(-1.f, -1.f);
-	}
+	sf::Vector2f GetTextureTileSize(GameEngine::eTexture::type texture);
 }
 
