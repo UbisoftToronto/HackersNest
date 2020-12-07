@@ -10,16 +10,8 @@ OBJECTS = $(SOURCES:.cpp=.o)
 CXX = clang++ 
 CXXFLAGS = -std=c++17 -O2 -Wall
 
-INCLUDES = -I$(ROOT)UbiGame -I$(ROOT)UbiGame/Source 
-
-OS := $(shell uname)
-ifeq ($(OS),Windows_NT)
-	INCLUDES += -I$(ROOT)SFML-2.5.0/include
-	LDFLAGS = -L$(ROOT)SFML-2.5.0/lib -rpath $(ROOT)SFML-2.5.0/lib
-else ($(OS) Darwin)
-	INCLUDES += -I$(ROOT)SFML-2.5.0-macOS-clang/include
-	LDFLAGS = -L$(ROOT)SFML-2.5.0-macOS-clang/lib -rpath $(ROOT)SFML-2.5.0-macOS-clang/lib
-endif
+INCLUDES = -I$(ROOT)UbiGame -I$(ROOT)UbiGame/Source -I$(ROOT)../SFML-2.5.0/include
+LDFLAGS = -L$(ROOT)../SFML-2.5.0/lib -rpath $(ROOT)../SFML-2.5.0/lib
 
 LIBS = -lsfml-audio -lsfml-graphics -lsfml-system -lsfml-window
 
