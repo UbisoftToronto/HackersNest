@@ -1,0 +1,7 @@
+#Mac OS files
+*/.DS_Store
+
+#Temporary files
+*.o
+*/output
+
