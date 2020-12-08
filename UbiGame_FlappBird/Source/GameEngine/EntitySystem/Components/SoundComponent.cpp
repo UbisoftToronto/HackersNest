@@ -16,13 +16,13 @@ SoundComponent::~SoundComponent()
 
 void SoundComponent::OnAddToWorld()
 {
-	__super::OnAddToWorld();
+	Component::OnAddToWorld();
 }
 
 
 void SoundComponent::OnRemoveFromWorld()
 {
-	__super::OnAddToWorld();
+	Component::OnAddToWorld();
 }
 
 

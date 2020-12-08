@@ -24,7 +24,7 @@ void PlayerCameraComponent::OnAddToWorld()
 
 void PlayerCameraComponent::Update()
 {
-	__super::Update();	
+	Component::Update();
 	
 	if (!GameEngine::CameraManager::IsFollowCameraEnabled())
 		return;

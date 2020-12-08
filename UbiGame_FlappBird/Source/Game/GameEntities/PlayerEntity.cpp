@@ -51,7 +51,7 @@ PlayerEntity::~PlayerEntity()
 
 void PlayerEntity::OnAddToWorld()
 {
-	__super::OnAddToWorld();
+	Entity::OnAddToWorld();
 
 	if (m_animComponent)
 	{
@@ -62,5 +62,5 @@ void PlayerEntity::OnAddToWorld()
 
 void PlayerEntity::OnRemoveFromWorld()
 {
-	__super::OnRemoveFromWorld();
+	Entity::OnRemoveFromWorld();
 }

@@ -41,13 +41,13 @@ void ParticleEmitterComponent::Update()
 
 void ParticleEmitterComponent::OnAddToWorld()
 {
-	__super::OnAddToWorld();
+	Component::OnAddToWorld();
 }
 
 
 void ParticleEmitterComponent::OnRemoveFromWorld()
 {
-	__super::OnAddToWorld();
+	Component::OnAddToWorld();
 }
 
 
