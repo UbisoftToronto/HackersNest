@@ -6,6 +6,9 @@
 */output
 UbiGame_Blank/x64
 UbiGame_Blank/Source/x64
+UbiGame_FlappBird/x64
+UbiGame_FlappBird/Source/x64
 
 #Visual Studio Meta data
 UbiGame_Blank/.vs
+UbiGame_FlappBird/.vs
