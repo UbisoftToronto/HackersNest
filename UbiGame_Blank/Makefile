@@ -3,8 +3,8 @@ PROJECT_DIR = $(ROOT)UbiGame
 
 TARGET_DIR = $(ROOT)
 
-HEADERS = $(shell find ./UbiGame -name "*.h")
-SOURCES = $(shell find ./UbiGame -name "*.cpp") 
+HEADERS = $(shell find ./ -name "*.h")
+SOURCES = $(shell find ./ -name "*.cpp") 
 OBJECTS = $(SOURCES:.cpp=.o)
 
 CXX = clang++ 
