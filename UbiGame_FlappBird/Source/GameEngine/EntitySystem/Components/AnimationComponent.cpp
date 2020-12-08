@@ -22,13 +22,13 @@ AnimationComponent::~AnimationComponent()
 
 void AnimationComponent::OnAddToWorld()
 {
-	__super::OnAddToWorld();
+	Component::OnAddToWorld();
 }
 
 
 void AnimationComponent::OnRemoveFromWorld()
 {
-	__super::OnRemoveFromWorld();	
+	Component::OnRemoveFromWorld();
 }
 
 

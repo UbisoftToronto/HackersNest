@@ -21,7 +21,7 @@ CollidableComponent::~CollidableComponent()
 
 void CollidableComponent::OnAddToWorld()
 {
-	__super::OnAddToWorld();
+	Component::OnAddToWorld();
 	CollisionManager::GetInstance()->RegisterCollidable(this);
 
 	if (m_useDefaultBox)
@@ -31,7 +31,7 @@ void CollidableComponent::OnAddToWorld()
 
 void CollidableComponent::OnRemoveFromWorld()
 {
-	__super::OnRemoveFromWorld();
+	Component::OnRemoveFromWorld();
 
 	CollisionManager::GetInstance()->UnRegisterCollidable(this);
 }

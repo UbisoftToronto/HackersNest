@@ -28,7 +28,7 @@ void PlayerSoundComponent::OnAddToWorld()
 
 void PlayerSoundComponent::Update()
 {
-	__super::Update();
+	Component::Update();
 
 	m_timeSinceLastUpSound += GameEngine::GameEngineMain::GetTimeDelta();
 	m_timeSinceLastDownSound += GameEngine::GameEngineMain::GetTimeDelta();

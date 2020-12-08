@@ -26,11 +26,11 @@ ObstacleEntity::~ObstacleEntity()
 
 void ObstacleEntity::OnAddToWorld()
 {
-	__super::OnAddToWorld();
+	Entity::OnAddToWorld();
 }
 
 
 void ObstacleEntity::OnRemoveFromWorld()
 {
-	__super::OnRemoveFromWorld();
+	Entity::OnRemoveFromWorld();
 }

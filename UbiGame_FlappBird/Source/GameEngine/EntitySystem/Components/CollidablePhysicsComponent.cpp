@@ -21,13 +21,13 @@ CollidablePhysicsComponent::~CollidablePhysicsComponent()
 
 void CollidablePhysicsComponent::OnAddToWorld()
 {
-	__super::OnAddToWorld();
+	Component::OnAddToWorld();
 }
 
 
 void CollidablePhysicsComponent::OnRemoveFromWorld()
 {
-	__super::OnAddToWorld();
+	Component::OnAddToWorld();
 }
 
 

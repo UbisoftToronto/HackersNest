@@ -36,7 +36,7 @@ void PlayerMovementComponent::OnAddToWorld()
 
 void PlayerMovementComponent::Update()
 {
-	__super::Update();
+	Component::Update();
 
 	if (GameEngine::GameEngineMain::GetInstance()->IsGameOver())
 	{

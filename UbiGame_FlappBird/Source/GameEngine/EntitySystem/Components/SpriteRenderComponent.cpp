@@ -21,7 +21,7 @@ SpriteRenderComponent::~SpriteRenderComponent()
 
 void SpriteRenderComponent::OnAddToWorld()
 {
-	__super::OnAddToWorld();
+	Component::OnAddToWorld();
 	UpdateSpriteParams();
 
 	m_animComponent = GetEntity()->GetComponent<AnimationComponent>();
@@ -100,7 +100,7 @@ void SpriteRenderComponent::SetTexture(eTexture::type texture)
 
 void SpriteRenderComponent::Render(sf::RenderTarget* target)
 {
-	__super::Render(target);
+	RenderComponent::Render(target);
 
 	if (!target)
 	{

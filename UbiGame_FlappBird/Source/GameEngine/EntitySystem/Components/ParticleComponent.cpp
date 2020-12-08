@@ -19,13 +19,13 @@ ParticleComponent::~ParticleComponent()
 
 void ParticleComponent::OnAddToWorld()
 {
-	__super::OnAddToWorld();
+	Component::OnAddToWorld();
 }
 
 
 void ParticleComponent::OnRemoveFromWorld()
 {
-	__super::OnAddToWorld();
+	Component::OnAddToWorld();
 }
 
 
