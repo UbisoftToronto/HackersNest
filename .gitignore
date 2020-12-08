@@ -4,4 +4,8 @@
 #Temporary files
 *.o
 */output
+UbiGame_Blank/x64
+UbiGame_Blank/UbiGame/x64
 
+#Visual Studio Meta data
+UbiGame_Blank/.vs
