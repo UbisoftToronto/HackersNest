@@ -98,7 +98,8 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources" /S /Y /I</Command>
+      <Command>XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources" /S /Y /I
+XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -134,7 +135,8 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources" /S /Y /I</Command>
+      <Command>XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources" /S /Y /I
+XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
