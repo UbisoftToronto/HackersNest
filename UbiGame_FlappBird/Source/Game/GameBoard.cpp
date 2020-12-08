@@ -11,9 +11,9 @@ using namespace Game;
 
 GameBoard::GameBoard()
 	: m_lastObstacleSpawnTimer(0.f)
-	, m_isGameOver(false)
 	, m_player(nullptr)
 	, m_backGround(nullptr)
+	, m_isGameOver(false)
 {
 	m_player = new PlayerEntity();
 	

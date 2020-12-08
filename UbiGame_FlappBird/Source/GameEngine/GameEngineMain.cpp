@@ -164,7 +164,7 @@ void GameEngineMain::UpdateWindowEvents()
 void GameEngineMain::UpdateEntities()
 {
 	//Update que
-	for each (auto entity in m_entities)
+	for (auto entity : m_entities)
 	{
 		entity->Update();
 	}
@@ -190,7 +190,7 @@ void GameEngineMain::RenderEntities()
 	//Render que
 	std::vector<RenderComponent*> renderers;
 	//Every entity that has RenderComponent, or a component that extends RenderComponent - should end up in a render que
-	for each (auto entity in m_entities)
+	for (auto entity : m_entities)
 	{
 		if (RenderComponent* render = entity->GetComponent< RenderComponent >())
 		{
@@ -205,7 +205,7 @@ void GameEngineMain::RenderEntities()
 		return a->GetZLevel() < b->GetZLevel();
 	});	
 
-	for each (auto renderer in renderers)
+	for (auto renderer : renderers)
 	{		
 		renderer->Render(m_renderTarget);
 	}

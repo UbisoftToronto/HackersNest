@@ -18,7 +18,7 @@ Entity::~Entity()
 
 void Entity::OnAddToWorld() 
 {
-	for each (auto component in m_components)
+	for (auto component : m_components)
 	{
 		component->OnAddToWorld();
 	}
@@ -27,7 +27,7 @@ void Entity::OnAddToWorld()
 
 void Entity::OnRemoveFromWorld()
 {
-	for each (auto component in m_components)
+	for (auto component : m_components)
 	{
 		component->OnRemoveFromWorld();
 	}
@@ -36,7 +36,7 @@ void Entity::OnRemoveFromWorld()
 
 void Entity::DestroyComponents()
 {
-	for each (auto component in m_components)
+	for (auto component : m_components)
 	{
 		delete component;
 	}
@@ -47,7 +47,7 @@ void Entity::DestroyComponents()
 
 void Entity::Update()
 {
-	for each (auto component in m_components)
+	for (auto component : m_components)
 	{
 		component->Update();
 	}
