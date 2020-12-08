@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UbiGame", "UbiGame\UbiGame.vcxproj", "{1C612ACF-48DE-480E-AE0D-6C444B86ABCF}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UbiGame", "UbiGame.vcxproj", "{1C612ACF-48DE-480E-AE0D-6C444B86ABCF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
