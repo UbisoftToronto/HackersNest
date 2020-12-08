@@ -1,8 +1,8 @@
 #include "RenderComponent.h"
 
-#include "GameEngine\EntitySystem\Components\CollidableComponent.h"
-#include "GameEngine\EntitySystem\Entity.h"
-#include "GameEngine\GameEngineMain.h"
+#include "GameEngine/EntitySystem/Components/CollidableComponent.h"
+#include "GameEngine/EntitySystem/Entity.h"
+#include "GameEngine/GameEngineMain.h"
 
 #include <SFML/System/Vector2.hpp>
 

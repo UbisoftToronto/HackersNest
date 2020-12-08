@@ -1,7 +1,7 @@
 #include "AnimationComponent.h"
 
-#include "GameEngine\EntitySystem\Entity.h"
-#include "GameEngine\GameEngineMain.h"
+#include "GameEngine/EntitySystem/Entity.h"
+#include "GameEngine/GameEngineMain.h"
 
 using namespace GameEngine;
 

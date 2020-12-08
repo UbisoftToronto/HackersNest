@@ -1,7 +1,7 @@
 #include "PlayerCameraComponent.h"
 
-#include "GameEngine\GameEngineMain.h"
-#include "GameEngine\Util\CameraManager.h"
+#include "GameEngine/GameEngineMain.h"
+#include "GameEngine/Util/CameraManager.h"
 
 using namespace Game;
 

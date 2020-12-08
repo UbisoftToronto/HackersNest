@@ -1,5 +1,5 @@
 #pragma once
-#include "GameEngine\EntitySystem\Components\CollidableComponent.h"
+#include "GameEngine/EntitySystem/Components/CollidableComponent.h"
 
 namespace GameEngine
 {

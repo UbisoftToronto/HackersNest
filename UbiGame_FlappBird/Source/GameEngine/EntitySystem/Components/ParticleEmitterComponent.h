@@ -1,9 +1,9 @@
 #pragma once
 #include <SFML/System/Vector2.hpp>
 
-#include "GameEngine\EntitySystem\Component.h"
-#include "GameEngine\Util\TextureManager.h"
-#include "GameEngine\Util\AnimationManager.h"
+#include "GameEngine/EntitySystem/Component.h"
+#include "GameEngine/Util/TextureManager.h"
+#include "GameEngine/Util/AnimationManager.h"
 
 #include <vector>
 

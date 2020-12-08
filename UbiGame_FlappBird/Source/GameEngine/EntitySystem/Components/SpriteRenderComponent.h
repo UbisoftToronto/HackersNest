@@ -1,8 +1,8 @@
 #pragma once
 #include <SFML/Graphics/Sprite.hpp>
-#include "GameEngine\EntitySystem\Components\RenderComponent.h"
-#include "GameEngine\EntitySystem\Components\AnimationComponent.h"
-#include "GameEngine\Util\TextureManager.h"
+#include "GameEngine/EntitySystem/Components/RenderComponent.h"
+#include "GameEngine/EntitySystem/Components/AnimationComponent.h"
+#include "GameEngine/Util/TextureManager.h"
 
 namespace GameEngine
 {	

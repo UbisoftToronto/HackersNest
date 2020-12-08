@@ -1,7 +1,7 @@
 #include "CollidableComponent.h"
 
-#include "GameEngine\EntitySystem\Entity.h"
-#include "GameEngine\Util\CollisionManager.h"
+#include "GameEngine/EntitySystem/Entity.h"
+#include "GameEngine/Util/CollisionManager.h"
 
 using namespace GameEngine;
 

@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/System/Vector2.hpp>
 #include <vector>
-#include "GameEngine\EntitySystem\Component.h"
+#include "GameEngine/EntitySystem/Component.h"
 
 namespace GameEngine
 {

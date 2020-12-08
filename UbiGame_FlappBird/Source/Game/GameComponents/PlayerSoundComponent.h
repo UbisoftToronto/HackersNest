@@ -1,6 +1,6 @@
 #pragma once
-#include "GameEngine\EntitySystem\Component.h"
-#include "GameEngine\Util\SoundManager.h"
+#include "GameEngine/EntitySystem/Component.h"
+#include "GameEngine/Util/SoundManager.h"
 
 namespace Game
 {

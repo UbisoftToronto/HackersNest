@@ -1,8 +1,8 @@
 #pragma once
-#include "GameEngine\EntitySystem\Component.h"
+#include "GameEngine/EntitySystem/Component.h"
 
-#include "GameEngine\EntitySystem\Entity.h"
-#include "GameEngine\GameEngineMain.h"
+#include "GameEngine/EntitySystem/Entity.h"
+#include "GameEngine/GameEngineMain.h"
 
 namespace GameEngine
 {

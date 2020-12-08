@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "GameEngine\EntitySystem\Component.h"
+#include "GameEngine/EntitySystem/Component.h"
 
 namespace GameEngine
 {

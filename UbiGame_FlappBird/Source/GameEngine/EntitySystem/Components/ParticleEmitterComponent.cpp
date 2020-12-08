@@ -1,10 +1,10 @@
 #include "ParticleEmitterComponent.h"
 
-#include "GameEngine\EntitySystem\Components\ParticleComponent.h"
-#include "GameEngine\EntitySystem\Components\SpriteRenderComponent.h"
-#include "GameEngine\EntitySystem\Components\AnimationComponent.h"
-#include "GameEngine\EntitySystem\Entity.h"
-#include "GameEngine\GameEngineMain.h"
+#include "GameEngine/EntitySystem/Components/ParticleComponent.h"
+#include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
+#include "GameEngine/EntitySystem/Components/AnimationComponent.h"
+#include "GameEngine/EntitySystem/Entity.h"
+#include "GameEngine/GameEngineMain.h"
 
 #include <SFML/System/Vector2.hpp>
 
