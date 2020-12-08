@@ -3,10 +3,10 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/System/Clock.hpp>
 
-#include "Game\GameBoard.h"
+#include "Game/GameBoard.h"
 
-#include "GameEngine\EntitySystem\Entity.h"
-#include "GameEngine\EntitySystem\Components\RenderComponent.h"
+#include "GameEngine/EntitySystem/Entity.h"
+#include "GameEngine/EntitySystem/Components/RenderComponent.h"
 
 namespace GameEngine
 {

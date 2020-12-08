@@ -1,4 +1,4 @@
-#include "GameEngine\EntitySystem\Components\SoundComponent.h"
+#include "GameEngine/EntitySystem/Components/SoundComponent.h"
 
 using namespace GameEngine;
 

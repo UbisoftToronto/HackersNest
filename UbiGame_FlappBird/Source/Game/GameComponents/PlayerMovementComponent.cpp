@@ -1,12 +1,12 @@
 #include "PlayerMovementComponent.h"
 
-#include "GameEngine\GameEngineMain.h"
-#include "GameEngine\EntitySystem\Components\SoundComponent.h"
+#include "GameEngine/GameEngineMain.h"
+#include "GameEngine/EntitySystem/Components/SoundComponent.h"
 
-#include "GameEngine\Util\TextureManager.h"
-#include "GameEngine\Util\AnimationManager.h"
+#include "GameEngine/Util/TextureManager.h"
+#include "GameEngine/Util/AnimationManager.h"
 
-#include "Game\GameComponents\PlayerSoundComponent.h"
+#include "Game/GameComponents/PlayerSoundComponent.h"
 
 #include <SFML/Window/Keyboard.hpp>
 

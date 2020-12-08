@@ -1,6 +1,6 @@
 #include "SpriteRenderComponent.h"
 
-#include "GameEngine\GameEngineMain.h"
+#include "GameEngine/GameEngineMain.h"
 
 using namespace GameEngine;
 

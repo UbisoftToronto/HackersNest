@@ -1,11 +1,11 @@
 #include "GameBoard.h"
 
-#include "GameEngine\GameEngineMain.h"
-#include "GameEngine\EntitySystem\Components\CollidableComponent.h"
-#include "GameEngine\EntitySystem\Components\SpriteRenderComponent.h"
-#include "GameEngine\Util\CameraManager.h"
-#include "Game\GameEntities\PlayerEntity.h"
-#include "Game\GameEntities\ObstacleEntity.h"
+#include "GameEngine/GameEngineMain.h"
+#include "GameEngine/EntitySystem/Components/CollidableComponent.h"
+#include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
+#include "GameEngine/Util/CameraManager.h"
+#include "Game/GameEntities/PlayerEntity.h"
+#include "Game/GameEntities/ObstacleEntity.h"
 
 using namespace Game;
 
