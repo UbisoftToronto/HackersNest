@@ -26,11 +26,8 @@ jobs:
       run: make
       
   build_windows:
+    
     runs-on: windows-latest
-
-    strategy:
-      matrix:
-        buildconfig: ["Debug", "Release"]
     
     steps:
     - name: Checkout
@@ -45,5 +42,5 @@ jobs:
       
     - name: Build FlappBird
       working-directory: ${{env.bird-directory}}
-      run: msbuild /m /p:Configuration=${{matrix.buildconfig}} UbiGame.sln
+      run: msbuild /m /p:Configuration=Release UbiGame.sln
   
