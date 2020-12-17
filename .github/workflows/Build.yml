@@ -1,0 +1,51 @@
+name: Build Targets
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  blank-directory: ./UbiGame_Blank
+  bird-directory: ./UbiGame_FlappBird  
+
+jobs:
+  build_macOS:
+
+    runs-on: macOS-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Build Blank
+      working-directory: ${{env.blank-directory}}
+      run: make
+    - name: Build FlappBird
+      working-directory: ${{env.bird-directory}}
+      run: make
+      
+  build_windows:
+    runs-on: windows-latest
+
+    env:
+      # Configuration type to build.
+      # You can convert this to a build matrix if you need coverage of multiple configuration types.
+      # https://docs.github.com/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
+      BUILD_CONFIGURATION: Release
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@v1
+
+    - name: Build Blank
+      working-directory: ${{env.blank-directory}}
+      run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} UbiGame.sln
+      
+    - name: Build FlappBird
+      working-directory: ${{env.bird-directory}}
+      run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} UbiGame.sln
+  
