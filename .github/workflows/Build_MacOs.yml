@@ -1,0 +1,23 @@
+name: Mac OS build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    
+    env:
+      blank-directory: ./UbiGame_Blank
+
+    runs-on: macOS-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Build Blank
+      run: make
+      working-directory: ${{env.blank-directory}}
+  
