@@ -11,6 +11,7 @@ jobs:
     
     env:
       blank-directory: ./UbiGame_Blank
+      bird-directory: ./UbiGame_FlappBird  
 
     runs-on: macOS-latest
 
@@ -20,4 +21,7 @@ jobs:
     - name: Build Blank
       run: make
       working-directory: ${{env.blank-directory}}
+    - name: Build FlappBird
+      run: make
+      working-directory: ${{env.bird-directory}}
   
