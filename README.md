@@ -1,6 +1,6 @@
 # HackersNest
 
-![Build Targets](https://github.com/UbisoftToronto/HackersNest/workflows/Build%20Targets/badge.svg)
+[![Build Targets](https://github.com/UbisoftToronto/HackersNest/workflows/Build%20Targets/badge.svg)](https://github.com/UbisoftToronto/HackersNest/actions)
 
 Base framework for the Ubisoft Toronto Hackathon challenges
 
