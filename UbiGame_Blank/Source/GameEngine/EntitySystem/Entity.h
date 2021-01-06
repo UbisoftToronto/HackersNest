@@ -41,9 +41,9 @@ namespace GameEngine
 		}
 
 		template <class T>
-		Component* AddComponent()
+		T* AddComponent()
 		{
-			Component* newComponent = new T();
+			T* newComponent = new T();
 			newComponent->SetEntity(this);
 			m_components.push_back(newComponent);
 			

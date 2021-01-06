@@ -15,13 +15,11 @@ namespace Game
 		GameBoard();
 		virtual ~GameBoard();
 
-
 		void Update();		
 		bool IsGameOver() { return false; }
 
 	private:
 		void CreatePlayer();
-		void CreateObstacle();
 		GameEngine::Entity* m_player;
 	};
 }
