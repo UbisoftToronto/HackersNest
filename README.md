@@ -8,3 +8,4 @@ Base framework for the Ubisoft Toronto Hackathon challenges
 
 - [Build and Run](https://github.com/UbisoftToronto/HackersNest/wiki/Build-and-Run)
 - [Code Overview](https://github.com/UbisoftToronto/HackersNest/wiki/GameEngine-Overview)
+- [Step By Step Tutorial](https://github.com/UbisoftToronto/HackersNest/wiki/Step-By-Step-Tutorial)
