@@ -8,7 +8,7 @@ using namespace Game;
 
 ObstacleEntity::ObstacleEntity()	
 {
-	m_renderComponent = static_cast<GameEngine::SpriteRenderComponent*>(AddComponent<GameEngine::SpriteRenderComponent>());
+	m_renderComponent = AddComponent<GameEngine::SpriteRenderComponent>();
 	m_renderComponent->SetFillColor(sf::Color::Red);
 	m_renderComponent->SetTexture(GameEngine::eTexture::Tileset);
 	m_renderComponent->SetZLevel(2);
