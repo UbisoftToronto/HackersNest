@@ -1,0 +1,50 @@
+name: Build Targets
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  blank-directory: ./UbiGame_Blank
+  bird-directory: ./UbiGame_FlappBird  
+
+jobs:
+  build_macOS:
+
+    runs-on: macOS-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Build Blank
+      working-directory: ${{env.blank-directory}}
+      run: make
+    - name: Build FlappBird
+      working-directory: ${{env.bird-directory}}
+      run: make
+      
+  build_windows:
+    
+    runs-on: windows-latest
+    
+    strategy:
+      matrix:
+        buildconfig: [Debug, Release]
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@v1
+
+    - name: Build Blank
+      working-directory: ${{env.blank-directory}}
+      run: msbuild /m /p:Configuration=${{matrix.buildconfig}} UbiGame.sln
+      
+    - name: Build FlappBird
+      working-directory: ${{env.bird-directory}}
+      run: msbuild /m /p:Configuration=${{matrix.buildconfig}} UbiGame.sln
+  
