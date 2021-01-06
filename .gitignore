@@ -4,10 +4,10 @@
 #Temporary files
 *.o
 */output
-UbiGame_Blank/x64
-UbiGame_Blank/Source/x64
-UbiGame_FlappBird/x64
-UbiGame_FlappBird/Source/x64
+UbiGame_Blank/bin
+UbiGame_Blank/tmp
+UbiGame_FlappBird/bin
+UbiGame_FlappBird/tmp
 
 #Visual Studio Meta data
 UbiGame_Blank/.vs
