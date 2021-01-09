@@ -9,7 +9,7 @@ using namespace Game;
 GameBoard::GameBoard()
 {
 	CreatePlayer();
-	CreateBackground();
+	CreateBackground(GameEngine::eTexture::CleanBox_bg);
 }
 
 
@@ -35,7 +35,7 @@ void GameBoard::CreatePlayer()
 	//Render
 	GameEngine::SpriteRenderComponent* render = m_player->AddComponent<GameEngine::SpriteRenderComponent>(); //<-- Use the SpriteRenderComponent
 
-	render->SetFillColor(sf::Color::Transparent);
+	render->SetFillColor(sf::Color::White);
 	render->SetTexture(GameEngine::eTexture::Garbage);  // <-- Assign the texture to this entity
 
 	//Movement
@@ -43,7 +43,7 @@ void GameBoard::CreatePlayer()
 
 }
 
-void GameBoard::CreateBackground() 
+void GameBoard::CreateBackground(GameEngine::eTexture::type texture)
 {
 	background = new GameEngine::Entity();
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(background);
@@ -79,6 +79,24 @@ void GameBoard::SortGarbage()
 
 }
 
+void GameBoard::CreateImage(GameEngine::eTexture::type texture, float x, float y)
+{
+	image = new GameEngine::Entity();
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(image);
+
+	image->SetPos(sf::Vector2f(x, y));
+	image->SetSize(sf::Vector2f(50.0f, 50.0f));
+
+	//Render
+	GameEngine::SpriteRenderComponent* render = image->AddComponent<GameEngine::SpriteRenderComponent>(); //<-- Use the SpriteRenderComponent
+
+	render->SetFillColor(sf::Color::Transparent);
+	render->SetTexture(GameEngine::eTexture::Garbage);  // <-- Assign the texture to this entity
+
+	//Click status
+	//image->AddComponent<Game::ImageClickComponent>();
+
+}
 
 
 void GameBoard::Wfh()
