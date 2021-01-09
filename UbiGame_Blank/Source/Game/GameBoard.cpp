@@ -53,7 +53,7 @@ void GameBoard::CreateBackground()
 
 	GameEngine::SpriteRenderComponent* render = static_cast<GameEngine::SpriteRenderComponent*>
 									(background->AddComponent<GameEngine::SpriteRenderComponent>());
-	render->SetTexture(GameEngine::eTexture::CleanBox_bg);
+	render->SetTexture(GameEngine::eTexture::Menu_bg);
 	render->SetFillColor(sf::Color::Transparent);
 	render->SetZLevel(-1);
 }
