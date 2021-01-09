@@ -11,9 +11,8 @@ namespace GameEngine
 		enum type
 		{
 			None = -1,
-
 			Player,
-
+			Rules_bg,
 			Count,
 		};
 	}	
@@ -22,7 +21,8 @@ namespace GameEngine
 	{
 		switch (texture)
 		{
-		case eTexture::Player: return "download.png"; //<-- The name of the image on disk
+			case eTexture::Player: return "download.png"; 
+			case eTexture::Rules_bg: return "Rules.png"; 
 		}
 		return "UnknownTexType";
 	}
