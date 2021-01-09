@@ -42,6 +42,9 @@ namespace Game
 
 		void PutOnMask();
 		GameEngine::Entity* putOnMask;
+
+		void TransitionPage();
+		GameEngine::Entity* transitionPage;
 	};
 }
 

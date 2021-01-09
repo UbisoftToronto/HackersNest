@@ -22,6 +22,12 @@ namespace GameEngine
 			Garbage,
 			Compost,
 			Recycling,
+			BananaPeel,
+			AluminumCan,
+			Bottle,
+			ChipBag,
+			Fish,
+			GarbageBall,
 
 
 			Count,
@@ -43,6 +49,12 @@ namespace GameEngine
 			case eTexture::type::Garbage: return "Garbage_Bin.png";
 			case eTexture::type::Compost: return "Compost_Pit.png";
 			case eTexture::type::Recycling: return "Recycling_Sign.png";
+			case eTexture::type::BananaPeel: return "Banana_Peel.png";
+			case eTexture::type::AluminumCan: return "Aluminum_Can.png";
+			case eTexture::type::Bottle: return "Bottle.png";
+			case eTexture::type::ChipBag: return "Chip_Bag.png";
+			case eTexture::type::Fish: return "Fish.png";
+			case eTexture::type::GarbageBall: return "Garbage_Ball.png";
 		}
 		return "UnknownTexType";
 	}

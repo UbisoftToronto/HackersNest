@@ -51,7 +51,7 @@ void GameEngineMain::OnInitialised()
 
 void GameEngineMain::CreateAndSetUpWindow()
 {
-	m_renderWindow = new sf::RenderWindow(sf::VideoMode((unsigned int)WINDOW_WIDTH, (unsigned int)WINDOW_HEIGHT), "Hackkkkk");
+	m_renderWindow = new sf::RenderWindow(sf::VideoMode((unsigned int)WINDOW_WIDTH, (unsigned int)WINDOW_HEIGHT), "Stop The Outbreak");
 	m_renderTarget = m_renderWindow;
 }
 

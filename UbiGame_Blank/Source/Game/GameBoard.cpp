@@ -35,13 +35,14 @@ void GameBoard::CreatePlayer()
 	//Render
 	GameEngine::SpriteRenderComponent* render = m_player->AddComponent<GameEngine::SpriteRenderComponent>(); //<-- Use the SpriteRenderComponent
 
-	render->SetFillColor(sf::Color::Blue);
-	render->SetTexture(GameEngine::eTexture::Player);  // <-- Assign the texture to this entity
+	render->SetFillColor(sf::Color::Transparent);
+	render->SetTexture(GameEngine::eTexture::Garbage);  // <-- Assign the texture to this entity
 
 	//Movement
 	m_player->AddComponent<Game::PlayerMovementComponent>();
 
 }
+
 void GameBoard::CreateBackground() 
 {
 	background = new GameEngine::Entity();
@@ -57,6 +58,13 @@ void GameBoard::CreateBackground()
 	render->SetZLevel(-1);
 }
 
+void GameBoard::TransitionPage() 
+{
+	cleanTheBox = new GameEngine::Entity();
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(cleanTheBox);
+
+}
+
 void GameBoard::CleanTheBox()
 {
 	cleanTheBox = new GameEngine::Entity();
@@ -67,7 +75,11 @@ void GameBoard::SortGarbage()
 {
 	sortGarbage = new GameEngine::Entity();
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(sortGarbage);
+
+
 }
+
+
 
 void GameBoard::Wfh()
 {
