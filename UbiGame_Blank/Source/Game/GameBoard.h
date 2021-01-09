@@ -1,5 +1,6 @@
 #pragma once
 #include "GameEngine/EntitySystem/Entity.h"
+#include "GameEngine/Util/TextureManager.h"
 
 #include <SFML/System/Vector2.hpp>
 #include <vector>
@@ -22,7 +23,7 @@ namespace Game
 		void CreatePlayer();          // <-- Added Function
 		GameEngine::Entity* m_player; // <-- Added Member
 
-		void CreateBackground();
+		void CreateBackground(GameEngine::eTexture::type texture);
 		GameEngine::Entity* background;
 
 		void CleanTheBox();
@@ -30,6 +31,9 @@ namespace Game
 
 		void SortGarbage();
 		GameEngine::Entity* sortGarbage;
+
+		void CreateImage(GameEngine::eTexture::type texture, float x, float y);
+		GameEngine::Entity* image;
 
 		void Wfh();
 		GameEngine::Entity* wfh;
