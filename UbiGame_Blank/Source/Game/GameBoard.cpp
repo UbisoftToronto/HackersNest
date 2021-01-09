@@ -2,7 +2,7 @@
 #include "Game/Components/PlayerMovementComponent.h"
 #include "GameEngine/GameEngineMain.h"
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
-
+#include <Game/Components/ImageClickComponent.h>
 
 using namespace Game;
 
