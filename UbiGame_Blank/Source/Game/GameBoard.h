@@ -24,6 +24,24 @@ namespace Game
 
 		void CreateBackground();
 		GameEngine::Entity* background;
+
+		void CleanTheBox();
+		GameEngine::Entity* cleanTheBox;
+
+		void SortGarbage();
+		GameEngine::Entity* sortGarbage;
+
+		void Wfh();
+		GameEngine::Entity* wfh;
+
+		void BakingBread();
+		GameEngine::Entity* bakingBread;
+
+		void WashHands();
+		GameEngine::Entity* washHands;
+
+		void PutOnMask();
+		GameEngine::Entity* putOnMask;
 	};
 }
 

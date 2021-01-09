@@ -54,4 +54,40 @@ void GameBoard::CreateBackground()
 									(background->AddComponent<GameEngine::SpriteRenderComponent>());
 	render->SetTexture(GameEngine::eTexture::CleanBox_bg);
 	render->SetFillColor(sf::Color::Transparent);
+	render->SetZLevel(-1);
+}
+
+void GameBoard::CleanTheBox()
+{
+	cleanTheBox = new GameEngine::Entity();
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(cleanTheBox);
+}
+
+void GameBoard::SortGarbage()
+{
+	sortGarbage = new GameEngine::Entity();
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(sortGarbage);
+}
+
+void GameBoard::Wfh()
+{
+	wfh = new GameEngine::Entity();
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(wfh);
+}
+
+void GameBoard::BakingBread()
+{
+	bakingBread = new GameEngine::Entity();
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(bakingBread);
+}
+void GameBoard::WashHands()
+{
+	washHands = new GameEngine::Entity();
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(washHands);
+}
+
+void GameBoard::PutOnMask()
+{
+	putOnMask = new GameEngine::Entity();
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(putOnMask);
 }

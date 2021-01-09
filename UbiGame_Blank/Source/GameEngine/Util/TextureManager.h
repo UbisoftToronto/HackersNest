@@ -19,6 +19,11 @@ namespace GameEngine
 			BakeBread_bg,
 			WashYoHands_bg,
 			PutOnMask_bg,
+			Garbage,
+			Compost,
+			Recycling,
+
+
 			Count,
 		};
 	}	
@@ -34,6 +39,10 @@ namespace GameEngine
 			case eTexture::type::BakeBread_bg: return "placeholder_bg.jpg";
 			case eTexture::type::WashYoHands_bg: return "placeholder_bg.jpg";
 			case eTexture::type::PutOnMask_bg: return "placeholder_bg.jpg";
+
+			case eTexture::type::Garbage: return "Garbage_Bin.png";
+			case eTexture::type::Compost: return "Compost_Pit.png";
+			case eTexture::type::Recycling: return "Recycling_Sign.png";
 		}
 		return "UnknownTexType";
 	}
