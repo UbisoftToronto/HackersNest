@@ -13,6 +13,7 @@ namespace GameEngine
 			None = -1,
 			Player,
 
+Menu_bg,
 			CleanBox_bg,
 			SortGarbage_bg,
 			WFH_bg,
@@ -39,6 +40,7 @@ namespace GameEngine
 		switch (texture)
 		{
 			case eTexture::Player: return "download.png"; 
+			case eTexture::type::Menu_bg: return "Menu.png";
 			case eTexture::type::CleanBox_bg: return "placeholder_bg.jpg";
 			case eTexture::type::SortGarbage_bg: return "placeholder_bg.jpg";
 			case eTexture::type::WFH_bg: return "placeholder_bg.jpg";
