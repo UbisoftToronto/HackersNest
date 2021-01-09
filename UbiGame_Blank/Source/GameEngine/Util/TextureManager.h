@@ -12,7 +12,13 @@ namespace GameEngine
 		{
 			None = -1,
 			Player,
-			Rules_bg,
+
+			CleanBox_bg,
+			SortGarbage_bg,
+			WFH_bg,
+			BakeBread_bg,
+			WashYoHands_bg,
+			PutOnMask_bg,
 			Count,
 		};
 	}	
@@ -22,7 +28,12 @@ namespace GameEngine
 		switch (texture)
 		{
 			case eTexture::Player: return "download.png"; 
-			case eTexture::Rules_bg: return "Rules.png"; 
+			case eTexture::type::CleanBox_bg: return "placeholder_bg.jpg";
+			case eTexture::type::SortGarbage_bg: return "placeholder_bg.jpg";
+			case eTexture::type::WFH_bg: return "placeholder_bg.jpg";
+			case eTexture::type::BakeBread_bg: return "placeholder_bg.jpg";
+			case eTexture::type::WashYoHands_bg: return "placeholder_bg.jpg";
+			case eTexture::type::PutOnMask_bg: return "placeholder_bg.jpg";
 		}
 		return "UnknownTexType";
 	}
