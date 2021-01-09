@@ -35,7 +35,7 @@ void GameBoard::CreatePlayer()
 	//Render
 	GameEngine::SpriteRenderComponent* render = m_player->AddComponent<GameEngine::SpriteRenderComponent>(); //<-- Use the SpriteRenderComponent
 
-	render->SetFillColor(sf::Color::Transparent);
+	render->SetFillColor(sf::Color::White);
 	render->SetTexture(GameEngine::eTexture::Garbage);  // <-- Assign the texture to this entity
 
 	//Movement
@@ -54,7 +54,7 @@ void GameBoard::CreateBackground()
 	GameEngine::SpriteRenderComponent* render = static_cast<GameEngine::SpriteRenderComponent*>
 									(background->AddComponent<GameEngine::SpriteRenderComponent>());
 	render->SetTexture(GameEngine::eTexture::Menu_bg);
-	render->SetFillColor(sf::Color::Transparent);
+	render->SetFillColor(sf::Color::White);
 	render->SetZLevel(-1);
 }
 
