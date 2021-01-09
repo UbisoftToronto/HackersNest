@@ -48,13 +48,13 @@ void GameBoard::CreateBackground()
 	background = new GameEngine::Entity();
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(background);
 
-	background->SetPos(sf::Vector2f(250.f, 250.f));
-	background->SetSize(sf::Vector2f(800.f, 600.f));
+	background->SetPos(sf::Vector2f(940.f, 540.f));
+	background->SetSize(sf::Vector2f(1920.f, 1080.f));
 
 	GameEngine::SpriteRenderComponent* render = static_cast<GameEngine::SpriteRenderComponent*>
 									(background->AddComponent<GameEngine::SpriteRenderComponent>());
 	render->SetTexture(GameEngine::eTexture::Menu_bg);
-	render->SetFillColor(sf::Color::Transparent);
+	render->SetFillColor(sf::Color::White);
 	render->SetZLevel(-1);
 }
 
