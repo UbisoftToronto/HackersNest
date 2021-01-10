@@ -13,8 +13,11 @@ using namespace Game;
 
 GameBoard::GameBoard()
 {
+	// Uncomment the lines here and in Update() for the game you would like to see
+	
+	// WashHands();
+
 	//PutOnMask();
-	WashHands();
 }
  
 
@@ -26,8 +29,10 @@ GameBoard::~GameBoard()
 
 void GameBoard::Update()
 {	
-	//UpdatePutOnMask();
+	
 	UpdateWashHands();
+
+	//UpdatePutOnMask();
 }
 
 
@@ -50,9 +55,6 @@ void GameBoard::CreateBackground(GameEngine::eTexture::type texture)
 
 void GameBoard::SortGarbage()
 {
-	sortGarbage = new GameEngine::Entity();
-	GameEngine::GameEngineMain::GetInstance()->AddEntity(sortGarbage);
-
 
 }
 
@@ -138,7 +140,7 @@ void GameBoard::UpdateWaters()
 			it = waters.erase(it);
 			caughtWaterCount++;
 			if (waterCount == 10) {
-				wh_isGameOver == true;
+				wh_isGameOver = true;
 			}
 		}
 		else if (currPosW.y >= 955)
@@ -146,7 +148,7 @@ void GameBoard::UpdateWaters()
 			GameEngine::GameEngineMain::GetInstance()->RemoveEntity(this_water);
 			it = waters.erase(it);
 			if (waterCount == 10) {
-				wh_isGameOver == true;
+				wh_isGameOver = true;
 			}
 		}
 		else

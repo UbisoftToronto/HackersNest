@@ -43,7 +43,7 @@ namespace Game
 		////////////////////////////////// Wash Hand game //////////////////////////////////
 
 		bool wh_isGameOver = false;
-		float lastWaterSpawnTimer; 
+		float lastWaterSpawnTimer = 0.9f; 
 		int waterCount = 0;
 		int caughtWaterCount = 0;
 
@@ -61,8 +61,8 @@ namespace Game
 		////////////////////////////////// Mask game //////////////////////////////////
 
 		bool m_isGameOver = false;
-		bool maskWin = false
-		float lastMaskSpawnTime;
+		bool maskWin = false;
+		float lastMaskSpawnTime = 1.f;
 		int maskCount = 0;
 
         void CreateMaskPlayer();
