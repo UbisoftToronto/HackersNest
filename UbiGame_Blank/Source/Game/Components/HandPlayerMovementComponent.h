@@ -4,7 +4,7 @@
 
 namespace Game
 {
-    class HandPlayerMovementComponent : public GameEngine::Component
+    class HandPlayerMovementComponent: public GameEngine::Component
     {
     public:
         virtual void Update() override;

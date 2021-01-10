@@ -88,7 +88,7 @@ void GameBoard::CreatePlayer()
 	render->SetTexture(GameEngine::eTexture::Garbage);  // <-- Assign the texture to this entity
 
 	//Movement
-
+	m_player->AddComponent<Game::PlayerMovementComponent>();
 }
 
 void GameBoard::CreateBackground(GameEngine::eTexture::type texture)
@@ -230,7 +230,7 @@ void GameBoard::CreateWater()
     render->SetFillColor(sf::Color::Transparent);
 
     //Movement
-    water->AddComponent<Game::WaterMovementComponent>();
+    //water->AddComponent<Game::WaterMovementComponent>();
 }
 
 void GameBoard::WashHands()
@@ -279,7 +279,7 @@ void GameBoard::CreateMask()
     render->SetFillColor(sf::Color::Transparent);
 
     //Movement
-    mask->AddComponent<Game::WaterMovementComponent>();
+    //mask->AddComponent<Game::WaterMovementComponent>();
 }
 
 void GameBoard::PutOnMask()
