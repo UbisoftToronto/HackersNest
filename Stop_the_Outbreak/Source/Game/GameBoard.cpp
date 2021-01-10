@@ -13,18 +13,8 @@ using namespace Game;
 
 GameBoard::GameBoard()
 {
-	//CreatePlayer();
-	//CreateBackground(GameEngine::eTexture::CleanBox_bg);
-	PutOnMask();
-	//WashHands();
-	
-	// CreateBackground(GameEngine::eTexture::type::WashYoHands_bg);
-	// CreateHandPlayer();
-	// CreateWater();
-	//UpdateWashHands();
-
-	// generate random number
-	// if "wash hands number" > play wash hands
+	//PutOnMask();
+	WashHands();
 }
  
 
@@ -36,29 +26,10 @@ GameBoard::~GameBoard()
 
 void GameBoard::Update()
 {	
-	//float dt = GameEngine::GameEngineMain::GetInstance()->GetTimeDelta();
-	//UpdateWashHands();
-	UpdatePutOnMask();
+	//UpdatePutOnMask();
+	UpdateWashHands();
 }
 
-void GameBoard::CreatePlayer()
-{
-	m_player = new GameEngine::Entity();
-	GameEngine::GameEngineMain::GetInstance()->AddEntity(m_player);
-
-	m_player->SetPos(sf::Vector2f(50.0f, 50.0f));
-	m_player->SetSize(sf::Vector2f(50.0f, 50.0f));
-
-	//Render
-	GameEngine::SpriteRenderComponent* render = m_player->AddComponent<GameEngine::SpriteRenderComponent>(); //<-- Use the SpriteRenderComponent
-
-	render->SetFillColor(sf::Color::White);
-	render->SetTexture(GameEngine::eTexture::Garbage);  // <-- Assign the texture to this entity
-
-	//Movement
-	m_player->AddComponent<Game::PlayerMovementComponent>();
-
-}
 
 void GameBoard::CreateBackground(GameEngine::eTexture::type texture)
 {
@@ -75,18 +46,7 @@ void GameBoard::CreateBackground(GameEngine::eTexture::type texture)
 	render->SetZLevel(-1);
 }
 
-void GameBoard::TransitionPage() 
-{
-	cleanTheBox = new GameEngine::Entity();
-	GameEngine::GameEngineMain::GetInstance()->AddEntity(cleanTheBox);
-
-}
-
-void GameBoard::CleanTheBox()
-{
-	cleanTheBox = new GameEngine::Entity();
-	GameEngine::GameEngineMain::GetInstance()->AddEntity(cleanTheBox);
-}
+////////////////////////////////// Garbage sort game //////////////////////////////////
 
 void GameBoard::SortGarbage()
 {
@@ -115,19 +75,13 @@ void GameBoard::CreateImage(GameEngine::eTexture::type texture, float x, float y
 
 }
 
+////////////////////////////////// Work from Home //////////////////////////////////
 
 void GameBoard::Wfh()
 {
 	wfh = new GameEngine::Entity();
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(wfh);
 }
-
-void GameBoard::BakingBread()
-{
-	bakingBread = new GameEngine::Entity();
-	GameEngine::GameEngineMain::GetInstance()->AddEntity(bakingBread);
-}
-
 
 ////////////////////////////////// Wash Hand game //////////////////////////////////
 
@@ -207,7 +161,6 @@ void GameBoard::WashHands()
 	CreateBackground(GameEngine::eTexture::type::WashYoHands_bg);
 	CreateHandPlayer();
 	CreateWater();
-	UpdateWashHands();
 }
 
 void GameBoard::UpdateWashHands()
@@ -243,9 +196,8 @@ void GameBoard::CreateMaskPlayer()
     maskplayer->SetSize(sf::Vector2f(300.0f, 300.0f));
 
     //Render
-    GameEngine::SpriteRenderComponent* render = maskplayer->AddComponent<GameEngine::SpriteRenderComponent>(); //<-- Use the SpriteRenderComponent
-
-    render->SetTexture(GameEngine::eTexture::type::Face);  // <-- Assign the texture to this entity
+    GameEngine::SpriteRenderComponent* render = maskplayer->AddComponent<GameEngine::SpriteRenderComponent>();
+    render->SetTexture(GameEngine::eTexture::type::Face); 
     render->SetFillColor(sf::Color::White);
 }
 
@@ -254,16 +206,15 @@ void GameBoard::CreateMask()
 	mask = new GameEngine::Entity();
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(mask);
 	
-	//Update this so that it actually goes on the person's face sometimes
     mask->SetPos(sf::Vector2f(RandomFloatRange(300.0,1700.0), RandomFloatRange(240.0,800.0)));
     mask->SetSize(sf::Vector2f(300.0f, 150.0f));
 
 	//Render
-    GameEngine::SpriteRenderComponent* render = mask->AddComponent<GameEngine::SpriteRenderComponent>(); //<-- Use the SpriteRenderComponent
-
-    render->SetTexture(GameEngine::eTexture::type::Mask);  // <-- Assign the texture to this entity
+    GameEngine::SpriteRenderComponent* render = mask->AddComponent<GameEngine::SpriteRenderComponent>(); 
+    render->SetTexture(GameEngine::eTexture::type::Mask); 
     render->SetFillColor(sf::Color::Transparent);
 
+	lastMaskSpawnTime = 1.f;
 }
 
 void GameBoard::UpdateMask()
@@ -275,10 +226,10 @@ void GameBoard::UpdateMask()
 
 void GameBoard::PutOnMask()
 {
-    CreateBackground(GameEngine::eTexture::type::PutOnMask_bg);
+    
+	CreateBackground(GameEngine::eTexture::type::PutOnMask_bg);
 	CreateMaskPlayer();
 	CreateMask();
-    UpdatePutOnMask();
 }
 
 void GameBoard::UpdatePutOnMask()
@@ -303,12 +254,10 @@ float dt = GameEngine::GameEngineMain::GetInstance()->GetTimeDelta();
 	{
 		GameEngine::SpriteRenderComponent* render = maskplayer->GetComponent<GameEngine::SpriteRenderComponent>();
 		if (maskWin) {
-			render->SetTexture(GameEngine::eTexture::type::Face);  // <-- Assign the texture to this entity
-			// render happy mask (need to update texture)
+			render->SetTexture(GameEngine::eTexture::type::Face); 
 		}
 		else {
-			render->SetTexture(GameEngine::eTexture::type::Face);  // <-- Assign the texture to this entity
-			// render sad mask (need to update texture)
+			render->SetTexture(GameEngine::eTexture::type::Face); 
 		}
 	}
 }

@@ -6,8 +6,7 @@
 #include <vector>
 
 namespace Game
-{
-	//Used for storing and controlling all game related entities, as well as providing an entry point for the "game" side of application	
+{	
 	class PlayerEntity;	
 
 	class GameBoard
@@ -26,28 +25,22 @@ namespace Game
 		}
 
 	private:
-		void CreatePlayer();          // <-- Added Function
-		GameEngine::Entity* m_player; // <-- Added Member
-
 		void CreateBackground(GameEngine::eTexture::type texture);
 		GameEngine::Entity* background;
 
-		void CleanTheBox();
-		GameEngine::Entity* cleanTheBox;
+		////////////////////////////////// Garbage sort game //////////////////////////////////
 
 		void SortGarbage();
-		GameEngine::Entity* sortGarbage;
 
 		void CreateImage(GameEngine::eTexture::type texture, float x, float y);
 		GameEngine::Entity* image;
 
+		////////////////////////////////// Work from Home //////////////////////////////////
+		
 		void Wfh();
 		GameEngine::Entity* wfh;
 
-		void BakingBread();
-		GameEngine::Entity* bakingBread;
-
-		// Hand-washing game
+		////////////////////////////////// Wash Hand game //////////////////////////////////
 
 		bool wh_isGameOver = false;
 		float lastWaterSpawnTimer; 
@@ -65,9 +58,10 @@ namespace Game
 		void WashHands();
 		void UpdateWashHands();
 
-		// Mask game
+		////////////////////////////////// Mask game //////////////////////////////////
+
 		bool m_isGameOver = false;
-		bool maskWin = false;
+		bool maskWin = false
 		float lastMaskSpawnTime;
 		int maskCount = 0;
 
@@ -80,11 +74,6 @@ namespace Game
 		void UpdateMask();
         void PutOnMask();
 		void UpdatePutOnMask();
-
-		// Transition stuff
-
-		void TransitionPage();
-		GameEngine::Entity* transitionPage;
 	};
 }
 
