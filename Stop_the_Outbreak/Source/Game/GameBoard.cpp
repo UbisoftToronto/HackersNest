@@ -15,11 +15,12 @@ GameBoard::GameBoard()
 {
 	//CreatePlayer();
 	//CreateBackground(GameEngine::eTexture::CleanBox_bg);
-	//PutOnMask();
+	PutOnMask();
 	//WashHands();
-	CreateBackground(GameEngine::eTexture::type::WashYoHands_bg);
-	CreateHandPlayer();
-	CreateWater();
+	
+	// CreateBackground(GameEngine::eTexture::type::WashYoHands_bg);
+	// CreateHandPlayer();
+	// CreateWater();
 	//UpdateWashHands();
 
 	// generate random number
@@ -35,8 +36,9 @@ GameBoard::~GameBoard()
 
 void GameBoard::Update()
 {	
-	float dt = GameEngine::GameEngineMain::GetInstance()->GetTimeDelta();
-	UpdateWashHands();
+	//float dt = GameEngine::GameEngineMain::GetInstance()->GetTimeDelta();
+	//UpdateWashHands();
+	UpdatePutOnMask();
 }
 
 void GameBoard::CreatePlayer()
@@ -237,7 +239,7 @@ void GameBoard::CreateMaskPlayer()
     maskplayer = new GameEngine::Entity();
     GameEngine::GameEngineMain::GetInstance()->AddEntity(maskplayer);
 
-    maskplayer->SetPos(sf::Vector2f(1000.0f, 955.0f));
+    maskplayer->SetPos(sf::Vector2f(950.0f, 600.0f));
     maskplayer->SetSize(sf::Vector2f(250.0f, 250.0f));
 
     //Render
@@ -245,19 +247,15 @@ void GameBoard::CreateMaskPlayer()
 
     render->SetTexture(GameEngine::eTexture::type::Face);  // <-- Assign the texture to this entity
     render->SetFillColor(sf::Color::White);
-
-    //Movement
-    maskplayer->AddComponent<Game::HandPlayerMovementComponent>();
 }
 
 void GameBoard::CreateMask()
 {
 	mask = new GameEngine::Entity();
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(mask);
-
-	float rand_x = 250.0 + (static_cast <float> (rand()) / static_cast <float> (RAND_MAX/(800.0 - 120.0)));
 	
-    mask->SetPos(sf::Vector2f(rand_x, 90.0f));
+	//Update this so that it doesn't go off the page and so that it actually goes on the person's face sometimes
+    mask->SetPos(sf::Vector2f(RandomFloatRange(240.0,1700.0), RandomFloatRange(240.0,1300.0)));
     mask->SetSize(sf::Vector2f(240.0f, 120.0f));
 
 	//Render
@@ -266,13 +264,51 @@ void GameBoard::CreateMask()
     render->SetTexture(GameEngine::eTexture::type::Mask);  // <-- Assign the texture to this entity
     render->SetFillColor(sf::Color::Transparent);
 
-    //Movement
-    mask->AddComponent<Game::WaterMovementComponent>();
+}
+
+void GameBoard::UpdateMask()
+{
+	mask->SetPos(sf::Vector2f(RandomFloatRange(240.0,1700.0), RandomFloatRange(240.0,1300.0)));
+	lastMaskSpawnTime = 1.f;
+	maskCount++;
 }
 
 void GameBoard::PutOnMask()
 {
-    CreateMaskPlayer();
-	CreateMask();
     CreateBackground(GameEngine::eTexture::type::PutOnMask_bg);
+	CreateMaskPlayer();
+	CreateMask();
+    UpdatePutOnMask();
+}
+
+void GameBoard::UpdatePutOnMask()
+{
+float dt = GameEngine::GameEngineMain::GetInstance()->GetTimeDelta();
+	if (!m_isGameOver) {
+		lastMaskSpawnTime -= dt;
+		sf::Vector2f currPosM = mask->GetPos();
+		sf::Vector2f currPosF = maskplayer->GetPos();
+		if (abs(currPosM.x - currPosF.x) < 30 && abs(currPosM.y - currPosF.y) < 30) {
+			// if (mouseclick) {
+			// 	m_isGameOver = true;
+			//  maskWin = true;
+			// }
+		}
+		else if (lastMaskSpawnTime <= 0.f && maskCount < 15) {
+			UpdateMask();
+		}
+		
+	}
+	else 
+	{
+		GameEngine::SpriteRenderComponent* render = maskplayer->GetComponent<GameEngine::SpriteRenderComponent>();
+		if (maskWin) {
+			render->SetTexture(GameEngine::eTexture::type::Face);  // <-- Assign the texture to this entity
+			// render happy mask (need to update texture)
+		}
+		else {
+			render->SetTexture(GameEngine::eTexture::type::Face);  // <-- Assign the texture to this entity
+			// render sad mask (need to update texture)
+		}
+	}
 }

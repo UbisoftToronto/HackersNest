@@ -62,11 +62,14 @@ namespace Game
 		std::vector<GameEngine::Entity*> waters;
 
 		void UpdateWaters();
-
 		void WashHands();
 		void UpdateWashHands();
 
 		// Mask game
+		bool m_isGameOver = false;
+		bool maskWin = false;
+		float lastMaskSpawnTime;
+		int maskCount = 0;
 
         void CreateMaskPlayer();
         GameEngine::Entity* maskplayer;
@@ -74,8 +77,9 @@ namespace Game
 		void CreateMask();
 		GameEngine::Entity* mask;
 
+		void UpdateMask();
         void PutOnMask();
-        GameEngine::Entity* putOnMask;
+		void UpdatePutOnMask();
 
 		// Transition stuff
 
