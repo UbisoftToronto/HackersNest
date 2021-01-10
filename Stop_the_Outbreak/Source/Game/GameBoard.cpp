@@ -181,11 +181,17 @@ void GameBoard::UpdateWaters()
 			GameEngine::GameEngineMain::GetInstance()->RemoveEntity(this_water);
 			it = waters.erase(it);
 			caughtWaterCount++;
+			if (waterCount == 10) {
+				wh_isGameOver == true;
+			}
 		}
 		else if (currPosW.y >= 955)
 		{
 			GameEngine::GameEngineMain::GetInstance()->RemoveEntity(this_water);
 			it = waters.erase(it);
+			if (waterCount == 10) {
+				wh_isGameOver == true;
+			}
 		}
 		else
 		{
@@ -207,18 +213,19 @@ void GameBoard::UpdateWashHands()
 	float dt = GameEngine::GameEngineMain::GetInstance()->GetTimeDelta();
 	if (!wh_isGameOver) {
 		lastWaterSpawnTimer -= dt;
-		if (lastWaterSpawnTimer <= 0.f && waterCount < 7) {
+		if (lastWaterSpawnTimer <= 0.f && waterCount < 10) {
 			CreateWater();
 		}
 		UpdateWaters();
 	}
 	else 
 	{
+		GameEngine::SpriteRenderComponent* render = handplayer->GetComponent<GameEngine::SpriteRenderComponent>();
 		if (waterCount == caughtWaterCount) {
-			handplayer->SetTexture(GameEngine::eTexture::type::ShinyHands);  // <-- Assign the texture to this entity
+			render->SetTexture(GameEngine::eTexture::type::ShinyHands);  // <-- Assign the texture to this entity
 		}
 		else {
-			handplayer->SetTexture(GameEngine::eTexture::type::SoapyHands);  // <-- Assign the texture to this entity
+			render->SetTexture(GameEngine::eTexture::type::SoapyHands);  // <-- Assign the texture to this entity
 		}
 	}
 }
