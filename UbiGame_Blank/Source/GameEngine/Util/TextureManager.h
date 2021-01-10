@@ -42,7 +42,7 @@ namespace GameEngine
 		case eTexture::type::Menu_bg: return "Menu.png";
 		case eTexture::type::CleanBox_bg: return "Menu.jpg";
 		case eTexture::type::SortGarbage_bg: return "Menu.jpg";
-		case eTexture::type::WFH_bg: return "Menu.jpg";
+		case eTexture::type::WFH_bg: return "Monitor_WFH.png";
 		case eTexture::type::BakeBread_bg: return "Menu.jpg";
 		case eTexture::type::WashYoHands_bg: return "Menu.jpg";
 		case eTexture::type::PutOnMask_bg: return "Menu.jpg";
