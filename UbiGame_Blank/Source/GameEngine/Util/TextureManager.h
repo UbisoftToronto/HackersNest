@@ -12,10 +12,7 @@ namespace GameEngine
 		{
 			None = -1,
 			Player,
-<<<<<<< HEAD
 
-=======
->>>>>>> c93ed8329b21c00fa7346af2b055690ee05d6d7c
 			Menu_bg,
 			CleanBox_bg,
 			SortGarbage_bg,
@@ -44,12 +41,12 @@ namespace GameEngine
 		{
 		case eTexture::Player: return "Menu.png";
 		case eTexture::type::Menu_bg: return "Menu.png";
-		case eTexture::type::CleanBox_bg: return "Menu.jpg";
-		case eTexture::type::SortGarbage_bg: return "Menu.jpg";
+		case eTexture::type::CleanBox_bg: return "placeholder_bg.jpg";
+		case eTexture::type::SortGarbage_bg: return "Recycling Instructions.png";
 		case eTexture::type::WFH_bg: return "Monitor_WFH.png";
-		case eTexture::type::BakeBread_bg: return "Menu.jpg";
-		case eTexture::type::WashYoHands_bg: return "Menu.jpg";
-		case eTexture::type::PutOnMask_bg: return "Menu.jpg";
+		case eTexture::type::BakeBread_bg: return "placeholder_bg.jpg";
+		case eTexture::type::WashYoHands_bg: return "placeholder_bg.jpg";
+		case eTexture::type::PutOnMask_bg: return "placeholder_bg.jpg";
 
 		case eTexture::type::Garbage: return "Garbage_Bin.png";
 		case eTexture::type::Compost: return "Compost_Pit.png";
