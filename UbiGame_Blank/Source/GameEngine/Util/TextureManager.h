@@ -28,7 +28,10 @@ namespace GameEngine
 			ChipBag,
 			Fish,
 			GarbageBall,
-
+			Face,
+			Mask,
+			Hands,
+			Water,
 
 			Count,
 		};
@@ -42,10 +45,10 @@ namespace GameEngine
 		case eTexture::type::Menu_bg: return "Menu.png";
 		case eTexture::type::CleanBox_bg: return "Menu.jpg";
 		case eTexture::type::SortGarbage_bg: return "Menu.jpg";
-		case eTexture::type::WFH_bg: return "Monitor_WFH.png";
+		case eTexture::type::WFH_bg: return "Menu.jpg";
 		case eTexture::type::BakeBread_bg: return "Menu.jpg";
-		case eTexture::type::WashYoHands_bg: return "Menu.jpg";
-		case eTexture::type::PutOnMask_bg: return "Menu.jpg";
+		case eTexture::type::WashYoHands_bg: return "Wash Hands Instructions.png";
+		case eTexture::type::PutOnMask_bg: return "Mask Instructions.png";
 
 		case eTexture::type::Garbage: return "Garbage_Bin.png";
 		case eTexture::type::Compost: return "Compost_Pit.png";
@@ -56,6 +59,11 @@ namespace GameEngine
 		case eTexture::type::ChipBag: return "Chip_Bag.png";
 		case eTexture::type::Fish: return "Fish.png";
 		case eTexture::type::GarbageBall: return "Garbage_Ball.png";
+		case eTexture::type::Face: return "Face.png";
+		case eTexture::type::Mask: return "mask.png";
+		case eTexture::type::Hands: return "Hands.png";
+		case eTexture::type::Water: return "Possible Raindrops.png";
+
 		}
 		return "UnknownTexType";
 	}
