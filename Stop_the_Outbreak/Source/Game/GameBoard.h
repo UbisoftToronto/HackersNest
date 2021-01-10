@@ -52,6 +52,7 @@ namespace Game
 		bool wh_isGameOver = false;
 		float lastWaterSpawnTimer; 
 		int waterCount = 0;
+		int caughtWaterCount = 0;
 
 		void CreateHandPlayer();
 		GameEngine::Entity* handplayer;

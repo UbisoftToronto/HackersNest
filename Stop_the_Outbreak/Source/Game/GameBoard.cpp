@@ -21,6 +21,9 @@ GameBoard::GameBoard()
 	CreateHandPlayer();
 	CreateWater();
 	//UpdateWashHands();
+
+	// generate random number
+	// if "wash hands number" > play wash hands
 }
  
 
@@ -33,23 +36,7 @@ GameBoard::~GameBoard()
 void GameBoard::Update()
 {	
 	float dt = GameEngine::GameEngineMain::GetInstance()->GetTimeDelta();
-	if (!wh_isGameOver) {
-		lastWaterSpawnTimer -= dt;
-		if (lastWaterSpawnTimer <= 0.f && waterCount < 7) {
-			CreateWater();
-		}
-		UpdateWaters();
-	}
-	else 
-	{
-		GameEngine::SpriteRenderComponent* render = handplayer->AddComponent<GameEngine::SpriteRenderComponent>();
-		if (waterCount == 8) {
-			render->SetTexture(GameEngine::eTexture::type::ShinyHands);  // <-- Assign the texture to this entity
-		}
-		else {
-			render->SetTexture(GameEngine::eTexture::type::SoapyHands);  // <-- Assign the texture to this entity
-		}
-	}
+	UpdateWashHands();
 }
 
 void GameBoard::CreatePlayer()
@@ -189,19 +176,16 @@ void GameBoard::UpdateWaters()
 		GameEngine::Entity* this_water = (*it);
 		sf::Vector2f currPosW = this_water->GetPos();
 		sf::Vector2f currPosH = handplayer->GetPos();
-		if (abs(currPosW.x - currPosH.x) < 15 && abs(currPosW.y - currPosH.y) < 15)
+		if (abs(currPosW.x - currPosH.x) < 200 && abs(currPosW.y - currPosH.y) < 100)
 		{
 			GameEngine::GameEngineMain::GetInstance()->RemoveEntity(this_water);
 			it = waters.erase(it);
-			if (waterCount == 8) {
-				wh_isGameOver == true;
-			}
+			caughtWaterCount++;
 		}
 		else if (currPosW.y >= 955)
 		{
 			GameEngine::GameEngineMain::GetInstance()->RemoveEntity(this_water);
 			it = waters.erase(it);
-			wh_isGameOver == true;
 		}
 		else
 		{
@@ -230,12 +214,11 @@ void GameBoard::UpdateWashHands()
 	}
 	else 
 	{
-		GameEngine::SpriteRenderComponent* render = handplayer->AddComponent<GameEngine::SpriteRenderComponent>();
-		if (waterCount == 8) {
-			render->SetTexture(GameEngine::eTexture::type::ShinyHands);  // <-- Assign the texture to this entity
+		if (waterCount == caughtWaterCount) {
+			handplayer->SetTexture(GameEngine::eTexture::type::ShinyHands);  // <-- Assign the texture to this entity
 		}
 		else {
-			render->SetTexture(GameEngine::eTexture::type::SoapyHands);  // <-- Assign the texture to this entity
+			handplayer->SetTexture(GameEngine::eTexture::type::SoapyHands);  // <-- Assign the texture to this entity
 		}
 	}
 }
