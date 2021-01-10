@@ -7,6 +7,8 @@
 #include <Game/Components/ImageClickComponent.h>
 #include <cstdlib>
 
+#include <iostream>
+
 using namespace Game;
 
 GameBoard::GameBoard()
@@ -18,7 +20,7 @@ GameBoard::GameBoard()
 	CreateBackground(GameEngine::eTexture::type::WashYoHands_bg);
 	CreateHandPlayer();
 	CreateWater();
-	UpdateWashHands();
+	//UpdateWashHands();
 }
  
 
@@ -30,7 +32,24 @@ GameBoard::~GameBoard()
 
 void GameBoard::Update()
 {	
-	
+	float dt = GameEngine::GameEngineMain::GetInstance()->GetTimeDelta();
+	if (!wh_isGameOver) {
+		lastWaterSpawnTimer -= dt;
+		if (lastWaterSpawnTimer <= 0.f && waterCount < 7) {
+			CreateWater();
+		}
+		UpdateWaters();
+	}
+	else 
+	{
+		GameEngine::SpriteRenderComponent* render = handplayer->AddComponent<GameEngine::SpriteRenderComponent>();
+		if (waterCount == 8) {
+			render->SetTexture(GameEngine::eTexture::type::ShinyHands);  // <-- Assign the texture to this entity
+		}
+		else {
+			render->SetTexture(GameEngine::eTexture::type::SoapyHands);  // <-- Assign the texture to this entity
+		}
+	}
 }
 
 void GameBoard::CreatePlayer()
@@ -121,7 +140,7 @@ void GameBoard::BakingBread()
 }
 
 
-////////////////////////////////// Mask game //////////////////////////////////
+////////////////////////////////// Wash Hand game //////////////////////////////////
 
 void GameBoard::CreateHandPlayer()
 {
@@ -143,6 +162,7 @@ void GameBoard::CreateHandPlayer()
 
 void GameBoard::CreateWater()
 {
+	waterCount++;
 	water = new GameEngine::Entity();
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(water);
 
@@ -158,9 +178,8 @@ void GameBoard::CreateWater()
     //Movement
     water->AddComponent<Game::WaterMovementComponent>();
 
-	lastWaterSpawnTimer = 0.2f;
+	lastWaterSpawnTimer = 1.f;
 	waters.push_back(water);
-	waterCount++;
 }
 
 void GameBoard::UpdateWaters()
@@ -170,7 +189,7 @@ void GameBoard::UpdateWaters()
 		GameEngine::Entity* this_water = (*it);
 		sf::Vector2f currPosW = this_water->GetPos();
 		sf::Vector2f currPosH = handplayer->GetPos();
-		if (abs(currPosW.x - currPosH.x) < 15 && abs(currPosW.y - currPosH.y))
+		if (abs(currPosW.x - currPosH.x) < 15 && abs(currPosW.y - currPosH.y) < 15)
 		{
 			GameEngine::GameEngineMain::GetInstance()->RemoveEntity(this_water);
 			it = waters.erase(it);
@@ -204,7 +223,7 @@ void GameBoard::UpdateWashHands()
 	float dt = GameEngine::GameEngineMain::GetInstance()->GetTimeDelta();
 	if (!wh_isGameOver) {
 		lastWaterSpawnTimer -= dt;
-		if (lastWaterSpawnTimer <= 0.f) {
+		if (lastWaterSpawnTimer <= 0.f && waterCount < 7) {
 			CreateWater();
 		}
 		UpdateWaters();
