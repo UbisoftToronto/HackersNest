@@ -21,6 +21,11 @@ namespace Game
 
 	private:
 		int lives;
+		bool sg_played = false;
+		bool wfh_played = false;
+		bool wh_played = false;
+
+		int GameGenerator();
 
 		void CreatePlayer();          // <-- Added Function
 		GameEngine::Entity* m_player; // <-- Added Member
@@ -28,8 +33,8 @@ namespace Game
 		void CreateBackground(GameEngine::eTexture::type texture);
 		GameEngine::Entity* background;
 
-		void CleanTheBox();
-		GameEngine::Entity* cleanTheBox;
+		void MenuPage();
+		GameEngine::Entity* menuPage;
 
 		void SortGarbage();
 		GameEngine::Entity* sortGarbage;
@@ -50,6 +55,12 @@ namespace Game
 
 		void TransitionPage();
 		GameEngine::Entity* transitionPage;
+
+		GameEngine::Entity* mask_1;
+
+		GameEngine::Entity* mask_2;
+
+		GameEngine::Entity* mask_3;
 	};
 }
 

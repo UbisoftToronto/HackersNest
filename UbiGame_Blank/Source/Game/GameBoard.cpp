@@ -5,15 +5,31 @@
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
 #include <string>
 #include <iostream>
+#include <stdlib.h> 
 
 
 using namespace Game;
 
+const int END = 0, WFH = 1, WH = 2, NUM_GAMES = 2;
+
 GameBoard::GameBoard(){
-	//CreatePlayer();
-	SortGarbage();
-	CreateBackground(GameEngine::eTexture::SortGarbage_bg);
-	std::cout << "hello";
+	GameBoard::SortGarbage();
+	/*mask_1 = CreateImage(GameEngine::eTexture::type::Mask_1, 1375.0f, 550.0f, 175.0f, 175.0f);
+	mask_2 = CreateImage(GameEngine::eTexture::type::Mask_2, 1375.0f, 550.0f, 175.0f, 175.0f);
+	mask_3 = CreateImage(GameEngine::eTexture::type::Mask_3, 1375.0f, 550.0f, 175.0f, 175.0f);
+
+	int game = GameBoard::GameGenerator();
+	for (int i = 0; i < NUM_GAMES; i++) {
+		switch (game) {
+		case WFH: GameBoard::Wfh();
+			break;
+		case WH: GameBoard::WashHands();
+			break;
+		default:
+			break;
+		}
+		GameBoard::TransitionPage();
+	}*/
 }
 
 GameBoard::~GameBoard()
@@ -22,6 +38,33 @@ GameBoard::~GameBoard()
 
 void GameBoard::Update()
 {
+}
+
+int GameBoard::GameGenerator()
+{
+	if (!wfh_played)
+		return WFH;
+	else if (!wh_played)
+		return WH;
+	else
+		return END;
+}
+
+void GameBoard::MenuPage()
+{
+	background = new GameEngine::Entity();
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(background);
+
+	background->SetPos(sf::Vector2f(940.f, 540.f));
+	background->SetSize(sf::Vector2f(1920.f, 1080.f));
+
+	GameEngine::SpriteRenderComponent* render = static_cast<GameEngine::SpriteRenderComponent*>(background->AddComponent<GameEngine::SpriteRenderComponent>());
+
+	background->AddComponent<Game::SortGarbageComponent>();
+
+	render->SetTexture(GameEngine::eTexture::Menu_bg);
+	render->SetFillColor(sf::Color::White);
+	render->SetZLevel(-1);
 }
 
 void GameBoard::CreatePlayer()
@@ -61,18 +104,22 @@ void GameBoard::CreateBackground(GameEngine::eTexture::type texture)
 
 void GameBoard::TransitionPage()
 {
-	cleanTheBox = new GameEngine::Entity();
-	GameEngine::GameEngineMain::GetInstance()->AddEntity(cleanTheBox);
-}
+	transitionPage = new GameEngine::Entity();
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(transitionPage);
 
-void GameBoard::CleanTheBox()
-{
-	cleanTheBox = new GameEngine::Entity();
-	GameEngine::GameEngineMain::GetInstance()->AddEntity(cleanTheBox);
+	GameBoard::CreateBackground(GameEngine::eTexture::Blank_bg);
+
+	GameEngine::SpriteRenderComponent* render = static_cast<GameEngine::SpriteRenderComponent*>(transitionPage->AddComponent<GameEngine::SpriteRenderComponent>());
+
+
+	render->SetFillColor(sf::Color::White);
+	render->SetZLevel(-1);
+
 }
 
 void GameBoard::SortGarbage()
 {
+	CreateBackground(GameEngine::eTexture::SortGarbage_bg);
 
 	sortGarbage = new GameEngine::Entity();
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(sortGarbage);
@@ -88,6 +135,10 @@ void GameBoard::SortGarbage()
 	GameEngine::Entity* fish = CreateImage(GameEngine::eTexture::type::Fish, 800.0f, 720.0f, 170.0f, 80.0f);
 	GameEngine::Entity* garbageBall = CreateImage(GameEngine::eTexture::type::GarbageBall, 470.0f, 900.0f, 130.0f, 150.0f);
 
+	/*if (sort_bg->GetGarbageClicked() == true)
+		std::cout << "garbage";*/
+
+	sg_played = true;
 }
 
 GameEngine::Entity* GameBoard::CreateImage(GameEngine::eTexture::type texture, float x, float y, float size_x, float size_y)
@@ -112,6 +163,8 @@ void GameBoard::Wfh()
 	wfh = new GameEngine::Entity();
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(wfh);
 	CreateBackground(GameEngine::eTexture::WFH_bg);
+
+	wfh_played = true;
 }
 
 void GameBoard::BakingBread()
@@ -123,6 +176,8 @@ void GameBoard::WashHands()
 {
 	washHands = new GameEngine::Entity();
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(washHands);
+
+	wh_played = true;
 }
 
 void GameBoard::PutOnMask()

@@ -2,6 +2,7 @@
 namespace GameEngine
 {
 	class Entity;
+	class SortGarbageEntity;
 
 	class Component
 	{

@@ -57,5 +57,15 @@ namespace GameEngine
 		sf::Vector2f		   m_pos;
 		sf::Vector2f		   m_size;		
 		float				   m_rotation;
+
+		bool garbage_clicked;
+		bool compost_clicked;
+		bool recycling_clicked;
+		bool alCan_clicked;
+		bool banana_clicked;
+		bool bottle_clicked;
+		bool chips_clicked;
+		bool fish_clicked;
+		bool garbageBall_clicked;
 	};
 }

@@ -9,5 +9,6 @@ namespace Game
     public:
         virtual void Update() override;
         virtual void OnAddToWorld() override;
+        bool withinImage(int x, int y, int imageSides[]);
     };
 }

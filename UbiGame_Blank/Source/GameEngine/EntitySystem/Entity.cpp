@@ -8,6 +8,15 @@ Entity::Entity()
 	, m_rotation(0.f)
 {
 
+	garbage_clicked = false;
+	compost_clicked = false;
+	recycling_clicked = false;
+	alCan_clicked = false;
+	banana_clicked = false;
+	bottle_clicked = false;
+	chips_clicked = false;
+	fish_clicked = false;
+	garbageBall_clicked = false;
 }
 
 Entity::~Entity()
