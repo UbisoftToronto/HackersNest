@@ -12,7 +12,10 @@ namespace GameEngine
 		{
 			None = -1,
 			Player,
+<<<<<<< HEAD
 
+=======
+>>>>>>> c93ed8329b21c00fa7346af2b055690ee05d6d7c
 			Menu_bg,
 			CleanBox_bg,
 			SortGarbage_bg,
@@ -33,30 +36,30 @@ namespace GameEngine
 
 			Count,
 		};
-	}	
+	}
 
 	inline const char* GetPath(eTexture::type texture)
 	{
 		switch (texture)
 		{
-			case eTexture::Player: return "download.png"; 
-			case eTexture::type::Menu_bg: return "Menu.png";
-			case eTexture::type::CleanBox_bg: return "placeholder_bg.jpg";
-			case eTexture::type::SortGarbage_bg: return "placeholder_bg.jpg";
-			case eTexture::type::WFH_bg: return "placeholder_bg.jpg";
-			case eTexture::type::BakeBread_bg: return "placeholder_bg.jpg";
-			case eTexture::type::WashYoHands_bg: return "placeholder_bg.jpg";
-			case eTexture::type::PutOnMask_bg: return "placeholder_bg.jpg";
+		case eTexture::Player: return "Menu.png";
+		case eTexture::type::Menu_bg: return "Menu.png";
+		case eTexture::type::CleanBox_bg: return "Menu.jpg";
+		case eTexture::type::SortGarbage_bg: return "Menu.jpg";
+		case eTexture::type::WFH_bg: return "Monitor_WFH.png";
+		case eTexture::type::BakeBread_bg: return "Menu.jpg";
+		case eTexture::type::WashYoHands_bg: return "Menu.jpg";
+		case eTexture::type::PutOnMask_bg: return "Menu.jpg";
 
-			case eTexture::type::Garbage: return "Garbage_Bin.png";
-			case eTexture::type::Compost: return "Compost_Pit.png";
-			case eTexture::type::Recycling: return "Recycling_Sign.png";
-			case eTexture::type::BananaPeel: return "Banana_Peel.png";
-			case eTexture::type::AluminumCan: return "Aluminum_Can.png";
-			case eTexture::type::Bottle: return "Bottle.png";
-			case eTexture::type::ChipBag: return "Chip_Bag.png";
-			case eTexture::type::Fish: return "Fish.png";
-			case eTexture::type::GarbageBall: return "Garbage_Ball.png";
+		case eTexture::type::Garbage: return "Garbage_Bin.png";
+		case eTexture::type::Compost: return "Compost_Pit.png";
+		case eTexture::type::Recycling: return "Recycling_Sign.png";
+		case eTexture::type::BananaPeel: return "Banana_Peel.png";
+		case eTexture::type::AluminumCan: return "Aluminum_Can.png";
+		case eTexture::type::Bottle: return "Bottle.png";
+		case eTexture::type::ChipBag: return "Chip_Bag.png";
+		case eTexture::type::Fish: return "Fish.png";
+		case eTexture::type::GarbageBall: return "Garbage_Ball.png";
 		}
 		return "UnknownTexType";
 	}
