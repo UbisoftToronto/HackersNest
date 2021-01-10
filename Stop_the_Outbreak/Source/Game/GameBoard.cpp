@@ -4,9 +4,17 @@
 #include "Game/Components/WaterMovementComponent.h"
 #include "GameEngine/GameEngineMain.h"
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
+#include "GameEngine/EntitySystem/Components/CollidableComponent.h"
+#include "GameEngine/EntitySystem/Components/CollidablePhysicsComponent.h"
 #include <Game/Components/ImageClickComponent.h>
 #include <cstdlib>
 #include <ctime>
+
+#ifdef _WIN32
+#include <Windows.h>
+#else
+#include <unistd.h>
+#endif
 
 using namespace Game;
 
@@ -133,6 +141,7 @@ void GameBoard::CreateHandPlayer()
 
     //Movement 
     handplayer->AddComponent<Game::HandPlayerMovementComponent>();
+	handplayer->AddComponent<GameEngine::CollidableComponent>();
 }
 
 void GameBoard::CreateWater()
@@ -159,7 +168,10 @@ void GameBoard::CreateWater()
 void GameBoard::WashHands()
 {
 	CreateHandPlayer();
-	CreateWater();
+	for (int i = 0; i < 9; i++) {
+		CreateWater();
+		sleep(1);
+	}
     CreateBackground(GameEngine::eTexture::type::WashYoHands_bg);
 }
 
