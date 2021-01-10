@@ -13,7 +13,7 @@ namespace GameEngine
 			None = -1,
 			Player,
 
-Menu_bg,
+			Menu_bg,
 			CleanBox_bg,
 			SortGarbage_bg,
 			WFH_bg,

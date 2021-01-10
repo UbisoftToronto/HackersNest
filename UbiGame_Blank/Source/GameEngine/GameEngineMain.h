@@ -53,7 +53,7 @@ namespace GameEngine
 		std::vector<Entity*> m_entitiesToRemove;
 
 		sf::RenderTarget*   m_renderTarget;
-		sf::RenderWindow*   m_renderWindow; //In future they will be different						
+		sf::RenderWindow*   m_renderWindow; //In future they will be different				
 
 		Game::GameBoard*    m_gameBoard;
 		float				m_lastDT;
