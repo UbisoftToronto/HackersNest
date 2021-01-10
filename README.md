@@ -10,3 +10,7 @@ The game consists of 6 mini games, slowly increasing in difficulty. The mechanic
 * 10 second game
 * Mix and match game
 * Simple collection game
+
+# About the Game
+
+Stop the Outbreak is a simple mouse game with activites people have been doing during quarantine! Its goal is to inform others on how to properly perform these tasks in a fun manner. 
