@@ -34,7 +34,10 @@ namespace GameEngine
 			ChipBag,
 			Fish,
 			GarbageBall,
-
+			Face,
+			Mask,
+			Hands,
+			Water,
 
 			Count,
 		};
@@ -66,6 +69,11 @@ namespace GameEngine
 		case eTexture::type::ChipBag: return "Chip_Bag.png";
 		case eTexture::type::Fish: return "Fish.png";
 		case eTexture::type::GarbageBall: return "Garbage_Ball.png";
+		case eTexture::type::Face: return "Face.png";
+		case eTexture::type::Mask: return "mask.png";
+		case eTexture::type::Hands: return "Hands.png";
+		case eTexture::type::Water: return "Possible Raindrops.png";
+
 		}
 		return "UnknownTexType";
 	}

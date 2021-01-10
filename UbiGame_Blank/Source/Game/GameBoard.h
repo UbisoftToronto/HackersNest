@@ -47,11 +47,23 @@ namespace Game
 		void BakingBread();
 		GameEngine::Entity* bakingBread;
 
+		void CreateHandPlayer();
+		GameEngine::Entity* handplayer;
+
+		void CreateWater();
+		GameEngine::Entity* water;
+
 		void WashHands();
 		GameEngine::Entity* washHands;
 
-		void PutOnMask();
-		GameEngine::Entity* putOnMask;
+        void CreateMaskPlayer();
+        GameEngine::Entity* maskplayer;
+
+		void CreateMask();
+		GameEngine::Entity* mask;
+
+        void PutOnMask();
+        GameEngine::Entity* putOnMask;
 
 		void TransitionPage();
 		GameEngine::Entity* transitionPage;
