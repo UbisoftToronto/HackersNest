@@ -1,23 +1,48 @@
 #include "GameBoard.h"
 #include "Game/Components/PlayerMovementComponent.h"
 #include "Game/Components/HandPlayerMovementComponent.h"
+#include "Game/Components/SortGarbageComponent.h"
 #include "Game/Components/WaterMovementComponent.h"
 #include "GameEngine/GameEngineMain.h"
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
-#include <Game/Components/ImageClickComponent.h>
-#include <cstdlib>
-
+#include <string>
 #include <iostream>
+#include <stdlib.h> 
+#include <cstdlib>
+#include <Game/Components/ImageClickComponent.h>
+
+
 
 using namespace Game;
+
+const int END = 0, WFH = 1, WH = 2, NUM_GAMES = 2;
 
 GameBoard::GameBoard()
 {
 	// Uncomment the lines here and in Update() for the game you would like to see
 	
-	// WashHands();
+	// Sort Garbage game
+	/*GameBoard::SortGarbage();
+	mask_1 = CreateImage(GameEngine::eTexture::type::Mask_1, 1375.0f, 550.0f, 175.0f, 175.0f);
+	mask_2 = CreateImage(GameEngine::eTexture::type::Mask_2, 1375.0f, 550.0f, 175.0f, 175.0f);
+	mask_3 = CreateImage(GameEngine::eTexture::type::Mask_3, 1375.0f, 550.0f, 175.0f, 175.0f);
 
-	//PutOnMask();
+	int game = GameBoard::GameGenerator();
+	for (int i = 0; i < NUM_GAMES; i++) {
+		switch (game) {
+		case WFH: GameBoard::Wfh();
+			break;
+		case WH: GameBoard::WashHands();
+			break;
+		default:
+			break;
+		}
+		GameBoard::TransitionPage();
+	}*/
+
+	// WashHands();   // Wash Hands game 
+
+	//PutOnMask();   // Put On Mask game
 }
  
 
@@ -29,12 +54,37 @@ GameBoard::~GameBoard()
 
 void GameBoard::Update()
 {	
-	
-	UpdateWashHands();
+	//UpdateWashHands();
 
 	//UpdatePutOnMask();
 }
 
+int GameBoard::GameGenerator()
+{
+	if (!wfh_played)
+		return WFH;
+	else if (!wh_played)
+		return WH;
+	else
+		return END;
+}
+
+void GameBoard::MenuPage()
+{
+	background = new GameEngine::Entity();
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(background);
+
+	background->SetPos(sf::Vector2f(940.f, 540.f));
+	background->SetSize(sf::Vector2f(1920.f, 1080.f));
+
+	GameEngine::SpriteRenderComponent* render = static_cast<GameEngine::SpriteRenderComponent*>(background->AddComponent<GameEngine::SpriteRenderComponent>());
+
+	background->AddComponent<Game::SortGarbageComponent>();
+
+	render->SetTexture(GameEngine::eTexture::Menu_bg);
+	render->SetFillColor(sf::Color::White);
+	render->SetZLevel(-1);
+}
 
 void GameBoard::CreateBackground(GameEngine::eTexture::type texture)
 {
@@ -49,32 +99,66 @@ void GameBoard::CreateBackground(GameEngine::eTexture::type texture)
 	render->SetTexture(texture);
 	render->SetFillColor(sf::Color::White);
 	render->SetZLevel(-1);
+	background->AddComponent<Game::SortGarbageComponent>();
+}
+
+////////////////////////////////// Transition Page //////////////////////////////////
+
+void GameBoard::TransitionPage() 
+{
+	transitionPage = new GameEngine::Entity();
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(transitionPage);
+
+	GameBoard::CreateBackground(GameEngine::eTexture::Blank_bg);
+
+	GameEngine::SpriteRenderComponent* render = static_cast<GameEngine::SpriteRenderComponent*>(transitionPage->AddComponent<GameEngine::SpriteRenderComponent>());
+
+	render->SetFillColor(sf::Color::White);
+	render->SetZLevel(-1);
+
 }
 
 ////////////////////////////////// Garbage sort game //////////////////////////////////
 
 void GameBoard::SortGarbage()
 {
+	CreateBackground(GameEngine::eTexture::SortGarbage_bg);
 
+	sortGarbage = new GameEngine::Entity();
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(sortGarbage);
+
+	GameEngine::Entity* garbage = CreateImage(GameEngine::eTexture::type::Garbage, 1375.0f, 550.0f, 175.0f, 175.0f);
+	GameEngine::Entity* compost = CreateImage(GameEngine::eTexture::type::Compost, 1400.0f, 720.0f, 175.0f, 175.0f);
+	GameEngine::Entity* recycling = CreateImage(GameEngine::eTexture::type::Recycling, 1400.0f, 900.0f, 175.0f, 175.0f);
+
+	GameEngine::Entity* alCan = CreateImage(GameEngine::eTexture::type::AluminumCan, 650.0f, 600.0f, 150.0f, 150.0f);
+	GameEngine::Entity* banana = CreateImage(GameEngine::eTexture::type::BananaPeel, 600.0f, 750.0f, 170.0f, 150.0f);
+	GameEngine::Entity* bottle = CreateImage(GameEngine::eTexture::type::Bottle, 850.0f, 850.0f, 90.0f, 170.0f);
+	GameEngine::Entity* chips = CreateImage(GameEngine::eTexture::type::ChipBag, 450.0f, 650.0f, 130.0f, 150.0f);
+	GameEngine::Entity* fish = CreateImage(GameEngine::eTexture::type::Fish, 800.0f, 720.0f, 170.0f, 80.0f);
+	GameEngine::Entity* garbageBall = CreateImage(GameEngine::eTexture::type::GarbageBall, 470.0f, 900.0f, 130.0f, 150.0f);
+
+	/*if (sort_bg->GetGarbageClicked() == true)
+		std::cout << "garbage";*/
+
+	sg_played = true;
 }
 
-void GameBoard::CreateImage(GameEngine::eTexture::type texture, float x, float y)
+GameEngine::Entity* GameBoard::CreateImage(GameEngine::eTexture::type texture, float x, float y, float size_x, float size_y)
 {
-	image = new GameEngine::Entity();
+	GameEngine::Entity* image = new GameEngine::Entity();
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(image);
 
 	image->SetPos(sf::Vector2f(x, y));
-	image->SetSize(sf::Vector2f(50.0f, 50.0f));
+	image->SetSize(sf::Vector2f(size_x, size_y));
 
 	//Render
 	GameEngine::SpriteRenderComponent* render = image->AddComponent<GameEngine::SpriteRenderComponent>(); //<-- Use the SpriteRenderComponent
 
 	render->SetFillColor(sf::Color::Transparent);
-	render->SetTexture(GameEngine::eTexture::Garbage);  // <-- Assign the texture to this entity
+	render->SetTexture(texture);  // <-- Assign the texture to this entity
 
-	//Click status
-	//image->AddComponent<Game::ImageClickComponent>();
-
+	return image;
 }
 
 ////////////////////////////////// Work from Home //////////////////////////////////
@@ -83,6 +167,9 @@ void GameBoard::Wfh()
 {
 	wfh = new GameEngine::Entity();
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(wfh);
+	CreateBackground(GameEngine::eTexture::WFH_bg);
+
+	wfh_played = true;
 }
 
 ////////////////////////////////// Wash Hand game //////////////////////////////////

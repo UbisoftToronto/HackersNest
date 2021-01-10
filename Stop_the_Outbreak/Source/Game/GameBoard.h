@@ -28,12 +28,21 @@ namespace Game
 		void CreateBackground(GameEngine::eTexture::type texture);
 		GameEngine::Entity* background;
 
+		int lives;
+		bool sg_played = false;
+		bool wfh_played = false;
+		bool wh_played = false;
+
+		int GameGenerator();
+
 		////////////////////////////////// Garbage sort game //////////////////////////////////
+		void MenuPage();
+		GameEngine::Entity* menuPage;
 
 		void SortGarbage();
+		GameEngine::Entity* sortGarbage;
 
-		void CreateImage(GameEngine::eTexture::type texture, float x, float y);
-		GameEngine::Entity* image;
+		GameEngine::Entity* CreateImage(GameEngine::eTexture::type texture, float x, float y, float size_x, float size_y);
 
 		////////////////////////////////// Work from Home //////////////////////////////////
 		
@@ -74,6 +83,18 @@ namespace Game
 		void UpdateMask();
         void PutOnMask();
 		void UpdatePutOnMask();
+        GameEngine::Entity* putOnMask;
+
+		////////////////////////////////// Transition pages //////////////////////////////////
+
+		void TransitionPage();
+		GameEngine::Entity* transitionPage;
+
+		GameEngine::Entity* mask_1;
+
+		GameEngine::Entity* mask_2;
+
+		GameEngine::Entity* mask_3;
 	};
 }
 

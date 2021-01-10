@@ -75,7 +75,16 @@
     <ClCompile Include="Source\Game\Components\PlayerMovementComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Game\Components\ImageClickComponent.cpp">
+    <ClCompile Include="Source\Game\Components\MousePressedComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Game\Components\SortGarbageComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Game\Components\HandPlayerMovementComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Game\Components\WaterMovementComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -134,7 +143,16 @@
     <ClInclude Include="Source\Game\Components\PlayerMovementComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Game\Components\ImageClickComponent.h">
+    <ClInclude Include="Source\Game\Components\MousePressedComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Game\Components\SortGarbageComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Game\Components\HandPlayerMovementComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Game\Components\WaterMovementComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

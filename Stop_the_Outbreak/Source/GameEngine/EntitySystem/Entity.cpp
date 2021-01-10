@@ -6,9 +6,17 @@ Entity::Entity()
 	: m_pos(0.f, 0.f)
 	, m_size(0.f, 0.f)	
 	, m_rotation(0.f)
-	, m_clicked(false)
 {
 
+	garbage_clicked = false;
+	compost_clicked = false;
+	recycling_clicked = false;
+	alCan_clicked = false;
+	banana_clicked = false;
+	bottle_clicked = false;
+	chips_clicked = false;
+	fish_clicked = false;
+	garbageBall_clicked = false;
 }
 
 Entity::~Entity()
