@@ -240,7 +240,7 @@ void GameBoard::CreateMaskPlayer()
     GameEngine::GameEngineMain::GetInstance()->AddEntity(maskplayer);
 
     maskplayer->SetPos(sf::Vector2f(950.0f, 600.0f));
-    maskplayer->SetSize(sf::Vector2f(250.0f, 250.0f));
+    maskplayer->SetSize(sf::Vector2f(300.0f, 300.0f));
 
     //Render
     GameEngine::SpriteRenderComponent* render = maskplayer->AddComponent<GameEngine::SpriteRenderComponent>(); //<-- Use the SpriteRenderComponent
@@ -254,9 +254,9 @@ void GameBoard::CreateMask()
 	mask = new GameEngine::Entity();
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(mask);
 	
-	//Update this so that it doesn't go off the page and so that it actually goes on the person's face sometimes
-    mask->SetPos(sf::Vector2f(RandomFloatRange(240.0,1700.0), RandomFloatRange(240.0,1300.0)));
-    mask->SetSize(sf::Vector2f(240.0f, 120.0f));
+	//Update this so that it actually goes on the person's face sometimes
+    mask->SetPos(sf::Vector2f(RandomFloatRange(300.0,1700.0), RandomFloatRange(240.0,800.0)));
+    mask->SetSize(sf::Vector2f(300.0f, 150.0f));
 
 	//Render
     GameEngine::SpriteRenderComponent* render = mask->AddComponent<GameEngine::SpriteRenderComponent>(); //<-- Use the SpriteRenderComponent
@@ -268,7 +268,7 @@ void GameBoard::CreateMask()
 
 void GameBoard::UpdateMask()
 {
-	mask->SetPos(sf::Vector2f(RandomFloatRange(240.0,1700.0), RandomFloatRange(240.0,1300.0)));
+	mask->SetPos(sf::Vector2f(RandomFloatRange(300.0,1700.0), RandomFloatRange(240.0,800.0)));
 	lastMaskSpawnTime = 1.f;
 	maskCount++;
 }
