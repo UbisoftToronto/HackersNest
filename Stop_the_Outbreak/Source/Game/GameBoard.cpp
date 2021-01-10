@@ -1,5 +1,4 @@
 #include "GameBoard.h"
-#include "Game/Components/PlayerMovementComponent.h"
 #include "Game/Components/HandPlayerMovementComponent.h"
 #include "Game/Components/SortGarbageComponent.h"
 #include "Game/Components/WaterMovementComponent.h"
@@ -9,8 +8,6 @@
 #include <iostream>
 #include <stdlib.h> 
 #include <cstdlib>
-#include <Game/Components/ImageClickComponent.h>
-
 
 
 using namespace Game;
