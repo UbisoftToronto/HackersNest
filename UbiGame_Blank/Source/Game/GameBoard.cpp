@@ -5,6 +5,8 @@
 #include "GameEngine/GameEngineMain.h"
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
 #include <Game/Components/ImageClickComponent.h>
+#include <cstdlib>
+#include <ctime>
 
 using namespace Game;
 
@@ -129,7 +131,7 @@ void GameBoard::CreateHandPlayer()
     render->SetTexture(GameEngine::eTexture::type::Hands);  // <-- Assign the texture to this entity
     render->SetFillColor(sf::Color::White);
 
-    //Movement !!!!!!! change
+    //Movement 
     handplayer->AddComponent<Game::HandPlayerMovementComponent>();
 }
 
@@ -138,6 +140,7 @@ void GameBoard::CreateWater()
 	water = new GameEngine::Entity();
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(water);
 
+	srand (static_cast <unsigned> (time(0)));
 	float rand_x = 250.0 + (static_cast <float> (rand()) / static_cast <float> (RAND_MAX/(800.0 - 120.0)));
 	
     water->SetPos(sf::Vector2f(rand_x, 90.0f));
@@ -175,7 +178,7 @@ void GameBoard::CreateMaskPlayer()
     render->SetFillColor(sf::Color::White);
 
     //Movement
-    maskplayer->AddComponent<Game::HandPlayerMovementComponent>();
+    //maskplayer->AddComponent<Game::HandPlayerMovementComponent>();
 }
 
 void GameBoard::CreateMask()
@@ -195,7 +198,7 @@ void GameBoard::CreateMask()
     render->SetFillColor(sf::Color::Transparent);
 
     //Movement
-    mask->AddComponent<Game::WaterMovementComponent>();
+    //mask->AddComponent<Game::WaterMovementComponent>();
 }
 
 void GameBoard::PutOnMask()
