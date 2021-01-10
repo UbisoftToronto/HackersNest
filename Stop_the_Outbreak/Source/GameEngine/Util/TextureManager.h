@@ -31,6 +31,8 @@ namespace GameEngine
 			Face,
 			Mask,
 			Hands,
+			SoapyHands,
+			ShinyHands,
 			Water,
 
 			Count,
@@ -62,6 +64,8 @@ namespace GameEngine
 		case eTexture::type::Face: return "Face.png";
 		case eTexture::type::Mask: return "mask.png";
 		case eTexture::type::Hands: return "Hands.png";
+		case eTexture::type::SoapyHands: return "Shiny Hands.png";
+		case eTexture::type::ShinyHands: return "Soapy Hands.png";
 		case eTexture::type::Water: return "Possible Raindrops.png";
 
 		}

@@ -4,17 +4,8 @@
 #include "Game/Components/WaterMovementComponent.h"
 #include "GameEngine/GameEngineMain.h"
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
-#include "GameEngine/EntitySystem/Components/CollidableComponent.h"
-#include "GameEngine/EntitySystem/Components/CollidablePhysicsComponent.h"
 #include <Game/Components/ImageClickComponent.h>
 #include <cstdlib>
-#include <ctime>
-
-#ifdef _WIN32
-#include <Windows.h>
-#else
-#include <unistd.h>
-#endif
 
 using namespace Game;
 
@@ -23,7 +14,11 @@ GameBoard::GameBoard()
 	//CreatePlayer();
 	//CreateBackground(GameEngine::eTexture::CleanBox_bg);
 	//PutOnMask();
-	WashHands();
+	//WashHands();
+	CreateBackground(GameEngine::eTexture::type::WashYoHands_bg);
+	CreateHandPlayer();
+	CreateWater();
+	UpdateWashHands();
 }
  
 
@@ -125,6 +120,9 @@ void GameBoard::BakingBread()
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(bakingBread);
 }
 
+
+////////////////////////////////// Mask game //////////////////////////////////
+
 void GameBoard::CreateHandPlayer()
 {
 	handplayer = new GameEngine::Entity();
@@ -141,7 +139,6 @@ void GameBoard::CreateHandPlayer()
 
     //Movement 
     handplayer->AddComponent<Game::HandPlayerMovementComponent>();
-	handplayer->AddComponent<GameEngine::CollidableComponent>();
 }
 
 void GameBoard::CreateWater()
@@ -149,10 +146,7 @@ void GameBoard::CreateWater()
 	water = new GameEngine::Entity();
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(water);
 
-	srand (static_cast <unsigned> (time(0)));
-	float rand_x = 250.0 + (static_cast <float> (rand()) / static_cast <float> (RAND_MAX/(800.0 - 120.0)));
-	
-    water->SetPos(sf::Vector2f(rand_x, 90.0f));
+    water->SetPos(sf::Vector2f(RandomFloatRange(240.0,1700.0), 90.0f));
     water->SetSize(sf::Vector2f(360.0f, 180.0f));
 
 	//Render
@@ -163,17 +157,71 @@ void GameBoard::CreateWater()
 
     //Movement
     water->AddComponent<Game::WaterMovementComponent>();
+
+	lastWaterSpawnTimer = 0.2f;
+	waters.push_back(water);
+	waterCount++;
+}
+
+void GameBoard::UpdateWaters()
+{
+	for (std::vector<GameEngine::Entity*>::iterator it = waters.begin(); it != waters.end();)
+	{
+		GameEngine::Entity* this_water = (*it);
+		sf::Vector2f currPosW = this_water->GetPos();
+		sf::Vector2f currPosH = handplayer->GetPos();
+		if (abs(currPosW.x - currPosH.x) < 15 && abs(currPosW.y - currPosH.y))
+		{
+			GameEngine::GameEngineMain::GetInstance()->RemoveEntity(this_water);
+			it = waters.erase(it);
+			if (waterCount == 8) {
+				wh_isGameOver == true;
+			}
+		}
+		else if (currPosW.y >= 955)
+		{
+			GameEngine::GameEngineMain::GetInstance()->RemoveEntity(this_water);
+			it = waters.erase(it);
+			wh_isGameOver == true;
+		}
+		else
+		{
+			it++;
+		}
+	}
 }
 
 void GameBoard::WashHands()
 {
+	CreateBackground(GameEngine::eTexture::type::WashYoHands_bg);
 	CreateHandPlayer();
-	for (int i = 0; i < 9; i++) {
-		CreateWater();
-		sleep(1);
-	}
-    CreateBackground(GameEngine::eTexture::type::WashYoHands_bg);
+	CreateWater();
+	UpdateWashHands();
 }
+
+void GameBoard::UpdateWashHands()
+{
+	float dt = GameEngine::GameEngineMain::GetInstance()->GetTimeDelta();
+	if (!wh_isGameOver) {
+		lastWaterSpawnTimer -= dt;
+		if (lastWaterSpawnTimer <= 0.f) {
+			CreateWater();
+		}
+		UpdateWaters();
+	}
+	else 
+	{
+		GameEngine::SpriteRenderComponent* render = handplayer->AddComponent<GameEngine::SpriteRenderComponent>();
+		if (waterCount == 8) {
+			render->SetTexture(GameEngine::eTexture::type::ShinyHands);  // <-- Assign the texture to this entity
+		}
+		else {
+			render->SetTexture(GameEngine::eTexture::type::SoapyHands);  // <-- Assign the texture to this entity
+		}
+	}
+}
+
+////////////////////////////////// Mask game //////////////////////////////////
 
 void GameBoard::CreateMaskPlayer()
 {
@@ -190,7 +238,7 @@ void GameBoard::CreateMaskPlayer()
     render->SetFillColor(sf::Color::White);
 
     //Movement
-    //maskplayer->AddComponent<Game::HandPlayerMovementComponent>();
+    maskplayer->AddComponent<Game::HandPlayerMovementComponent>();
 }
 
 void GameBoard::CreateMask()
@@ -210,7 +258,7 @@ void GameBoard::CreateMask()
     render->SetFillColor(sf::Color::Transparent);
 
     //Movement
-    //mask->AddComponent<Game::WaterMovementComponent>();
+    mask->AddComponent<Game::WaterMovementComponent>();
 }
 
 void GameBoard::PutOnMask()

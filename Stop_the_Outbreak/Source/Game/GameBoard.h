@@ -19,6 +19,12 @@ namespace Game
 		void Update();
 		bool IsGameOver() { return false; }
 
+	protected:
+		float RandomFloatRange(float a, float b)
+		{
+			return ((b - a) * ((float)rand() / RAND_MAX)) + a;
+		}
+
 	private:
 		void CreatePlayer();          // <-- Added Function
 		GameEngine::Entity* m_player; // <-- Added Member
@@ -41,14 +47,25 @@ namespace Game
 		void BakingBread();
 		GameEngine::Entity* bakingBread;
 
+		// Hand-washing game
+
+		bool wh_isGameOver = false;
+		float lastWaterSpawnTimer; 
+		int waterCount = 0;
+
 		void CreateHandPlayer();
 		GameEngine::Entity* handplayer;
 
 		void CreateWater();
 		GameEngine::Entity* water;
+		std::vector<GameEngine::Entity*> waters;
+
+		void UpdateWaters();
 
 		void WashHands();
-		GameEngine::Entity* washHands;
+		void UpdateWashHands();
+
+		// Mask game
 
         void CreateMaskPlayer();
         GameEngine::Entity* maskplayer;
@@ -58,6 +75,8 @@ namespace Game
 
         void PutOnMask();
         GameEngine::Entity* putOnMask;
+
+		// Transition stuff
 
 		void TransitionPage();
 		GameEngine::Entity* transitionPage;
