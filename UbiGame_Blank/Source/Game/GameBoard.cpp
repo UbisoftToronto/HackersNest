@@ -4,7 +4,9 @@
 #include "Game/Components/WaterMovementComponent.h"
 #include "GameEngine/GameEngineMain.h"
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
-#include <Game/Components/ImageClickComponent.h>
+#include <string>
+#include <iostream>
+
 
 using namespace Game;
 
@@ -77,29 +79,38 @@ void GameBoard::CleanTheBox()
 
 void GameBoard::SortGarbage()
 {
+
 	sortGarbage = new GameEngine::Entity();
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(sortGarbage);
 
+	GameEngine::Entity* garbage = CreateImage(GameEngine::eTexture::type::Garbage, 1375.0f, 550.0f, 175.0f, 175.0f);
+	GameEngine::Entity* compost = CreateImage(GameEngine::eTexture::type::Compost, 1400.0f, 720.0f, 175.0f, 175.0f);
+	GameEngine::Entity* recycling = CreateImage(GameEngine::eTexture::type::Recycling, 1400.0f, 900.0f, 175.0f, 175.0f);
+
+	GameEngine::Entity* alCan = CreateImage(GameEngine::eTexture::type::AluminumCan, 650.0f, 600.0f, 150.0f, 150.0f);
+	GameEngine::Entity* banana = CreateImage(GameEngine::eTexture::type::BananaPeel, 600.0f, 750.0f, 170.0f, 150.0f);
+	GameEngine::Entity* bottle = CreateImage(GameEngine::eTexture::type::Bottle, 850.0f, 850.0f, 90.0f, 170.0f);
+	GameEngine::Entity* chips = CreateImage(GameEngine::eTexture::type::ChipBag, 450.0f, 650.0f, 130.0f, 150.0f);
+	GameEngine::Entity* fish = CreateImage(GameEngine::eTexture::type::Fish, 800.0f, 720.0f, 170.0f, 80.0f);
+	GameEngine::Entity* garbageBall = CreateImage(GameEngine::eTexture::type::GarbageBall, 470.0f, 900.0f, 130.0f, 150.0f);
 
 }
 
-void GameBoard::CreateImage(GameEngine::eTexture::type texture, float x, float y)
+GameEngine::Entity* GameBoard::CreateImage(GameEngine::eTexture::type texture, float x, float y, float size_x, float size_y)
 {
-	image = new GameEngine::Entity();
+	GameEngine::Entity* image = new GameEngine::Entity();
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(image);
 
 	image->SetPos(sf::Vector2f(x, y));
-	image->SetSize(sf::Vector2f(50.0f, 50.0f));
+	image->SetSize(sf::Vector2f(size_x, size_y));
 
 	//Render
 	GameEngine::SpriteRenderComponent* render = image->AddComponent<GameEngine::SpriteRenderComponent>(); //<-- Use the SpriteRenderComponent
 
 	render->SetFillColor(sf::Color::Transparent);
-	render->SetTexture(GameEngine::eTexture::Garbage);  // <-- Assign the texture to this entity
+	render->SetTexture(texture);  // <-- Assign the texture to this entity
 
-	//Click status
-	//image->AddComponent<Game::ImageClickComponent>();
-
+	return image;
 }
 
 

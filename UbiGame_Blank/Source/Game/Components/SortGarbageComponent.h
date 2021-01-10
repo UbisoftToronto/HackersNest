@@ -4,7 +4,7 @@
 
 namespace Game
 {
-    class ImageClickComponent : public GameEngine::Component
+    class SortGarbageComponent : public GameEngine::Component
     {
     public:
         virtual void Update() override;

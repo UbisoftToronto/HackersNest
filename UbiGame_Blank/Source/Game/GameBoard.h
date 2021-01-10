@@ -20,6 +20,8 @@ namespace Game
 		bool IsGameOver() { return false; }
 
 	private:
+		int lives;
+
 		void CreatePlayer();          // <-- Added Function
 		GameEngine::Entity* m_player; // <-- Added Member
 
@@ -32,8 +34,7 @@ namespace Game
 		void SortGarbage();
 		GameEngine::Entity* sortGarbage;
 
-		void CreateImage(GameEngine::eTexture::type texture, float x, float y);
-		GameEngine::Entity* image;
+		GameEngine::Entity* CreateImage(GameEngine::eTexture::type texture, float x, float y, float size_x, float size_y);
 
 		void Wfh();
 		GameEngine::Entity* wfh;
