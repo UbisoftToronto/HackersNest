@@ -88,7 +88,6 @@ void GameBoard::CreatePlayer()
 	render->SetTexture(GameEngine::eTexture::Garbage);  // <-- Assign the texture to this entity
 
 	//Movement
-	m_player->AddComponent<Game::PlayerMovementComponent>();
 
 }
 
@@ -105,6 +104,22 @@ void GameBoard::CreateBackground(GameEngine::eTexture::type texture)
 	render->SetTexture(texture);
 	render->SetFillColor(sf::Color::White);
 	render->SetZLevel(-1);
+	background->AddComponent<Game::SortGarbageComponent>();
+}
+void GameBoard::CreateBackground(GameEngine::eTexture::type texture)
+{
+	background = new GameEngine::Entity();
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(background);
+
+	background->SetPos(sf::Vector2f(940.f, 540.f));
+	background->SetSize(sf::Vector2f(1920.f, 1080.f));
+
+	GameEngine::SpriteRenderComponent* render = static_cast<GameEngine::SpriteRenderComponent*>
+		(background->AddComponent<GameEngine::SpriteRenderComponent>());
+	render->SetTexture(texture);
+	render->SetFillColor(sf::Color::White);
+	render->SetZLevel(-1);
+	background->AddComponent<Game::SortGarbageComponent>();
 }
 
 void GameBoard::TransitionPage() 

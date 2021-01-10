@@ -55,10 +55,10 @@ namespace GameEngine
 		case eTexture::type::BakeBread_bg: return "placeholder_bg.jpg";
 		case eTexture::type::WashYoHands_bg: return "placeholder_bg.jpg";
 		case eTexture::type::PutOnMask_bg: return "placeholder_bg.jpg";
-		case eTexture::type::Blank_bg: return "Sourdough Instructions.jpg";
+		case eTexture::type::Blank_bg: return "Sourdough Instructions.png";
 		case eTexture::type::Mask_1: return "1_Mask.png";
-		case eTexture::type::Mask_2: return "2_Mask.png";
-		case eTexture::type::Mask_3: return "3_Mask.png";
+		case eTexture::type::Mask_2: return "2_Masks.png";
+		case eTexture::type::Mask_3: return "3_Masks.png";
 
 		case eTexture::type::Garbage: return "Garbage_Bin.png";
 		case eTexture::type::Compost: return "Compost_Pit.png";
