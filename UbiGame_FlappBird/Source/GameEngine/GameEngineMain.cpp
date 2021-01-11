@@ -189,14 +189,15 @@ void GameEngineMain::RenderEntities()
 
 	//Render que
 	std::vector<RenderComponent*> renderers;
-	//Every entity that has RenderComponent, or a component that extends RenderComponent - should end up in a render que
-	for (auto entity : m_entities)
-	{
-		if (RenderComponent* render = entity->GetComponent< RenderComponent >())
-		{
-			renderers.push_back(render);
-		}
-	}
+    //Every entity that has RenderComponent, or a component that extends RenderComponent - should end up in a render que
+    for (auto entity : m_entities)
+    {
+        std::vector<RenderComponent*> renderComponents = entity->GetAllComponents< RenderComponent >();
+        if (!renderComponents.empty())
+        {
+            renderers.insert(renderers.end(), renderComponents.begin(), renderComponents.end());
+        }
+    }
 
 	// sort using a lambda expression
 	// We sort entities according to their Z level, meaning that the ones with that value lower will be draw FIRST (background), and higher LAST (player)

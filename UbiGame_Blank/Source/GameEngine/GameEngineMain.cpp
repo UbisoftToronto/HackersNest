@@ -192,9 +192,10 @@ void GameEngineMain::RenderEntities()
 	//Every entity that has RenderComponent, or a component that extends RenderComponent - should end up in a render que
 	for (auto entity : m_entities)
 	{
-		if (RenderComponent* render = entity->GetComponent< RenderComponent >())
+		std::vector<RenderComponent*> renderComponents = entity->GetAllComponents< RenderComponent >();
+		if (!renderComponents.empty())
 		{
-			renderers.push_back(render);
+			renderers.insert(renderers.end(), renderComponents.begin(), renderComponents.end());
 		}
 	}
 

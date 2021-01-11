@@ -41,6 +41,20 @@ namespace GameEngine
 		}
 
 		template <class T>
+		std::vector<T*> GetAllComponents()
+		{
+			std::vector<T*> outVec;
+			for (int a = 0; a < m_components.size(); ++a)
+			{
+				Component* comp = m_components[a];
+				T* searched = dynamic_cast<T*>(comp);
+				if (searched)
+					outVec.push_back(searched);
+			}
+			return outVec;
+		}
+
+		template <class T>
 		T* AddComponent()
 		{
 			T* newComponent = new T();
