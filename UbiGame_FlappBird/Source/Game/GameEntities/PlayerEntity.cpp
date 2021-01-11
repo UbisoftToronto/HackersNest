@@ -20,12 +20,6 @@ PlayerEntity::PlayerEntity()
 	m_renderComponent->SetTexture(GameEngine::eTexture::Player);
 	m_renderComponent->SetZLevel(2);
 
-    GameEngine::TextRenderComponent* textRenderComponent = AddComponent<GameEngine::TextRenderComponent>();
-    textRenderComponent->SetFont("arial.ttf");
-    textRenderComponent->SetString("TESTING TESTING TESTING");
-    textRenderComponent->SetColor(sf::Color::Green);
-    textRenderComponent->SetZLevel(3);
-
 	//Animation
 	m_animComponent = AddComponent<GameEngine::AnimationComponent>();
 		
