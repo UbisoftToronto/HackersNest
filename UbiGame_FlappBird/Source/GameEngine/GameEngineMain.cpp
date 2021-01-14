@@ -69,6 +69,15 @@ void GameEngineMain::AddEntity(Entity* entity)
 
 void GameEngineMain::RemoveEntity(Entity* entity)
 {
+    {
+        auto found = std::find(m_entitiesToAdd.begin(), m_entitiesToAdd.end(), entity);
+        if (found != m_entitiesToAdd.end())
+        {
+            m_entitiesToAdd.erase(found);
+            return;
+        }
+    }
+
 	auto found = std::find(m_entities.begin(), m_entities.end(), entity);
 	if (found == m_entities.end())
 	{

@@ -27,7 +27,7 @@ void CollidablePhysicsComponent::OnAddToWorld()
 
 void CollidablePhysicsComponent::OnRemoveFromWorld()
 {
-	CollidableComponent::OnAddToWorld();
+	CollidableComponent::OnRemoveFromWorld();
 }
 
 
