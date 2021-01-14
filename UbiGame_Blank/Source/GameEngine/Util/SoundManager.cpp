@@ -101,12 +101,11 @@ SoundManager::SoundId SoundManager::CreateNewSoundResource(std::string const& fi
 	newResource.m_numInstances = 1;
 	newResource.m_filename = filename;
 	newResource.m_soundId = m_nextAvailableSoundId;
-	sm_soundResources.push_back(newResource);
 	if (!newResource.m_soundBuffer.loadFromFile(filename))
 	{
-		sm_soundResources.pop_back();
 		return SoundManager::INVALID_SOUND_ID;
 	}
+	sm_soundResources.push_back(newResource);
 	++m_nextAvailableSoundId;
 	return resourceId;
 }

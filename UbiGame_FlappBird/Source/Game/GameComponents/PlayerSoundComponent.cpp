@@ -37,7 +37,7 @@ void PlayerSoundComponent::Update()
 
 void PlayerSoundComponent::RequestSound(bool upSound)
 {
-	static bool enablePlayerSounds = true;	
+	static bool enablePlayerSounds = false;	
 	if (!enablePlayerSounds)
 		return;
 
