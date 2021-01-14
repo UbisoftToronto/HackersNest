@@ -29,6 +29,7 @@ namespace GameEngine
 			unsigned int m_numInstances = 0; // How many references there are to this sound resource
 			std::string m_filename;
 			sf::SoundBuffer m_soundBuffer;
+            SoundId m_soundId;
 		};
 
 	public:
@@ -44,7 +45,8 @@ namespace GameEngine
 		SoundInstancePtr FindNextAvailableSoundInstance();
 		SoundInstancePtr FindLeastRecentlyUsedSoundInstance();
 		SoundInstancePtr FindSoundInstancePlayingSoundId(SoundId const soundId);
-		SoundId FindSoundResource(std::string const& filename) const;
+        SoundId FindSoundResource(std::string const& filename) const;
+        SoundResource* FindSoundResourceById(SoundId const soundId) const;
 		SoundId CreateNewSoundResource(std::string const& filename);
 		void PlaySoundWithSoundInstance(SoundId const resourceId, SoundInstancePtr soundInstance);
 
@@ -56,5 +58,7 @@ namespace GameEngine
 
 		std::vector<SoundInstance> m_soundInstances;
 		std::vector<SoundId> m_loadedSounds;
+
+        SoundId m_nextAvailableSoundId;
 	};
 }

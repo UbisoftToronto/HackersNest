@@ -89,8 +89,6 @@ void GameBoard::UpdatePlayerDying()
 	static float xToPlayerDie = 0.f;
 	if (m_player->GetPos().x < xToPlayerDie)
 	{
-
-        GameEngine::GameEngineMain::GetInstance()->RemoveEntity(m_player);
 		m_isGameOver = true;
 	}
 }
