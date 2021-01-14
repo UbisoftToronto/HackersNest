@@ -171,35 +171,7 @@ void SoundManager::PlaySoundWithSoundInstance(SoundManager::SoundId const resour
 	}
 
 	soundInstance->m_sound.stop();
-	soundInstance->m_sound.setBuffer(soundResourcem_soundBuffer);
-	soundInstance->m_sound.play();
-
-	// Keep track of least recently used
-	soundInstance->m_recentlyPlayedIndex = 0;
-	for (SoundManager::SoundInstance& soundInstance : m_soundInstances)
-	{
-		soundInstance.m_recentlyPlayedIndex += 1;
-	}
-}
-
-
-bool SoundManager::IsValidSoundId(SoundManager::SoundId const soundId) const
-{
-	return soundId != SoundManager::INVALID_SOUND_ID;
-}
-
-
-void SoundManager::PlaySoundWithSoundInstance(SoundManager::SoundId const resourceId, SoundManager::SoundInstancePtr soundInstance)
-{
-	SoundResource* soundResource = FindSoundResourceById(resourceId);
-
-	if (soundResource == nullptr)
-	{
-		return;
-	}
-
-	soundInstance->m_sound.stop();
-	soundInstance->m_sound.setBuffer(soundResourcem_soundBuffer);
+	soundInstance->m_sound.setBuffer(soundResource->m_soundBuffer);
 	soundInstance->m_sound.play();
 
 	// Keep track of least recently used
