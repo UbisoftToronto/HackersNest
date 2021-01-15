@@ -5,6 +5,7 @@
 #include "GameEngine/GameEngineMain.h"
 
 #include <SFML/System/Vector2.hpp>
+#include <cmath>
 
 using namespace GameEngine;
 
