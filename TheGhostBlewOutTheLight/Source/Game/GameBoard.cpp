@@ -30,7 +30,7 @@ void GameBoard::CreatePlayer()
 
 	//Movement
 	m_player->AddComponent<Game::PlayerMovementComponent>();  // <-- Added the movement component to the player
-	//m_player->AddComponent<Game::SpriteCameraComponent>();  // <-- Attach Camera to the player
+	m_player->AddComponent<Game::SpriteCameraComponent>();  // <-- Attach Camera to the player
 	m_player->AddComponent<GameEngine::CollidablePhysicsComponent>(); // <-- For colliding with obstacle
 }
 
