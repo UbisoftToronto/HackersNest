@@ -13,13 +13,18 @@ namespace GameEngine
 			None = -1,
 
 			AddYourTexturesEnumerationsHere, // Replace this for your own enumerations
-
+			Obstacle,
 			Count,
 		};
 	}	
 
 	inline const char* GetPath(eTexture::type texture)
 	{
+		switch (texture)
+		{
+		case eTexture::Obstacle: return "stone.jpg";
+		}
+		
 		return "UnknownTexType";
 	}
 
