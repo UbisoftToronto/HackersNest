@@ -11,7 +11,7 @@ namespace GameEngine
 		enum type
 		{
 			None = -1,
-			Pudge,
+			Player,
 			Background, 
 			Count,
 		};
@@ -21,7 +21,7 @@ namespace GameEngine
 	{
 		switch (texture)
 		{
-			case eTexture::type::Pudge: return "Pudge.png";
+			case eTexture::type::Player: return "Player.png";
 			case eTexture::type::Background: return "Map.png";
 		}
 		return "Pudge.png";
