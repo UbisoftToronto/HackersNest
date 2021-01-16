@@ -81,9 +81,6 @@
     <ClCompile Include="Source\Game\Components\SpriteCameraComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Game\Components\TreasureComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\GameEngine\GameEngineMain.h">
@@ -144,12 +141,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Game\Components\SpriteCameraComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Game\Components\InteractionHelper.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Game\Components\TreasureComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
