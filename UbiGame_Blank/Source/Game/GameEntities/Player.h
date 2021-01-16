@@ -18,6 +18,7 @@ namespace Game
 		void setActionButton(int actionButton);
 
 		int getPlayerHealth() const { return playerHealth; }
+		void setPlayerHealth(int health) { playerHealth = health; }
 
 	private:
 		int playerHealth;

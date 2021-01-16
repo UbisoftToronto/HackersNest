@@ -28,11 +28,18 @@ namespace Game
         void updateGUI();
         void clearGUIEntities();
         void clearMenuGUIEntities();
+        void resetPlayers();
 
         void buildGame();
+        void buildRound(int currentRound);
         void updateRoundState();
 
+        void checkPlayersHealthState();
+
     private:
+        const int ROUND_DURATION = 10;
+        const int MAX_ROUND_NUM = 3;
+
         Game::Text* player1HealthGUI, * player2HealthGUI;
         Game::Text* countDownTimer, * roundTimer, * currentRoundGUI;
         Game::Text* titleText, * startText;
@@ -41,12 +48,11 @@ namespace Game
         Game::Player *player2;
 
         bool gameStarted = false;
+        bool roundEnded = false;
+        bool gameOver = false;
         int currentRound;
         float roundStartCountdown;
         float currentRoundTimer;
-
-        int player1NumWins;
-        int player2NumWins;
 	};
 }
 

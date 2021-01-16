@@ -6,7 +6,6 @@
 Game::Player::Player() : playerHealth(100)
 {
 	setEntityType(GameEngine::EntityType::PLAYER);
-	SetPos(sf::Vector2f(50.0f, 50.0f));
 	SetSize(sf::Vector2f(50.0f, 50.0f));
 
 	AddComponent<GameEngine::RenderComponent>();

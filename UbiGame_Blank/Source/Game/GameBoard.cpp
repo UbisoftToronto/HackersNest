@@ -21,48 +21,82 @@ GameBoard::~GameBoard()
 
 void GameBoard::Update()
 {
-  //Listen for SPACE to change gameStarted
-  if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && !gameStarted){
-    gameStarted = true;
-    buildGame();
-    clearMenuGUIEntities();
-    buildGameGUI();
-    return;
-  }
+    //Listen for SPACE to change gameStarted
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && !gameStarted){
+        gameStarted = true;
+        buildGame();
+        buildRound(1);
+        clearMenuGUIEntities();
+        buildGameGUI();
+        return;
+    }
 
-  if(gameStarted)
-  {
-    updateRoundState();
-    updateGUI();
-  }
+    if(gameStarted)
+    {
+        if (!roundEnded)
+        {
+            checkPlayersHealthState();    
+        }
+        else 
+        {
+            buildRound(currentRound);
+        }
+
+        updateRoundState();
+        updateGUI();
+    }
+
+    if (gameOver) 
+    {
+        while (true);
+    }
 }
 
 void GameBoard::updateRoundState()
 {
   if(roundStartCountdown > 0){
-    roundStartCountdown -= GameEngine::GameEngineMain::GetTimeDelta();
-    return;
+      roundStartCountdown -= GameEngine::GameEngineMain::GetTimeDelta();
+      return;
   }
 
   if(currentRoundTimer > 0){
-    currentRoundTimer -= GameEngine::GameEngineMain::GetTimeDelta();
+      currentRoundTimer -= GameEngine::GameEngineMain::GetTimeDelta();
   } else {
-    currentRoundTimer = 20;
-    currentRound++;
-    roundStartCountdown = 3;
+      roundEnded = true;
+      currentRound++;
   }
+}
+
+void Game::GameBoard::checkPlayersHealthState()
+{
+    if (player1->getPlayerHealth() <= 0 || player2->getPlayerHealth() <= 0)
+    {
+        gameOver = true;
+    }
+}
+
+void Game::GameBoard::buildRound(int currentRound)
+{
+    //Initalize round states
+    this->currentRound = currentRound;
+    currentRoundTimer = ROUND_DURATION;
+    roundStartCountdown = 4;
+    roundEnded = false;
+
+    resetPlayers();
+}
+
+void Game::GameBoard::resetPlayers()
+{
+    float screenHeight = 720.f;
+    float screenWidth = 1280.f;
+
+    player1->SetPos(sf::Vector2f(50.f, screenHeight / 2.f));
+    player2->SetPos(sf::Vector2f(screenWidth - 50.f, screenHeight / 2.f));
 }
 
 void GameBoard::buildGame()
 {
- 
-    //Initalize game states
-    currentRound = 1;
-    currentRoundTimer = 20;
-    roundStartCountdown = 4;
-    player1NumWins = 0;
-    player2NumWins = 0;
-
     int player1Controls[6] = { sf::Keyboard::A, sf::Keyboard::D, sf::Keyboard::W, sf::Keyboard::S, sf::Keyboard::Q, sf::Keyboard::E };
     int player2Controls[6] = { sf::Keyboard::Numpad1, sf::Keyboard::Numpad3, sf::Keyboard::Numpad5, sf::Keyboard::Numpad2, sf::Keyboard::Numpad4, sf::Keyboard::Numpad6 };
 
