@@ -8,7 +8,7 @@ using namespace Game;
 
 void SpriteCameraComponent::Update()
 {
-    __super::Update();
+    Component::Update();
 
     GameEngine::CameraManager::GetInstance()->GetCameraView().setCenter(GetEntity()->GetPos());
 }
