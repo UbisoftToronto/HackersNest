@@ -4,7 +4,7 @@
 #include <SFML/Window/Window.hpp>
 #include <iostream>
 #include <math.h>
-#include "GameEngine/GameEngineMain.h" //<-- Add this include to retrieve the delta time between frames
+#include "../../GameEngineMain.h" //<-- Add this include to retrieve the delta time between frames
 
 using namespace Game;
 
@@ -43,7 +43,6 @@ void PlayerMovementComponent::Update()
 
     sf::Vector2f mousePos{ static_cast<float>(sf::Mouse::getPosition().x),  static_cast<float>(sf::Mouse::getPosition().y) };
     sf::Vector2f windowPos{ static_cast<float>(GetEntity()->window->getPosition().x),  static_cast<float>(GetEntity()->window->getPosition().y) };
-    
 
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
         destination_x = mousePos.x;

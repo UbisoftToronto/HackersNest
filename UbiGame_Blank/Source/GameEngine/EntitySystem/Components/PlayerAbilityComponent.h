@@ -1,6 +1,6 @@
 #pragma once
 
-#include "GameEngine/EntitySystem/Component.h"
+#include "../Component.h"
 
 namespace Game
 {
