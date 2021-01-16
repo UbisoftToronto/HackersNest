@@ -26,7 +26,8 @@ void Paddlemovement::Update()
 {
 	__super::Update();
 
-	//return time between time updated frame
+	//return time between time updated frame 
+	
 	float dt = GameEngine::GameEngineMain::GetTimeDelta();
 
 	sf::Vector2f wantedVel = sf::Vector2f(0.f, 0.f);
@@ -44,4 +45,5 @@ void Paddlemovement::Update()
 	}
 
 	GetEntity()->SetPos(GetEntity()->GetPos() + wantedVel);
+	
 } 
