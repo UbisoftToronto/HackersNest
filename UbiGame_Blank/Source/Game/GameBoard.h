@@ -20,10 +20,15 @@ namespace Game
 		void Update();		
 		bool IsGameOver() { return false; }
 
+        void setGameStarted(bool newState);
+        bool getGameStarted();
+
     private:
+	    bool gameStarted = false;
+	    GameEngine::Entity* textTest;
+	    std::vector<GameEngine::Entity*> guiEntities;
 	    Game::Player *player1;
 		Game::Player *player2;
-
 		Game::Bullet *bullet;
 	};
 }
