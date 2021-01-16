@@ -20,12 +20,8 @@ GameBoard::GameBoard() : player1(nullptr), player2(nullptr), bullet(nullptr), te
     player2->setControls(player2Controls);
     GameEngine::GameEngineMain::GetInstance()->AddEntity(player2);
 
-    bullet = new Game::Bullet();
-    GameEngine::GameEngineMain::GetInstance()->AddEntity(bullet);
-
     textTest = new Text("Game Name", sf::Color::White, 25, sf::Vector2f(50.0f, 50.0f));
     GameEngine::GameEngineMain::GetInstance()->AddEntity(textTest);
-
 }
 
 

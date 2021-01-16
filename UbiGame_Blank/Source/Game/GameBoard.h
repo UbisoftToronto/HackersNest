@@ -28,8 +28,8 @@ namespace Game
 	    GameEngine::Entity* textTest;
 	    std::vector<GameEngine::Entity*> guiEntities;
 	    Game::Player *player1;
-		Game::Player *player2;
-		Game::Bullet *bullet;
+      Game::Player *player2;
+      Game::Bullet *bullet;
 	};
 }
 
