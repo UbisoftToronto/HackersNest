@@ -2,8 +2,19 @@
 
 #include "GameEngine/EntitySystem/Entity.h"
 
-class Bullet : public GameEngine::Entity
+
+namespace Game 
 {
+	class Bullet : public GameEngine::Entity
+	{
+	public:
+		Bullet();
 
-};
+		virtual void OnAddToWorld();
+		virtual void OnRemoveFromWorld();
 
+		virtual void Update();
+	private:
+
+	};
+}

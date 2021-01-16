@@ -1,5 +1,7 @@
 #pragma once
 #include "GameEngine/EntitySystem/Entity.h"
+#include "Game/GameEntities/Player.h"
+#include "Game/GameEntities/Bullet.h"
 
 #include <SFML/System/Vector2.hpp>
 #include <vector>
@@ -23,11 +25,11 @@ namespace Game
 
     private:
 	    bool gameStarted = false;
-	    GameEngine::Entity* player1;
-	    GameEngine::Entity* player2;
 	    GameEngine::Entity* textTest;
-
 	    std::vector<GameEngine::Entity*> guiEntities;
+	    Game::Player *player1;
+		Game::Player *player2;
+		Game::Bullet *bullet;
 	};
 }
 
