@@ -19,6 +19,7 @@ namespace GameEngine
 		bool					hooking = false;
 		bool					dodging = false;
 		bool					netting = false;
+		float hookDown, netDown, dodgeDown;
 
 		virtual void Update();
 
