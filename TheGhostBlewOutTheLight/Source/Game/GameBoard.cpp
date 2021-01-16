@@ -2,6 +2,7 @@
 
 #include "GameEngine/GameEngineMain.h"
 #include "Components/PlayerMovementComponent.h"
+#include "Components/SpriteCameraComponent.h"
 
 using namespace Game;
 
@@ -25,6 +26,7 @@ void GameBoard::CreatePlayer()
 
 	//Movement
 	m_player->AddComponent<Game::PlayerMovementComponent>();  // <-- Added the movement component to the player
+	//m_player->AddComponent<Game::SpriteCameraComponent>();  // <-- Attach Camera to the player
 }
 
 GameBoard::~GameBoard()
