@@ -9,6 +9,7 @@ namespace Game
 {
 	//Used for storing and controlling all game related entities, as well as providing an entry point for the "game" side of application	
 	class PaddleEntity; 
+	class PaddleEntity2;
 	class BallEntity;
 
 	class GameBoard
@@ -23,7 +24,7 @@ namespace Game
 	private:
 		void CreatePaddle();
 		PaddleEntity* left_paddle;
-		PaddleEntity* right_paddle;
+		PaddleEntity2* right_paddle;
 
 		Game::Grid* Border;
 
