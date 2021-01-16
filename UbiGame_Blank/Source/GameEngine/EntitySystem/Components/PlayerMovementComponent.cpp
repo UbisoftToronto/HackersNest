@@ -64,8 +64,11 @@ void PlayerMovementComponent::Update()
 
     float dot = pos_diff.x*unit.x + pos_diff.y*unit.y;
     float det = pos_diff.x*unit.y - pos_diff.y*unit.x;
-    GetEntity()->SetRotation(atan(dot, det));
-    std::cout<< atan(dot, det) << std::endl;
+    float angle = 180*atan(dot/det)/3.14;
+    if(pos_diff.x < 0){
+        angle += 180;
+    }
+    GetEntity()->SetRotation(angle);
 }
 
 void PlayerMovementComponent::OnAddToWorld() {}
