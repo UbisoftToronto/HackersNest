@@ -11,15 +11,20 @@ namespace GameEngine
 		enum type
 		{
 			None = -1,
+			Pudge,
+			Background, // Replace this for your own enumerations
 
-			AddYourTexturesEnumerationsHere, // Replace this for your own enumerations
-
-			Count,
+			Count
 		};
 	}	
 
 	inline const char* GetPath(eTexture::type texture)
 	{
+		switch (texture)
+		{
+			case eTexture::type::Pudge: return "Pudge.png";
+			case eTexture::type::Background: return "Map.png";
+		}
 		return "UnknownTexType";
 	}
 

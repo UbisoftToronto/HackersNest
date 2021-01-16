@@ -4,6 +4,7 @@
 #include <SFML/System/Vector2.hpp>
 #include <vector>
 
+
 namespace Game
 {
 	//Used for storing and controlling all game related entities, as well as providing an entry point for the "game" side of application	
@@ -17,6 +18,7 @@ namespace Game
 
 		void Update();		
 		bool IsGameOver() { return false; }
+		void CreateBackground();
 	};
 }
 
