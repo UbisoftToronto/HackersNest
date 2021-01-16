@@ -5,6 +5,13 @@
 
 namespace GameEngine
 {
+	enum EEntityType
+	{
+		None = 0,
+		Obstacle,
+		Player,
+		Treasure,
+	};
 	class Entity
 	{
 	public:
@@ -17,22 +24,25 @@ namespace GameEngine
 		virtual void Update();
 
 		//Base entity params
-		sf::Vector2f GetPos()  const { return m_pos; }
+		sf::Vector2f GetPos() const { return m_pos; }
 		sf::Vector2f GetSize() const { return m_size; }
-		float		 GetRot()  const { return m_rotation; }
-		
-		void		 SetPos(sf::Vector2f pos)   { m_pos = pos; }
-		void		 SetSize(sf::Vector2f size) { m_size = size; }
-		void	     SetRotation(float rotation) { m_rotation = rotation; }		
+		float GetRot() const { return m_rotation; }
+
+		void SetPos(sf::Vector2f pos) { m_pos = pos; }
+		void SetSize(sf::Vector2f size) { m_size = size; }
+		void SetRotation(float rotation) { m_rotation = rotation; }
+
+		void SetEntityType(EEntityType type) { m_type = type; }
+		EEntityType GetEntityType() const { return m_type; }
 
 		//Components
 		template <class T>
-		T* GetComponent()
+		T *GetComponent()
 		{
 			for (int a = 0; a < m_components.size(); ++a)
 			{
-				Component* comp = m_components[a];
-				T* searched = dynamic_cast<T*>(comp);
+				Component *comp = m_components[a];
+				T *searched = dynamic_cast<T *>(comp);
 				if (searched)
 					return searched;
 			}
@@ -41,13 +51,13 @@ namespace GameEngine
 		}
 
 		template <class T>
-		std::vector<T*> GetAllComponents()
+		std::vector<T *> GetAllComponents()
 		{
-			std::vector<T*> outVec;
+			std::vector<T *> outVec;
 			for (int a = 0; a < m_components.size(); ++a)
 			{
-				Component* comp = m_components[a];
-				T* searched = dynamic_cast<T*>(comp);
+				Component *comp = m_components[a];
+				T *searched = dynamic_cast<T *>(comp);
 				if (searched)
 					outVec.push_back(searched);
 			}
@@ -55,21 +65,22 @@ namespace GameEngine
 		}
 
 		template <class T>
-		T* AddComponent()
+		T *AddComponent()
 		{
-			T* newComponent = new T();
+			T *newComponent = new T();
 			newComponent->SetEntity(this);
 			m_components.push_back(newComponent);
-			
+
 			return newComponent;
 		}
 
 	protected:
 		void DestroyComponents();
 
-		std::vector<Component*> m_components;
-		sf::Vector2f		   m_pos;
-		sf::Vector2f		   m_size;		
-		float				   m_rotation;
+		std::vector<Component *> m_components;
+		sf::Vector2f m_pos;
+		sf::Vector2f m_size;
+		float m_rotation;
+		EEntityType m_type;
 	};
-}
+} // namespace GameEngine
