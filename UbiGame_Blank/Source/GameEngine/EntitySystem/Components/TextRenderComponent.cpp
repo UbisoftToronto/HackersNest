@@ -23,6 +23,10 @@ void TextRenderComponent::Render(sf::RenderTarget* target)
         return;
     }
 
+    //Center origin to the center of the text
+    sf::FloatRect textRect = m_text.getLocalBounds();
+    m_text.setOrigin(textRect.left + textRect.width/2.0f, textRect.top + textRect.height/2.0f);
+
     m_text.setPosition(GetEntity()->GetPos());
     m_text.setRotation(GetEntity()->GetRot());
     target->draw(m_text);

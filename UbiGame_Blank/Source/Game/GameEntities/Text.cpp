@@ -1,7 +1,8 @@
 #include "Text.h"
 #include "GameEngine/EntitySystem/Components/TextRenderComponent.h"
 
-Text::Text(std::string text, sf::Color color, int fontSize, sf::Vector2f position) {
+Text::Text(std::string text, sf::Color color, int fontSize, sf::Vector2f position) 
+{
     textRenderComponent = AddComponent<GameEngine::TextRenderComponent>();
     textRenderComponent -> SetFont("pixelFont.ttf");
     textRenderComponent -> SetColor(color);
@@ -11,16 +12,24 @@ Text::Text(std::string text, sf::Color color, int fontSize, sf::Vector2f positio
     this->SetPos(position);
 }
 
-Text::~Text() {
+Text::~Text() 
+{
 
 }
 
+void Text::setText(std::string text)
+{
+  textRenderComponent -> SetString(text);
+  }
 
 
-void Text::OnAddToWorld() {
+
+void Text::OnAddToWorld() 
+{
     Entity::OnAddToWorld();
 }
 
-void Text::OnRemoveFromWorld() {
+void Text::OnRemoveFromWorld() 
+{
     Entity::OnRemoveFromWorld();
 }

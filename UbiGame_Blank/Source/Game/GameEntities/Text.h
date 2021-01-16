@@ -11,6 +11,7 @@ public:
 
     void OnAddToWorld() override;
     void OnRemoveFromWorld() override;
+    void setText(std::string);
 
 protected:
     GameEngine::TextRenderComponent* textRenderComponent;
