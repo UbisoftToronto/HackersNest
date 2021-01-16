@@ -39,8 +39,9 @@ void PlayerMovementComponent::Update()
         displacement.y -= inputAmount * dt;
     }
 
-    std::cout << sf::Mouse::getPosition().x << sf::Mouse::getPosition().y  << std::endl;
-    // sf::Vector2f mousePos{ sf::Mouse::getPosition().x,  sf::Mouse::getPosition().y };
+    //std::cout << sf::Mouse::getPosition().x << sf::Mouse::getPosition().y  << std::endl;
+    //sf::Vector2f mousePos{ sf::Mouse::getPosition().x,  sf::Mouse::getPosition().y };
+    
     // sf::Vector2f pos_diff = mousePos - GetEntity()->GetPos();
 
 
