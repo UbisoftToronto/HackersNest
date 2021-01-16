@@ -1,5 +1,7 @@
 #pragma once
 #include "GameEngine/EntitySystem/Entity.h"
+#include "Game/Paddle/PaddleEntity.h"
+
 #include "GameEngine/Grid.h"
 #include <SFML/System/Vector2.hpp>
 #include <vector>
@@ -7,6 +9,8 @@
 namespace Game
 {
 	//Used for storing and controlling all game related entities, as well as providing an entry point for the "game" side of application	
+	class PlayerEntity;
+	class PaddleEntity; 
 	class PlayerEntity;
 	class BallEntity;
 
@@ -21,8 +25,8 @@ namespace Game
 	
 	private:
 		void CreatePaddle();
-		GameEngine::Entity* left_paddle;
-		GameEngine::Entity* right_paddle;
+		PaddleEntity* left_paddle;
+		PaddleEntity* right_paddle;
 
 		GameEngine::Grid* Border;
 
