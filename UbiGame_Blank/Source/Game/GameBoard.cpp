@@ -58,7 +58,7 @@ void GameBoard::buildGame()
   //Initalize game states
   currentRound = 1;
   currentRoundTimer = 20;
-  roundStartCountdown = 3;
+  roundStartCountdown = 4;
   player1NumWins = 0;
   player2NumWins = 0;
   player1Health = 100;
@@ -80,6 +80,20 @@ void GameBoard::buildGame()
 
 void GameBoard::updateGUI()
 {
+  guiEntities[0]->setText("P1: " + std::to_string(player1Health));
+  guiEntities[1]->setText("P2: " + std::to_string(player2Health));
+  
+  if((int)ceil(roundStartCountdown) == 1){
+    guiEntities[2]->setText("Round Start!");
+  } else if((int)ceil(roundStartCountdown) == 0) {
+    GameEngine::GameEngineMain::GetInstance()->RemoveEntity(guiEntities[2]);
+    guiEntities.erase(guiEntities.begin() + 2);
+  } else {
+    guiEntities[2]->setText(std::to_string((int)ceil(roundStartCountdown - 1)));
+  }
+
+  guiEntities[3]->setText(std::to_string((int)ceil(currentRoundTimer)));
+  guiEntities[4]->setText("Round " + std::to_string(currentRound));
 }
 
 
@@ -104,6 +118,8 @@ void GameBoard::buildGameGUI()
   Text* player2HealthGUI = new Text("P2: " + std::to_string(player2Health), sf::Color::White, 30, sf::Vector2f(1024.0f - 3 * 30, 30.0f));
   GameEngine::GameEngineMain::GetInstance()->AddEntity(player2HealthGUI);
 
+  Text* countDownTimer = new Text(std::to_string((int)ceil(roundStartCountdown)), sf::Color::White, 50, sf::Vector2f(1024.0f/2, 1024.0f/2));
+  GameEngine::GameEngineMain::GetInstance()->AddEntity(countDownTimer);
   Text* roundTimer = new Text(std::to_string((int)ceil(currentRoundTimer)), sf::Color::White, 50, sf::Vector2f(1024.0f/2, 150.0f));
   GameEngine::GameEngineMain::GetInstance()->AddEntity(roundTimer);
   Text* currentRoundGUI = new Text("Round " + std::to_string(currentRound), sf::Color::White, 50, sf::Vector2f(1024.0f/2, 50.0f));
@@ -111,6 +127,7 @@ void GameBoard::buildGameGUI()
 
   guiEntities.push_back(player1HealthGUI);
   guiEntities.push_back(player2HealthGUI);
+  guiEntities.push_back(countDownTimer);
   guiEntities.push_back(roundTimer);
   guiEntities.push_back(currentRoundGUI);
 }

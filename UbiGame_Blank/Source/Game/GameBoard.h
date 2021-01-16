@@ -40,7 +40,7 @@ namespace Game
 
       bool gameStarted = false;
       int currentRound;
-      int roundStartCountdown;
+      float roundStartCountdown;
       float currentRoundTimer;
       int player1NumWins;
       int player2NumWins;
