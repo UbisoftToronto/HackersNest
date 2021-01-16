@@ -1,7 +1,7 @@
 #include "GameBoard.h"
 
 #include "GameEngine/GameEngineMain.h"
-#include "../PlayerMovementComponent.h"
+#include "GameEngine/EntitySystem/Components/PlayerMovementComponent.h"
 
 
 

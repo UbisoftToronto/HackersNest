@@ -1,6 +1,6 @@
 #pragma once
 
-#include "UbiGame_Blank\Source\GameEngine\GameEngineMain.h"
+#include "GameEngine\GameEngineMain.h"
 
 namespace Game
 {

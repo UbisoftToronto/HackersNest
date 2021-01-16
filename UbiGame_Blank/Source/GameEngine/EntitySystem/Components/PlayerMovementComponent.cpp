@@ -4,7 +4,7 @@
 #include <SFML/Window/Window.hpp>
 #include <iostream>
 #include <math.h>
-#include "UbiGame_Blank\Source\GameEngine\GameEngineMain.h" //<-- Add this include to retrieve the delta time between frames
+#include "GameEngine/GameEngineMain.h" //<-- Add this include to retrieve the delta time between frames
 
 using namespace Game;
 
