@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "GameEngine/EntitySystem/Components/RenderComponent.h"
+#include <Game/GameComponents/PlayerActionComponent.h>
 
 Game::Player::Player() : playerHealth(100)
 {
@@ -7,6 +8,7 @@ Game::Player::Player() : playerHealth(100)
 	SetSize(sf::Vector2f(50.0f, 50.0f));
 
 	AddComponent<GameEngine::RenderComponent>();
+	AddComponent<Game::PlayerActionComponent>();
 	movementComponent = AddComponent<Game::PlayerMovementComponent>();
 }
 
