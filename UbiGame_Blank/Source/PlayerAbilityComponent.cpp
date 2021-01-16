@@ -32,12 +32,31 @@ void PlayerAbilityComponent::Update()
         displacement.y += pos_diff.y * dt;
     }
     
-    if (!GetEntity()->isAbility && !GetEntity()->hooking && !GetEntity()->dodging && !GetEntity()->netting) {
-        if ()
+    if (!GetEntity()->isAbility) {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q) && GetEntity()->hookDown == 0) {
+            GetEntity()->hooking = !GetEntity()->hooking;
+            GetEntity()->netting = false;
+            GetEntity()->dodging = false;
+            GetEntity()->isAbility = true;
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && GetEntity()->netDown == 0) {
+            GetEntity()->hooking = false;
+            GetEntity()->netting = !GetEntity()->netting;
+            GetEntity()->dodging = false;
+            GetEntity()->isAbility = true;
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q) && GetEntity()->dodgeDown == 0) {
+            GetEntity()->hooking = false;
+            GetEntity()->netting = false;
+            GetEntity()->dodging = true;
+            GetEntity()->isAbility = true;
+        }
     }
 
-    //Update the entity position
-    GetEntity()->SetPos(GetEntity()->GetPos() + displacement);
+    if (GetEntity()->hooking) {
+        
+    }
+
 }
 
 void PlayerAbilityComponent::OnAddToWorld() {}
