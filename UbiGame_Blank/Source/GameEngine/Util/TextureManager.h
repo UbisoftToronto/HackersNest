@@ -12,9 +12,8 @@ namespace GameEngine
 		{
 			None = -1,
 			Pudge,
-			Background, // Replace this for your own enumerations
-
-			Count
+			Background, 
+			Count,
 		};
 	}	
 
@@ -25,7 +24,7 @@ namespace GameEngine
 			case eTexture::type::Pudge: return "Pudge.png";
 			case eTexture::type::Background: return "Map.png";
 		}
-		return "UnknownTexType";
+		return "Pudge.png";
 	}
 
 	class TextureManager
