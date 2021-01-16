@@ -8,9 +8,9 @@ namespace GameEngine
 	enum EEntityType
 	{
 		None = 0,
+		Obstacle,
 		Player,
-		Treasure
-
+		Treasure,
 	};
 	class Entity
 	{
