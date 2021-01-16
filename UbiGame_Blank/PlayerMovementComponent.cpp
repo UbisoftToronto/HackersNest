@@ -47,9 +47,9 @@ void PlayerMovementComponent::Update()
     sf::Vector2f pos_diff = mousePos - GetEntity()->GetPos() - windowPos;
 
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-        //displacement.x += pos_diff.x * dt - 10;
-        //displacement.y += pos_diff.y * dt - 10;
-        //GetEntity()->SetSize(100);
+        displacement.x += pos_diff.x * dt;
+        displacement.y += pos_diff.y * dt;
+        GetEntity()->SetSize(100);
     }
 
 
