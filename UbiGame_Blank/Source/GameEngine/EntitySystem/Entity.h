@@ -15,6 +15,11 @@ namespace GameEngine
 		virtual void OnAddToWorld();
 		virtual void OnRemoveFromWorld();
 
+		bool 					isAbility = false;
+		bool					hooking = false;
+		bool					dodging = false;
+		bool					netting = false;
+
 		virtual void Update();
 
 		//Base entity params
