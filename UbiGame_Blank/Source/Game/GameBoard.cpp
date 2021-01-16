@@ -2,7 +2,7 @@
 
 #include "GameEngine/GameEngineMain.h"
 #include "../GameEngine/EntitySystem/Components/PlayerMovementComponent.h"
-
+#include "../GameEngine/EntitySystem/Components/PlayerAbilityComponent.h"
 
 
 using namespace Game;
@@ -21,6 +21,8 @@ void GameBoard::CreatePlayer()
     (m_player->AddComponent<GameEngine::SpriteRenderComponent>());
 
     spriteRender->SetTexture(GameEngine::eTexture::Player);
+
+    m_player->AddComponent<Game::PlayerAbilityComponent>();
 }
 
 void GameBoard::CreateBackground() {

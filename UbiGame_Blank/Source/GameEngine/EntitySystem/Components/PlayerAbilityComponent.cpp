@@ -37,7 +37,11 @@ void PlayerAbilityComponent::Update()
             GetEntity()->hooking = !GetEntity()->hooking;
             GetEntity()->netting = false;
             GetEntity()->dodging = false;
-            GetEntity()->isAbility = true;
+            if (GetEntity()->hooking) {
+                GetEntity()->isAbility = true;
+            } else {
+                
+            }
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && GetEntity()->netDown == 0) {
             GetEntity()->hooking = false;
@@ -54,7 +58,12 @@ void PlayerAbilityComponent::Update()
     }
 
     if (GetEntity()->hooking) {
-        
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+            GetEntity()->hooking = false;
+            GetEntity()->netting = false;
+            GetEntity()->dodging = false;
+            GetEntity()->isAbility = false;
+        }
     }
 
 }
