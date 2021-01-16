@@ -2,6 +2,7 @@
 #include <SFML/System/Vector2.hpp>
 #include <vector>
 #include "GameEngine/EntitySystem/Component.h"
+#include <SFML/Graphics.hpp>
 
 namespace GameEngine
 {
@@ -24,7 +25,8 @@ namespace GameEngine
 		void		 SetPos(sf::Vector2f pos)   { m_pos = pos; }
 		void		 SetSize(sf::Vector2f size) { m_size = size; }
 		void	     SetRotation(float rotation) { m_rotation = rotation; }		
-
+		sf::RenderWindow* window;
+		
 		//Components
 		template <class T>
 		T* GetComponent()

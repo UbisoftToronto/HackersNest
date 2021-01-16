@@ -42,12 +42,14 @@ void PlayerMovementComponent::Update()
 
     //std::cout << sf::Mouse::getPosition().x << sf::Mouse::getPosition().y  << std::endl;
     sf::Vector2f mousePos{ static_cast<float>(sf::Mouse::getPosition().x),  static_cast<float>(sf::Mouse::getPosition().y) };
-    //sf::Vector2f windowPos{ static_cast<float>(sf::Window::getPosition().x),  static_cast<float>(sf::Window::getPosition().y) };
-    sf::Vector2f pos_diff = mousePos - GetEntity()->GetPos();
+    //sf::Window::getPosition();
+    sf::Vector2f windowPos{ static_cast<float>(GetEntity()->window->getPosition().x),  static_cast<float>(GetEntity()->window->getPosition().y) };
+    sf::Vector2f pos_diff = mousePos - GetEntity()->GetPos() - windowPos;
 
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-        displacement.x += pos_diff.x * dt;
-        displacement.y += pos_diff.y * dt;
+        //displacement.x += pos_diff.x * dt - 10;
+        //displacement.y += pos_diff.y * dt - 10;
+        //GetEntity()->SetSize(100);
     }
 
 

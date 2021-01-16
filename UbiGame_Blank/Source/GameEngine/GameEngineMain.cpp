@@ -59,6 +59,7 @@ void GameEngineMain::CreateAndSetUpWindow()
 
 void GameEngineMain::AddEntity(Entity* entity)
 {
+	entity->window = m_renderWindow;
 	auto found = std::find(m_entities.begin(), m_entities.end(), entity);
 	assert(found == m_entities.end()); //Drop an assert if we add duplicate;
 	if (found == m_entities.end())
