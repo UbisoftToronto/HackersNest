@@ -1,7 +1,7 @@
 #include "GameBoard.h"
 #include "C:\Users\Abdullah Ghaith\Desktop\GITRepositoryFolders\HackersNest\UbiGame_Blank\Source\GameEngine\EntitySystem\Components\CollidablePhysicsComponent.cpp"
 #include "GameEngine/GameEngineMain.h"
-#include "../PlayerMovementComponent.h"
+#include "../GameEngine/EntitySystem/Components/PlayerMovementComponent.h"
 
 
 
