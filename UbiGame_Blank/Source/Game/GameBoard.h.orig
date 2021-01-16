@@ -18,11 +18,14 @@ namespace Game
 
 		void Update();		
 		bool IsGameOver() { return false; }
+<<<<<<< HEAD
 
 	private:
 		void CreatePlayer();
 		GameEngine::Entity* m_player;
+=======
 		void CreateBackground();
+>>>>>>> 6c4d65dfa7fdcaacc9e550b8f1be246fa701cfec
 	};
 }
 
