@@ -11,16 +11,21 @@ namespace GameEngine
 		enum type
 		{
 			None = -1,
-
-			AddYourTexturesEnumerationsHere, // Replace this for your own enumerations
-
+			Background = 0,
+			Ball,
 			Count,
 		};
 	}	
 
 	inline const char* GetPath(eTexture::type texture)
 	{
+		switch (texture) {
+		case eTexture::Ball: return "whiteball.png";
+		case eTexture::Background:    return "Black.png";
+		
+		}
 		return "UnknownTexType";
+
 	}
 
 	class TextureManager
