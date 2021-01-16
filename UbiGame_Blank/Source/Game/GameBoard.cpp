@@ -5,16 +5,15 @@
 #include "Game/Ball/BallEntity.h"
 #include "Game/Paddle/PaddleEntity.h"
 
-
 using namespace Game;
-
+float s = 0;
 GameBoard::GameBoard()
 	: left_paddle(nullptr), right_paddle(nullptr), ball(nullptr), scoreboard(nullptr), Border(nullptr)
 {
 	CreatePaddle();
 	CreateBall();
 	CreateScoreboard();
-	Border = new GameEngine::Grid();
+	Border = new Game::Grid();
 
 }
 
@@ -27,6 +26,10 @@ GameBoard::~GameBoard()
 
 void GameBoard::Update()
 {	
+	if (s < 5000) {
+		Border->UpdatePixel(s / 10, s / 10);
+		s++;
+	}
 	
 }
 

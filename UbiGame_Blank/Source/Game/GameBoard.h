@@ -26,12 +26,11 @@ namespace Game
 		PaddleEntity* left_paddle;
 		PaddleEntity* right_paddle;
 
-		GameEngine::Grid* Border;
+		Game::Grid* Border;
 
 		void CreateBall();
 		BallEntity* ball;
 
-	
 		
 
 		void CreateScoreboard();
