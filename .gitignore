@@ -5,6 +5,7 @@
 *.o
 */output
 .vs
+tmp
 UbiGame_Blank/bin
 UbiGame_Blank/tmp
 UbiGame_FlappBird/bin
