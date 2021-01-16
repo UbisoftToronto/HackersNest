@@ -1,6 +1,6 @@
 #pragma once
 #include "GameEngine/EntitySystem/Entity.h"
-
+#include <string>
 #include <SFML/System/Vector2.hpp>
 #include <vector>
 
@@ -23,6 +23,9 @@ namespace Game
 		void CreatePlayer();
 		GameEngine::Entity* m_player;
 		void CreateBackground();
+		void CreateObstacle(float x_cord, float y_cord, float width, float height, bool hit_box);
+
 	};
 }
+
 
