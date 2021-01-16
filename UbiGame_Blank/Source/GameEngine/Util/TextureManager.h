@@ -11,9 +11,8 @@ namespace GameEngine
 		enum type
 		{
 			None = -1,
-
+			Background = 0,
 			Ball,
-
 			Count,
 		};
 	}	
@@ -22,9 +21,11 @@ namespace GameEngine
 	{
 		switch (texture) {
 		case eTexture::Ball: return "whiteball.png";
+		case eTexture::Background:    return "Black.png";
+		
 		}
-
 		return "UnknownTexType";
+
 	}
 
 	class TextureManager

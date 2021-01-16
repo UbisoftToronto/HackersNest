@@ -1,7 +1,10 @@
 #include "Grid.h"
-
+#include "GameEngine/EntitySystem/Components/CollidableComponent.h"
 #include "GameEngine/GameEngineMain.h"
-using namespace GameEngine;
+#include "GameEngine/Util/TextureManager.h"
+#include <GameEngine/EntitySystem/Components/SpriteRenderComponent.h>
+
+using namespace Game;
 Grid::Grid() 
 	: top_border(nullptr), bottom_border(nullptr), left_border(nullptr), right_border(nullptr)
 {
@@ -14,6 +17,17 @@ Grid::~Grid() {
 
 
 void Grid::CreateBorder() {
+
+	GameEngine::Entity* bgEntity = new GameEngine::Entity();
+	GameEngine::SpriteRenderComponent* render = bgEntity->AddComponent<GameEngine::SpriteRenderComponent>();
+	render->SetTexture(GameEngine::eTexture::Background);
+	render->SetZLevel(0);
+	bgEntity->SetPos(sf::Vector2f(250.f, 250.f));
+	bgEntity->SetSize(sf::Vector2f(500.f, 500.f));
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(bgEntity);
+	
+	//m_backGround = bgEntity;
+
 	top_border = new GameEngine::Entity();
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(top_border);
 	bottom_border = new GameEngine::Entity();
@@ -47,9 +61,17 @@ void Grid::CreateBorder() {
 	r_left->SetFillColor(sf::Color::Blue);
 	r_right->SetFillColor(sf::Color::Green);
 
-	/*top_border->AddComponent<GameEngine::CollidableComponent>();
+	top_border->AddComponent<GameEngine::CollidableComponent>();
 	bottom_border->AddComponent<GameEngine::CollidableComponent>();
 	left_border->AddComponent<GameEngine::CollidableComponent>();
 	right_border->AddComponent<GameEngine::CollidableComponent>();
-	*/
+	
+}
+
+void Grid::UpdatePixel(float x, float y) {
+	
+	sf::Texture* background = GameEngine::TextureManager::GetInstance()->GetTexture(GameEngine::eTexture::Background);
+	sf::Image i = background->copyToImage();
+	i.setPixel(x, y,sf::Color::Blue);
+	background->loadFromImage(i);
 }
