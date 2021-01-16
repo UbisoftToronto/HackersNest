@@ -9,43 +9,44 @@
 
 namespace Game
 {
-	//Used for storing and controlling all game related entities, as well as providing an entry point for the "game" side of application	
-	class PlayerEntity;
+
 
 	class GameBoard
 	{
 	public:
-		GameBoard();
-		virtual ~GameBoard();
+	    GameBoard();
+	    virtual ~GameBoard();
 
-		void Update();		
-		bool IsGameOver() { return false; }
+	    void Update();		
+	    bool IsGameOver() { return false; }
 
-    void setGameStarted(bool newState);
-    bool getGameStarted();
+        void setGameStarted(bool newState);
+        bool getGameStarted();
 
-    void buildMenuGUI();
-    void buildGameGUI();
-    void updateGUI();
-    void clearGUIEntities();
+        void buildMenuGUI();
+        void buildGameGUI();
+        void updateGUI();
+        void clearGUIEntities();
+        void clearMenuGUIEntities();
 
-    void buildGame();
-    void updateRoundState();
+        void buildGame();
+        void updateRoundState();
 
     private:
-	    std::vector<Game::Text*> guiEntities;
-	    Game::Player *player1;
-      Game::Player *player2;
-      Game::Bullet *bullet;
+        Game::Text* player1HealthGUI, * player2HealthGUI;
+        Game::Text* countDownTimer, * roundTimer, * currentRoundGUI;
+        Game::Text* titleText, * startText;
 
-      bool gameStarted = false;
-      int currentRound;
-      float roundStartCountdown;
-      float currentRoundTimer;
-      int player1NumWins;
-      int player2NumWins;
-      int player1Health;
-      int player2Health;
+	    Game::Player *player1;
+        Game::Player *player2;
+
+        bool gameStarted = false;
+        int currentRound;
+        float roundStartCountdown;
+        float currentRoundTimer;
+
+        int player1NumWins;
+        int player2NumWins;
 	};
 }
 

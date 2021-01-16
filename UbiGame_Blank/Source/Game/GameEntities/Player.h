@@ -17,6 +17,8 @@ namespace Game
 		void setControls(int controls[4]);
 		void setActionButton(int actionButton);
 
+		int getPlayerHealth() const { return playerHealth; }
+
 	private:
 		int playerHealth;
 

@@ -20,10 +20,8 @@ Text::~Text()
 
 void Text::setText(std::string text)
 {
-  textRenderComponent -> SetString(text);
-  }
-
-
+    textRenderComponent -> SetString(text);
+}
 
 void Text::OnAddToWorld() 
 {
