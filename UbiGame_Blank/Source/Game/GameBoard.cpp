@@ -1,6 +1,7 @@
 #include "GameBoard.h"
 
 #include "GameEngine/GameEngineMain.h"
+#include "GameEngine/Grid.h"
 
 
 
@@ -8,12 +9,12 @@
 using namespace Game;
 
 GameBoard::GameBoard()
-	: left_paddle(nullptr), right_paddle(nullptr), ball(nullptr), scoreboard(nullptr)
+	: left_paddle(nullptr), right_paddle(nullptr), ball(nullptr), scoreboard(nullptr), Border(nullptr)
 {
 	CreatePaddle();
 	CreateBall();
 	CreateScoreboard();
-	
+	Border = new GameEngine::Grid();
 
 }
 

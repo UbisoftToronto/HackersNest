@@ -75,7 +75,7 @@
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\TextRenderComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Game\Grid.cpp">
+    <ClCompile Include="Source\GameEngine\Grid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -134,7 +134,7 @@
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\TextRenderComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Game\Grid.h">
+    <ClInclude Include="Source\GameEngine\Grid.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

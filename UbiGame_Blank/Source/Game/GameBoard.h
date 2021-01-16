@@ -1,6 +1,6 @@
 #pragma once
 #include "GameEngine/EntitySystem/Entity.h"
-
+#include "GameEngine/Grid.h"
 #include <SFML/System/Vector2.hpp>
 #include <vector>
 
@@ -23,10 +23,12 @@ namespace Game
 		GameEngine::Entity* left_paddle;
 		GameEngine::Entity* right_paddle;
 
+		GameEngine::Grid* Border;
+
 		void CreateBall();
 		GameEngine::Entity* ball;
 
-	GameEngine:: Entity* Border;
+	
 		
 
 		void CreateScoreboard();
