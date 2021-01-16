@@ -49,7 +49,6 @@ void PlayerMovementComponent::Update()
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
         displacement.x += pos_diff.x * dt;
         displacement.y += pos_diff.y * dt;
-        GetEntity()->SetSize(100);
     }
 
 
