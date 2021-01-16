@@ -1,7 +1,7 @@
 #include "GameBoard.h"
-
 #include "GameEngine/GameEngineMain.h"
 #include "GameEngine/Grid.h"
+#include "Game/Scoreboard/Entities/ScoreboardEntity.h"
 #include "Game/Ball/BallEntity.h"
 #include "Game/Paddle/PaddleEntity.h"
 
@@ -14,7 +14,6 @@ GameBoard::GameBoard()
 	CreateBall();
 	CreateScoreboard();
 	Border = new Game::Grid();
-
 }
 
 
@@ -66,12 +65,12 @@ void GameBoard::CreateBall() {
 	ball->SetSize(sf::Vector2f(20.f, 20.f));
 }
 
-
-
 void GameBoard::CreateScoreboard() {
-	scoreboard = new GameEngine::Entity();
+	scoreboard = new ScoreboardEntity();
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(scoreboard);
 
-	scoreboard->SetPos(sf::Vector2f(10.f, 10.f));
-	scoreboard->SetSize(sf::Vector2f(10.f, 10.f));
+	scoreboard->SetPos(sf::Vector2f(GameEngine::GameEngineMain::GetPixelWidth(50.f), GameEngine::GameEngineMain::GetPixelHeight(95.f)));
+	scoreboard->SetSize(sf::Vector2f(GameEngine::GameEngineMain::GetPixelWidth(100.f), GameEngine::GameEngineMain::GetPixelHeight(10.f)));
+
+	scoreboard->InitScoreboard();
 }

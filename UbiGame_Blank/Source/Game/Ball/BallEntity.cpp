@@ -4,6 +4,12 @@ using namespace Game;
 
 BallEntity::BallEntity()
 {
+	//Movement
+	ballMovementComponent = AddComponent<BallMovementComponent>();
+
+	//Collision
+	ball = AddComponent<GameEngine::CollidablePhysicsComponent>();
+
 	//Render
 	m_renderComponent = AddComponent<GameEngine::SpriteRenderComponent>();
 	m_renderComponent->SetFillColor(sf::Color::Transparent);

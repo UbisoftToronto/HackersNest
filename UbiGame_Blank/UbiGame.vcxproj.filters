@@ -1,6 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <ClCompile Include="Source\GameEngine\Grid.cpp" />
+    <ClCompile Include="Source\GameEngine\EntitySystem\Components\TextRenderComponent.cpp" />
+    <ClCompile Include="Source\GameEngine\Util\CameraManager.cpp" />
+    <ClCompile Include="Source\GameEngine\EntitySystem\Components\ParticleComponent.cpp" />
+    <ClCompile Include="Source\GameEngine\EntitySystem\Components\ParticleEmitterComponent.cpp" />
+    <ClCompile Include="Source\GameEngine\EntitySystem\Components\SoundComponent.cpp" />
+    <ClCompile Include="Source\GameEngine\Util\AnimationManager.cpp" />
+    <ClCompile Include="Source\GameEngine\EntitySystem\Components\AnimationComponent.cpp" />
+    <ClCompile Include="Source\GameEngine\EntitySystem\Components\CollidablePhysicsComponent.cpp" />
+    <ClCompile Include="Source\GameEngine\EntitySystem\Components\CollidableComponent.cpp" />
+    <ClCompile Include="Source\GameEngine\Util\CollisionManager.cpp" />
+    <ClCompile Include="Source\GameEngine\Util\SoundManager.cpp" />
+    <ClCompile Include="Source\Game\GameBoard.cpp" />
+    <ClCompile Include="Source\GameEngine\EntitySystem\Components\RenderComponent.cpp" />
+    <ClCompile Include="Source\GameEngine\EntitySystem\Component.cpp" />
+    <ClCompile Include="Source\main.cpp" />
+    <ClCompile Include="Source\GameEngine\EntitySystem\Entity.cpp" />
+    <ClCompile Include="Source\GameEngine\GameEngineMain.cpp" />
+    <ClCompile Include="Source\GameEngine\Util\TextureManager.cpp" />
+    <ClCompile Include="Source\GameEngine\EntitySystem\Components\SpriteRenderComponent.cpp" />
+    <ClCompile Include="Source\Game\Scoreboard\Entities\ScoreboardEntity.cpp" />
+    <ClCompile Include="Source\Game\Scoreboard\Entities\ScoreEntity.cpp" />
+    <ClCompile Include="Source\Game\Scoreboard\Entities\TimerEntity.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\GameEngine\Grid.h" />
+    <ClInclude Include="Source\GameEngine\EntitySystem\Components\TextRenderComponent.h" />
+    <ClInclude Include="Source\GameEngine\Util\CameraManager.h" />
+    <ClInclude Include="Source\GameEngine\EntitySystem\Components\ParticleComponent.h" />
+    <ClInclude Include="Source\GameEngine\EntitySystem\Components\ParticleEmitterComponent.h" />
+    <ClInclude Include="Source\GameEngine\EntitySystem\Components\SoundComponent.h" />
+    <ClInclude Include="Source\GameEngine\Util\AnimationManager.h" />
+    <ClInclude Include="Source\GameEngine\EntitySystem\Components\AnimationComponent.h" />
+    <ClInclude Include="Source\GameEngine\EntitySystem\Components\CollidablePhysicsComponent.h" />
+    <ClInclude Include="Source\GameEngine\EntitySystem\Components\CollidableComponent.h" />
+    <ClInclude Include="Source\GameEngine\Util\CollisionManager.h" />
+    <ClInclude Include="Source\GameEngine\Util\SoundManager.h" />
+    <ClInclude Include="Source\Game\GameBoard.h" />
+    <ClInclude Include="Source\GameEngine\EntitySystem\Components\RenderComponent.h" />
+    <ClInclude Include="Source\GameEngine\EntitySystem\Component.h" />
+    <ClInclude Include="Source\GameEngine\EntitySystem\Entity.h" />
+    <ClInclude Include="Source\GameEngine\GameEngineMain.h" />
+    <ClInclude Include="Source\GameEngine\Util\TextureManager.h" />
+    <ClInclude Include="Source\GameEngine\EntitySystem\Components\SpriteRenderComponent.h" />
+    <ClInclude Include="Source\Game\Scoreboard\Entities\ScoreboardEntity.h" />
+    <ClInclude Include="Source\Game\Scoreboard\Entities\ScoreEntity.h" />
+    <ClInclude Include="Source\Game\Scoreboard\Entities\TimerEntity.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Resources\fonts\arial.ttf" />
     <Filter Include="Source Files">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
@@ -90,6 +140,9 @@
     <ClCompile Include="Source\Game\Ball\BallEntity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Game\Ball\BallComponents\BallMovementComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\GameEngine\GameEngineMain.h">
@@ -156,6 +209,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Game\Ball\BallEntity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Game\Ball\BallComponents\BallMovementComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
