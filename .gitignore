@@ -1,6 +1,10 @@
 #Mac OS files
 */.DS_Store
 
+#CLion Files
+*/.idea
+.idea
+
 #Temporary files
 *.o
 */output
