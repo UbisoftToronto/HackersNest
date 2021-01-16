@@ -10,6 +10,7 @@ ScoreboardEntity::ScoreboardEntity()
 	// Render
 	m_renderComponent = AddComponent<GameEngine::RenderComponent>();
 	m_renderComponent->SetFillColor(sf::Color::White);
+	m_renderComponent->SetZLevel(1);
 }
 
 

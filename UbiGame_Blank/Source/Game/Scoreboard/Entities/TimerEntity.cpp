@@ -11,7 +11,7 @@ TimerEntity::TimerEntity(int seconds)
 	m_timerTextRenderComponent->SetColor(sf::Color::Blue);
 	m_timerTextRenderComponent->SetCharacterSizePixels(GameEngine::GameEngineMain::GetPixelHeight(4.f));
 	m_timerTextRenderComponent->SetFillColor(sf::Color::Transparent);
-	m_timerTextRenderComponent->SetZLevel(1);
+	m_timerTextRenderComponent->SetZLevel(2);
 
 	m_timerTextRenderComponent->SetString(std::to_string(seconds));
 }

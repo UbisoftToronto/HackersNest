@@ -11,7 +11,7 @@ ScoreEntity::ScoreEntity(std::string score)
 	m_scoreTextRenderComponent->SetColor(sf::Color::Blue);
 	m_scoreTextRenderComponent->SetCharacterSizePixels(GameEngine::GameEngineMain::GetPixelHeight(4.f));
 	m_scoreTextRenderComponent->SetFillColor(sf::Color::Transparent);
-	m_scoreTextRenderComponent->SetZLevel(1);
+	m_scoreTextRenderComponent->SetZLevel(2);
 
 	m_scoreTextRenderComponent->SetString(score);
 }
