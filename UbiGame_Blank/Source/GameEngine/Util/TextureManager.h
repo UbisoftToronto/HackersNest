@@ -12,7 +12,7 @@ namespace GameEngine
 		{
 			None = -1,
 
-			AddYourTexturesEnumerationsHere, // Replace this for your own enumerations
+			Ball,
 
 			Count,
 		};
@@ -20,6 +20,10 @@ namespace GameEngine
 
 	inline const char* GetPath(eTexture::type texture)
 	{
+		switch (texture) {
+		case eTexture::Ball: return "whiteball.png";
+		}
+
 		return "UnknownTexType";
 	}
 

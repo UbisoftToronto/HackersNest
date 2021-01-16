@@ -7,7 +7,8 @@
 namespace Game
 {
 	//Used for storing and controlling all game related entities, as well as providing an entry point for the "game" side of application	
-	class PlayerEntity;	
+	class PlayerEntity;
+	class BallEntity;
 
 	class GameBoard
 	{
@@ -26,7 +27,7 @@ namespace Game
 		GameEngine::Grid* Border;
 
 		void CreateBall();
-		GameEngine::Entity* ball;
+		BallEntity* ball;
 
 	
 		

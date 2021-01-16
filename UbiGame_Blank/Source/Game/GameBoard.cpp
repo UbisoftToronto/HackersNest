@@ -2,8 +2,7 @@
 
 #include "GameEngine/GameEngineMain.h"
 #include "GameEngine/Grid.h"
-
-
+#include "Game/Ball/BallEntity.h"
 
 
 using namespace Game;
@@ -45,11 +44,11 @@ void GameBoard::CreatePaddle() {
 }
 
 void GameBoard::CreateBall() {
-	ball = new GameEngine::Entity();
+	ball = new BallEntity();
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(ball);
 
-	ball->SetPos(sf::Vector2f(10.f, 10.f));
-	ball->SetSize(sf::Vector2f(10.f, 10.f));
+	ball->SetPos(sf::Vector2f(100.f, 100.f));
+	ball->SetSize(sf::Vector2f(20.f, 20.f));
 }
 
 
