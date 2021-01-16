@@ -3,6 +3,7 @@
 #include "GameEngine/GameEngineMain.h"
 #include "GameEngine/Grid.h"
 #include "Game/Ball/BallEntity.h"
+#include "Game/Paddle/PaddleEntity.h"
 
 
 using namespace Game;
@@ -33,14 +34,16 @@ void GameBoard::Update()
 void GameBoard::CreatePaddle() {
 	left_paddle = new PaddleEntity();
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(left_paddle);
-	right_paddle = new PaddleEntity();
+	right_paddle = new Game::PaddleEntity();
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(right_paddle);
 
 	left_paddle->SetPos(sf::Vector2f(10.f, 10.f));
 	left_paddle->SetSize(sf::Vector2f(50.f, 10.f));
+	
 
 	right_paddle->SetPos(sf::Vector2f(100.f, 100.f));
 	right_paddle->SetSize(sf::Vector2f(50.f, 10.f));
+
 
 	//Creates the object in the program
 	GameEngine::RenderComponent* render_left = static_cast<GameEngine::RenderComponent*>(left_paddle->AddComponent<GameEngine::RenderComponent>());
@@ -48,7 +51,7 @@ void GameBoard::CreatePaddle() {
 
 	//set color
 	render_left->SetFillColor(sf::Color::Red);
-	render_right->SetFillColor(sf::Color::Blue);
+	render_right->SetFillColor(sf::Color::Blue); 
 
 }
 
