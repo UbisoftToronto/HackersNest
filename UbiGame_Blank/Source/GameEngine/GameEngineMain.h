@@ -30,6 +30,12 @@ namespace GameEngine
 		void OnInitialised();
 		bool IsGameOver() const { return m_gameBoard && m_gameBoard->IsGameOver(); }
 
+		// Paint Pong methods
+		// Returns pixel height after scaling the WINDOW_HEIGHT to GAME_HEIGHT
+		static float GetPixelHeight(float yPosition) { return yPosition * WINDOW_HEIGHT / GAME_HEIGHT; }
+		// Returns pixel width after scaling the WINDOW_WIDTH to GAME_WIDTH
+		static float GetPixelWidth(float xPosition) { return xPosition * WINDOW_WIDTH / GAME_WIDTH; }
+
 	private:
 		GameEngineMain();
 
@@ -59,5 +65,9 @@ namespace GameEngine
 		float				m_lastDT;
 
 		bool m_windowInitialised;
+
+		// Paint Pong fields
+		static float GAME_HEIGHT;
+		static float GAME_WIDTH;
 	};
 }
