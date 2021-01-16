@@ -59,6 +59,13 @@ void PlayerMovementComponent::Update()
     
     //Update the entity position
     GetEntity()->SetPos(GetEntity()->GetPos() + displacement);
+
+    sf::Vector2f unit{0.f,1.f};
+
+    float dot = pos_diff.x*unit.x + pos_diff.y*unit.y;
+    float det = pos_diff.x*unit.y - pos_diff.y*unit.x;
+    GetEntity()->SetRotation(atan(dot, det));
+    std::cout<< atan(dot, det) << std::endl;
 }
 
 void PlayerMovementComponent::OnAddToWorld() {}
