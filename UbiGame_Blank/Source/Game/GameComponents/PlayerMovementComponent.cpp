@@ -1,11 +1,12 @@
 #include "PlayerMovementComponent.h"
 #include <SFML/Window/Keyboard.hpp>
 #include "GameEngine/GameEngineMain.h"
+#include <iostream>
 
 using namespace Game;
 
-
-void PlayerMovementComponent::setPlayerControls(int playerControls[4]) {
+void PlayerMovementComponent::setPlayerControls(int playerControls[4]) 
+{
     controls[0] = playerControls[0];
     controls[1] = playerControls[1];
     controls[2] = playerControls[2];

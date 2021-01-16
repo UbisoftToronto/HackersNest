@@ -2,14 +2,13 @@
 #include "GameEngine/EntitySystem/Component.h"
 #include <SFML/Window/Keyboard.hpp>
 
-
 namespace Game
 {
 class PlayerMovementComponent : public GameEngine::Component
     {
     public:
-        virtual void Update() override;
-        virtual void OnAddToWorld() override;
+        virtual void Update();
+        virtual void OnAddToWorld();
 
         void setPlayerControls(int playerControls[4]);
 

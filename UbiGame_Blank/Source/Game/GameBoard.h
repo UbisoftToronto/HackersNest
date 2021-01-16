@@ -1,5 +1,7 @@
 #pragma once
 #include "GameEngine/EntitySystem/Entity.h"
+#include "Game/GameEntities/Player.h"
+#include "Game/GameEntities/Bullet.h"
 
 #include <SFML/System/Vector2.hpp>
 #include <vector>
@@ -19,8 +21,10 @@ namespace Game
 		bool IsGameOver() { return false; }
 
     private:
-	    GameEngine::Entity *player1;
-	    GameEngine::Entity *player2;
+	    Game::Player *player1;
+		Game::Player *player2;
+
+		Game::Bullet *bullet;
 	};
 }
 
