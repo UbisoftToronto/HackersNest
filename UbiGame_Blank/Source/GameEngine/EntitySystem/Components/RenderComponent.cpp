@@ -44,8 +44,9 @@ void RenderComponent::Render(sf::RenderTarget* target)
 		//Debug draw of entity pos
 		sf::RectangleShape shape(GetEntity()->GetSize());
 		sf::Vector2f pos = GetEntity()->GetPos();
-		pos -= shape.getSize() / 2.f;
+		shape.setOrigin(shape.getSize() / 2.f);
 		shape.setFillColor(m_fillColor);
+		shape.setRotation(GetEntity()->GetRot());
 		shape.setPosition(pos);
 
 		target->draw(shape);

@@ -14,6 +14,12 @@ namespace GameEngine
 		virtual void OnRemoveFromWorld() override;
 
 		virtual void Update() override;
+
+		bool didCollide() const;
+		Entity* getCollidedEntity() const;
+	protected:
+		bool m_didCollide;
+		Entity* collidedEntity;
 	};
 }
 

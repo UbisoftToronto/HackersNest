@@ -163,8 +163,8 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Game\GameComponents\ProjectilePhysicsComponent.cpp" />
     <ClCompile Include="Source\Game\GameComponents\PlayerActionComponent.cpp" />
-    <ClCompile Include="Source\Game\GameComponents\ProjectileMovementComponent.cpp" />
     <ClCompile Include="Source\Game\GameComponents\PlayerMovementComponent.cpp" />
     <ClCompile Include="Source\Game\GameEntities\Bullet.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\TextRenderComponent.cpp" />
@@ -182,7 +182,7 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\RenderComponent.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Component.cpp" />
     <ClCompile Include="Source\Game\GameEntities\Player.cpp" />
-    <ClCompile Include="Source\Game\GameEntities\text.cpp" />
+    <ClCompile Include="Source\Game\GameEntities\Text.cpp" />
     <ClCompile Include="Source\Game\GameEntities\Wall.cpp" />
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Entity.cpp" />
@@ -191,8 +191,8 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\SpriteRenderComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Game\GameComponents\ProjectilePhysicsComponent.h" />
     <ClInclude Include="Source\Game\GameComponents\PlayerActionComponent.h" />
-    <ClInclude Include="Source\Game\GameComponents\ProjectileMovementComponent.h" />
     <ClInclude Include="Source\Game\GameComponents\PlayerMovementComponent.h" />
     <ClInclude Include="Source\Game\GameEntities\Bullet.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\TextRenderComponent.h" />
@@ -214,7 +214,7 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClInclude Include="Source\GameEngine\Util\TextureManager.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\SpriteRenderComponent.h" />
     <ClInclude Include="Source\Game\GameEntities\Player.h" />
-    <ClInclude Include="Source\Game\GameEntities\text.h" />
+    <ClInclude Include="Source\Game\GameEntities\Text.h" />
     <ClInclude Include="Source\Game\GameEntities\Wall.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

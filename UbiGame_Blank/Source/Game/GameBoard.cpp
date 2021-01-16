@@ -9,17 +9,18 @@ using namespace Game;
 GameBoard::GameBoard() : player1(nullptr), player2(nullptr), bullet(nullptr)
 
 {
-    int player1Controls[4] = { sf::Keyboard::A, sf::Keyboard::D, sf::Keyboard::W, sf::Keyboard::S };
-    int player2Controls[4] = { sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::Up, sf::Keyboard::Down };
+    int player1Controls[6] = { sf::Keyboard::A, sf::Keyboard::D, sf::Keyboard::W, sf::Keyboard::S, sf::Keyboard::Q, sf::Keyboard::E };
+    int player2Controls[6] = { sf::Keyboard::Numpad1, sf::Keyboard::Numpad3, sf::Keyboard::Numpad5, sf::Keyboard::Numpad2, sf::Keyboard::Numpad4, sf::Keyboard::Numpad6 };
 
     player1 = new Game::Player();
     player1->setControls(player1Controls);
+    player1->setActionButton(sf::Keyboard::Space);
     GameEngine::GameEngineMain::GetInstance()->AddEntity(player1);
 
     player2 = new Game::Player();
     player2->setControls(player2Controls);
+    player2->setActionButton(sf::Keyboard::Enter);
     GameEngine::GameEngineMain::GetInstance()->AddEntity(player2);
-    
 }
 
 

@@ -8,13 +8,18 @@ namespace Game
 	class PlayerActionComponent : public GameEngine::Component
 	{
 	public:
+		PlayerActionComponent();
+		~PlayerActionComponent();
+
 		virtual void Update();
 		virtual void OnAddToWorld();
 
 		void setPlayerAction(int playerAction);
 	private:
-		int playerAction;
+		int playerActionKey;
 		Game::Bullet* bullet;
+		bool firePressed;
 
+		void spawnBullet();
 	};
 }

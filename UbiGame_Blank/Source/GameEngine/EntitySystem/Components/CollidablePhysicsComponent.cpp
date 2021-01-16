@@ -63,7 +63,22 @@ void CollidablePhysicsComponent::Update()
 					pos.y += intersection.height;
 			}
 
-			GetEntity()->SetPos(pos);
+			if (colComponent->GetEntity()->getEntityType() == EntityType::PLAYER)
+			{
+				m_didCollide = true;
+				collidedEntity = colComponent->GetEntity();
+				GetEntity()->SetPos(pos);
+			}
 		}
 	}
+}
+
+bool GameEngine::CollidablePhysicsComponent::didCollide() const
+{
+	return m_didCollide;
+}
+
+Entity* GameEngine::CollidablePhysicsComponent::getCollidedEntity() const
+{
+	return collidedEntity;
 }
