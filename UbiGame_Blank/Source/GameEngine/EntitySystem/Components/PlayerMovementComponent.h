@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../Component.h"
-#include "GameEngine\GameEngineMain.h"
+
 namespace Game
 {
     class PlayerMovementComponent : public GameEngine::Component
