@@ -14,8 +14,8 @@ using namespace GameEngine;
 float GameEngineMain::WINDOW_HEIGHT = 500;
 float GameEngineMain::WINDOW_WIDTH = 500;
 // For some reason app height and width differ from WINDOW_HEIGHT and WINDOW_WIDTH
-float GameEngineMain::GAME_HEIGHT = 80; 
-float GameEngineMain::GAME_WIDTH = 50;
+float GameEngineMain::GAME_HEIGHT = 100; 
+float GameEngineMain::GAME_WIDTH = 100;
 //Nullptr init for singleton class
 GameEngineMain* GameEngineMain::sm_instance = nullptr;
 sf::Clock		GameEngineMain::sm_deltaTimeClock;
