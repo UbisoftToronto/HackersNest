@@ -1,7 +1,6 @@
 #include "PlayerMovementComponent.h"
 #include <SFML/Window/Keyboard.hpp>
 #include "GameEngine/GameEngineMain.h"
-#include <iostream>
 
 using namespace Game;
 
