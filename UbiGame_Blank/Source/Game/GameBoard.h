@@ -19,7 +19,8 @@ namespace Game
 		bool IsGameOver() { return false; }
 
     private:
-	    GameEngine::Entity *player;
+	    GameEngine::Entity *player1;
+	    GameEngine::Entity *player2;
 	};
 }
 

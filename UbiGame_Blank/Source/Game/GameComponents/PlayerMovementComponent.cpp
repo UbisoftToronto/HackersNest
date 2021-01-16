@@ -19,7 +19,7 @@ void PlayerMovementComponent::Update()
     const float dt = GameEngine::GameEngineMain::GetTimeDelta();
 
     sf::Vector2f displacement{0.0f, 0.0f};
-    const float speedAmount = 50.0f;
+    const float speedAmount = 350.0f;
 
     if(sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(controls[0])))
     {
@@ -32,11 +32,11 @@ void PlayerMovementComponent::Update()
 
     if(sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(controls[2])))
     {
-        displacement.y += speedAmount * dt;
+        displacement.y -= speedAmount * dt;
     }
     if(sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(controls[3])))
     {
-        displacement.y -= speedAmount * dt;
+        displacement.y += speedAmount * dt;
     }
 
     GetEntity()->SetPos(GetEntity() -> GetPos() + displacement);
