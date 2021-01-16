@@ -4,6 +4,8 @@
 #CLion Files
 */.idea
 .idea
+cmake-build-debug
+CMakeLists.txt
 
 #Temporary files
 *.o
