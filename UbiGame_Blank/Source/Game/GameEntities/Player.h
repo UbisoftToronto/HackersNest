@@ -20,8 +20,15 @@ namespace Game
 		int getPlayerHealth() const { return playerHealth; }
 		void setPlayerHealth(int health) { playerHealth = health; }
 
+		void disableInput(bool disable);
+
+		void addBullet(Game::Bullet* bullet);
+		void clearBullets();
+
 	private:
 		int playerHealth;
+
+		std::vector<Game::Bullet*> bullets;
 
 		// Components 
 		Game::PlayerMovementComponent* movementComponent;

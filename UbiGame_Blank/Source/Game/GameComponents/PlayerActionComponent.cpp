@@ -20,6 +20,8 @@ void Game::PlayerActionComponent::Update()
 {
 	Component::Update();
 
+	if (inputDisabled) return;
+
 	if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(playerActionKey))) {
 		firePressed = true;
 		
@@ -44,14 +46,28 @@ void Game::PlayerActionComponent::setPlayerAction(int action)
 	this->playerActionKey = action;
 }
 
+void Game::PlayerActionComponent::disableInput(bool disable)
+{
+	inputDisabled = disable;
+}
+
 void PlayerActionComponent::spawnBullet() 
 {
-	bullet = new Game::Bullet();
-	bullet->SetPos(GetEntity()->GetPos());
-	bullet->setOwner(GetEntity());
+	GameEngine::Entity* entity = GetEntity();
+	if (entity->getEntityType() == GameEngine::EntityType::PLAYER) 
+	{
+		Game::Player* player = static_cast<Game::Player*>(GetEntity());
+		Game::Bullet* bullet = new Game::Bullet();
 
-	float rotation = GetEntity()->GetRot();
-	sf::Vector2f playerFacingUnitVector = sf::Vector2f(cos(rotation / 180 * M_PI), sin(rotation / 180 * M_PI));
-	bullet->setDirectionVector(playerFacingUnitVector);
-	GameEngine::GameEngineMain::GetInstance()->AddEntity(bullet);
+		player->addBullet(bullet);
+		bullet->setOwner(player);
+		bullet->SetPos(player->GetPos());
+		
+		float rotation = GetEntity()->GetRot();
+		sf::Vector2f playerFacingUnitVector = sf::Vector2f(cos(rotation / 180 * M_PI), sin(rotation / 180 * M_PI));
+		bullet->setDirectionVector(playerFacingUnitVector);
+		GameEngine::GameEngineMain::GetInstance()->AddEntity(bullet);
+	}
+	
+	
 }

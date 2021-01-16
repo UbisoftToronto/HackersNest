@@ -9,8 +9,6 @@
 
 namespace Game
 {
-
-
 	class GameBoard
 	{
 	public:

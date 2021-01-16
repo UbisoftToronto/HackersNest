@@ -58,6 +58,11 @@ void GameBoard::updateRoundState()
       roundStartCountdown -= GameEngine::GameEngineMain::GetTimeDelta();
       return;
   }
+  else 
+  {
+      player1->disableInput(false);
+      player2->disableInput(false);
+  }
 
   if(currentRoundTimer > 0){
       currentRoundTimer -= GameEngine::GameEngineMain::GetTimeDelta();
@@ -93,6 +98,12 @@ void Game::GameBoard::resetPlayers()
 
     player1->SetPos(sf::Vector2f(50.f, screenHeight / 2.f));
     player2->SetPos(sf::Vector2f(screenWidth - 50.f, screenHeight / 2.f));
+
+    player1->clearBullets();
+    player2->clearBullets();
+
+    player1->disableInput(true);
+    player2->disableInput(true);
 }
 
 void GameBoard::buildGame()

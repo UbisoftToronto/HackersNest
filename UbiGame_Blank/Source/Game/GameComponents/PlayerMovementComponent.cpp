@@ -14,9 +14,16 @@ void PlayerMovementComponent::setPlayerControls(int playerControls[6])
     controls[5] = playerControls[5];
 }
 
+void Game::PlayerMovementComponent::disableInput(bool disable)
+{
+    inputDisabled = disable;
+}
+
 void PlayerMovementComponent::Update()
 {
     Component::Update();
+
+    if (inputDisabled) return;
 
     const float dt = GameEngine::GameEngineMain::GetTimeDelta();
 
