@@ -21,7 +21,7 @@ GameBoard::GameBoard() : player1(nullptr), player2(nullptr)
     //Render
     GameEngine::RenderComponent* render1 = player1->AddComponent<GameEngine::RenderComponent>();
     GameEngine::RenderComponent* render2 = player2->AddComponent<GameEngine::RenderComponent>();
-    
+
     //Movement
     int player1Controls[4] = {sf::Keyboard::A, sf::Keyboard::D, sf::Keyboard::W, sf::Keyboard::S};
     int player2Controls[4] = {sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::Up, sf::Keyboard::Down};
@@ -37,8 +37,19 @@ GameBoard::~GameBoard()
 
 }
 
-
 void GameBoard::Update()
 {	
 	
+}
+
+void GameBoard::setGameStarted(bool newState) {
+    gameStarted = newState;
+}
+
+bool GameBoard::getGameStarted() {
+    return gameStarted;
+}
+
+void GameBoard::buildStartScreen(){
+
 }

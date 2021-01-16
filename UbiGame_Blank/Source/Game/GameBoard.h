@@ -18,9 +18,15 @@ namespace Game
 		void Update();		
 		bool IsGameOver() { return false; }
 
+        void setGameStarted(bool newState);
+        bool getGameStarted();
+
     private:
+	    bool gameStarted = false;
 	    GameEngine::Entity *player1;
 	    GameEngine::Entity *player2;
+
+	    std::vector<GameEngine::Entity*> guiEntities;
 	};
 }
 
