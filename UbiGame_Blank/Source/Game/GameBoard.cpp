@@ -2,11 +2,12 @@
 
 #include "GameEngine/GameEngineMain.h"
 #include "Game/GameComponents/PlayerMovementComponent.h"
+#include "Game/GameEntities/Text.h"
 
 
 using namespace Game;
 
-GameBoard::GameBoard() : player1(nullptr), player2(nullptr)
+GameBoard::GameBoard() : player1(nullptr), player2(nullptr), textTest(nullptr)
 {
     player1 = new GameEngine::Entity();
     GameEngine::GameEngineMain::GetInstance()->AddEntity(player1);
@@ -29,6 +30,10 @@ GameBoard::GameBoard() : player1(nullptr), player2(nullptr)
     player1->GetComponent<Game::PlayerMovementComponent>()->setPlayerControls(player1Controls);
     player2->AddComponent<Game::PlayerMovementComponent>();
     player2->GetComponent<Game::PlayerMovementComponent>()->setPlayerControls(player2Controls);
+
+    textTest = new Text("Game Name", sf::Color::White, 100, sf::Vector2f(1024/2, 50.0f));
+    textTest = new Text("Press SPACE to start!", sf::Color::White, 100, sf::Vector2f(100.0f, 50.0f));
+    GameEngine::GameEngineMain::GetInstance()->AddEntity(textTest);
 }
 
 
@@ -48,8 +53,4 @@ void GameBoard::setGameStarted(bool newState) {
 
 bool GameBoard::getGameStarted() {
     return gameStarted;
-}
-
-void GameBoard::buildStartScreen(){
-
 }

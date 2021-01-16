@@ -23,8 +23,9 @@ namespace Game
 
     private:
 	    bool gameStarted = false;
-	    GameEngine::Entity *player1;
-	    GameEngine::Entity *player2;
+	    GameEngine::Entity* player1;
+	    GameEngine::Entity* player2;
+	    GameEngine::Entity* textTest;
 
 	    std::vector<GameEngine::Entity*> guiEntities;
 	};
