@@ -141,6 +141,10 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\Game\Ball\BallComponents\BallMovementComponent.cpp">
+    <ClCompile Include="Source\Game\Paddle\Paddlemovement2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Game\Paddle\PaddleEntity2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -212,6 +216,10 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Game\Ball\BallComponents\BallMovementComponent.h">
+    <ClInclude Include="Source\Game\Paddle\Paddlemovement2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Game\Paddle\PaddleEntity2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,6 +1,6 @@
 #pragma once
 #include "GameEngine/EntitySystem/Entity.h"
-#include "Game/Paddle/Paddlemovement.h"
+#include "Game/Paddle/Paddlemovement2.h"
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
 
 #include <SFML/System/Vector2.hpp>
@@ -10,16 +10,16 @@ namespace Game
 {
 	//Used for storing and controlling all game related entities, as well as providing an entry point for the "game" side of application	
 
-	class PaddleEntity : public GameEngine::Entity
+	class PaddleEntity2 : public GameEngine::Entity
 	{
 	public:
-		PaddleEntity();
-		~PaddleEntity();
-		
+		PaddleEntity2();
+		~PaddleEntity2();
+
 
 	protected:
-		Paddlemovement* paddleMovement;
-		
+		Paddlemovement2* paddleMovement2;
+
 
 	};
 }

@@ -1,6 +1,6 @@
 #include "PaddleEntity.h"
 #include "Game/Paddle/Paddlemovement.h"
-#include <GameEngine/EntitySystem/Components/RenderComponent.h>
+#include <GameEngine/EntitySystem/Components/SpriteRenderComponent.h>
 
 
 
@@ -10,9 +10,8 @@ using namespace Game;
 
 PaddleEntity::PaddleEntity() 
 {
-	//m_paddlerender->AddComponent<Paddlemovement>();
+	paddleMovement = AddComponent<Paddlemovement>();
 	
-	//set color
 	
 	//movement
 
