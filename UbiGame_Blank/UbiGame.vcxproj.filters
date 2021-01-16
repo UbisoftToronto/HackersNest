@@ -16,6 +16,9 @@
     <Filter Include="Source Files\GameEngine">
       <UniqueIdentifier>{142392d3-07ff-4296-ac90-43d6e7a6f943}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Movement">
+      <UniqueIdentifier>{a9d5f43e-32f4-4b71-8a41-eb1d3eea4a59}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\GameEngine\GameEngineMain.cpp">
@@ -73,6 +76,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\TextRenderComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Game\Paddle\Paddlemovement.cpp">
+      <Filter>Source Files\Movement</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Game\Paddle\PaddleEntity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\GameEngine\Grid.cpp">
@@ -135,6 +144,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\TextRenderComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Game\Paddle\Paddlemovement.h">
+      <Filter>Source Files\Movement</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Game\Paddle\PaddleEntity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\GameEngine\Grid.h">
