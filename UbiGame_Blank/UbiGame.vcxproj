@@ -181,6 +181,9 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClCompile Include="Source\Game\GameBoard.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\RenderComponent.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Component.cpp" />
+    <ClCompile Include="Source\Game\Scoreboard\Entities\ScoreboardEntity.cpp" />
+    <ClCompile Include="Source\Game\Scoreboard\Entities\ScoreEntity.cpp" />
+    <ClCompile Include="Source\Game\Scoreboard\Entities\TimerEntity.cpp" />
     <ClCompile Include="Source\Game\Paddle\PaddleEntity.cpp" />
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Entity.cpp" />
@@ -212,6 +215,12 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClInclude Include="Source\GameEngine\GameEngineMain.h" />
     <ClInclude Include="Source\GameEngine\Util\TextureManager.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\SpriteRenderComponent.h" />
+    <ClInclude Include="Source\Game\Scoreboard\Entities\ScoreboardEntity.h" />
+    <ClInclude Include="Source\Game\Scoreboard\Entities\ScoreEntity.h" />
+    <ClInclude Include="Source\Game\Scoreboard\Entities\TimerEntity.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Resources\fonts\arial.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\img\Black.png" />
