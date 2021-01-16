@@ -26,11 +26,8 @@ namespace Game
 		void CreateBall();
 		GameEngine::Entity* ball;
 
-		void CreateBorder();
-		GameEngine::Entity* top_border;
-		GameEngine::Entity* bottom_border;
-		GameEngine::Entity* left_border;
-		GameEngine::Entity* right_border;
+	GameEngine:: Entity* Border;
+		
 
 		void CreateScoreboard();
 		GameEngine::Entity* scoreboard;
