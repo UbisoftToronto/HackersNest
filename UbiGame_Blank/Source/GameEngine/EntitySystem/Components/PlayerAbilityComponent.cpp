@@ -69,11 +69,10 @@ void PlayerAbilityComponent::Update()
                     hook = static_cast<HookComponent*>
                     (e->AddComponent<HookComponent>());
 
-                    GameEngine::SpriteRenderComponent* spriteRender = static_cast<GameEngine::SpriteRenderComponent*>
-                    (e->AddComponent<GameEngine::SpriteRenderComponent>());
+                    GameEngine::RenderComponent* spriteRender = e->AddComponent<GameEngine::RenderComponent>();
 
                     spriteRender->SetFillColor(sf::Color::Red);
-                    spriteRender->SetTexture(GameEngine::eTexture::Hook);
+                    //spriteRender->SetTexture(GameEngine::eTexture::Hook);
 
                    sf::Vector2f mousePos{ static_cast<float>(sf::Mouse::getPosition().x),  static_cast<float>(sf::Mouse::getPosition().y) };
                     hook->liveTime = 4.f;
