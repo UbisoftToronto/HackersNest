@@ -2,7 +2,7 @@
 #include "../GameEngine/EntitySystem/Components/CollidablePhysicsComponent.h"
 #include "GameEngine/GameEngineMain.h"
 #include "../GameEngine/EntitySystem/Components/PlayerMovementComponent.h"
-
+#include "../GameEngine/EntitySystem/Components/PlayerAbilityComponent.h"
 
 
 using namespace Game;
@@ -22,6 +22,7 @@ void GameBoard::CreatePlayer()
 
     spriteRender->SetTexture(GameEngine::eTexture::Player);
 
+    m_player->AddComponent<Game::PlayerAbilityComponent>();
     //Adding CollidingPhysicsComponent to Player
     m_player->AddComponent<GameEngine::CollidablePhysicsComponent>();
 
@@ -75,10 +76,10 @@ void GameBoard::CreateObstacle(float x_cord, float y_cord,float width, float hei
     
     if(!hit_box) //if not a hit box, its a pong ball. Give it a visual.
     {
-        GameEngine::SpriteRenderComponent* render = static_cast<GameEngine::SpriteRenderComponent*>
+        GameEngine::SpriteRenderComponent* spriteRender = static_cast<GameEngine::SpriteRenderComponent*>
         (obstacle->AddComponent<GameEngine::SpriteRenderComponent>());
-        render->SetFillColor(sf::Color::Transparent);
-        render->SetTexture(GameEngine::eTexture::PongBall);
+        spriteRender->SetFillColor(sf::Color::Transparent);
+        spriteRender->SetTexture(GameEngine::eTexture::PongBall);
     }
 
     obstacle->AddComponent<GameEngine::CollidableComponent>();
