@@ -41,7 +41,10 @@ void TimerEntity::Update()
 	time_t nowInSeconds = time(NULL);
 	int secondsPassed = nowInSeconds - startTimeInSeconds;
 	secondsRemaining = timerSeconds - secondsPassed;
-	if (secondsRemaining >= 0) {
+	if (secondsRemaining > 0) {
 		m_timerTextRenderComponent->SetString(std::to_string(secondsRemaining));
+	}
+	else {
+		m_timerTextRenderComponent->SetString(std::to_string(0));
 	}
 }

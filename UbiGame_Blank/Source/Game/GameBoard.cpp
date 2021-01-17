@@ -27,10 +27,9 @@ GameBoard::~GameBoard()
 
 void GameBoard::Update()
 {	
-
-		Border->UpdatePixel(ball->GetPos().x, ball->GetPos().y, 0,scoreboard);
-
-	
+	if (scoreboard->GetSecondsRemaining() > 0) {
+		Border->UpdatePixel(ball->GetPos().x, ball->GetPos().y, 0, scoreboard);
+	}
 }
 
 

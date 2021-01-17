@@ -20,6 +20,7 @@ namespace Game
 		virtual void InitScoreboard();
 		// Call this method to update the score
 		virtual void UpdateScore(int playerNumber, int score); 
+		virtual int GetSecondsRemaining() { return timer->GetSecondsRemaining(); };
 
 	protected:
 		GameEngine::RenderComponent* m_renderComponent;
