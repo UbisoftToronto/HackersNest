@@ -109,6 +109,8 @@ void Game::GameBoard::resetPlayers()
 void GameBoard::buildGame()
 {
     drawBackground();
+    Game::Wall wallTest(sf::Vector2f(1280.0f, 40.0f), sf::Vector2f(640.0f, 20.0f));
+    GameEngine::GameEngineMain::GetInstance()->AddEntity(wallTest);
 
     int player1Controls[6] = { sf::Keyboard::A, sf::Keyboard::D, sf::Keyboard::W, sf::Keyboard::S, sf::Keyboard::Q, sf::Keyboard::E };
     int player2Controls[6] = { sf::Keyboard::Numpad1, sf::Keyboard::Numpad3, sf::Keyboard::Numpad5, sf::Keyboard::Numpad2, sf::Keyboard::Numpad4, sf::Keyboard::Numpad6 };
