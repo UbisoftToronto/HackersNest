@@ -68,6 +68,8 @@ void GameBoard::CreateObstacle(float x_cord, float y_cord,float width, float hei
     GameEngine::Entity* obstacle = new GameEngine::Entity();  
     GameEngine::GameEngineMain::GetInstance()->AddEntity(obstacle);
 
+    
+
     //Define Obstacle
     obstacle->SetPos(sf::Vector2f(x_cord, y_cord)); 
     obstacle->SetSize(sf::Vector2f(width, height));
