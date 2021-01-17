@@ -49,4 +49,4 @@ void NetComponent::Update()
 
 }  
 
-void HookComponent::OnAddToWorld() {}
+void NetComponent::OnAddToWorld() {}
