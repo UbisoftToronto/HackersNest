@@ -5,10 +5,11 @@
 #include <GameEngine/EntitySystem/Components/SpriteRenderComponent.h>
 
 using namespace Game;
-Grid::Grid() 
+Grid::Grid()
 	: top_border(nullptr), bottom_border(nullptr), left_border(nullptr), right_border(nullptr)
 {
 	CreateBorder();
+	
 }
 
 Grid::~Grid() {
@@ -43,7 +44,7 @@ void Grid::CreateBorder() {
 	top_border->SetSize(sf::Vector2f(w, border_w + 3));
 
 	bottom_border->SetPos(sf::Vector2f(w / 2, h));
-	bottom_border->SetSize(sf::Vector2f(w, border_w));
+	bottom_border->SetSize(sf::Vector2f(w,border_w+ h/5));
 
 	left_border->SetPos(sf::Vector2f(0, h / 2));
 	left_border->SetSize(sf::Vector2f(border_w, h));
@@ -73,11 +74,31 @@ void Grid::CreateBorder() {
 	
 }
 
-void Grid::UpdatePixel(float x, float y) {
+void Grid::UpdatePixel(float x, float y, int plyn, ScoreboardEntity* scoreboard) {
 	
 	sf::Texture* background = GameEngine::TextureManager::GetInstance()->GetTexture(GameEngine::eTexture::Background);
 	sf::Image img = background->copyToImage();
 	sf::Color check = img.getPixel(x, y);
-	img.setPixel(x, y,sf::Color::Blue);
+	sf::Color bc;
+
+	if (plyn == 1)
+		bc = sf::Color::Blue;
+	else
+		bc = sf::Color::Red;
+
+
+	img.setPixel(x, y,bc);
+
+	if (check != bc) {
+		if (plyn == 1) {
+			p1++;
+			scoreboard->UpdateScore(plyn, p1);
+		}
+		else {
+			p2++;
+			scoreboard->UpdateScore(plyn, p2);
+		}
+	}
+	
 	background->loadFromImage(img);
 }
