@@ -72,7 +72,7 @@ void PlayerAbilityComponent::Update()
                     GameEngine::SpriteRenderComponent* spriteRender = static_cast<GameEngine::SpriteRenderComponent*>
                     (e->AddComponent<GameEngine::SpriteRenderComponent>());
 
-                    spriteRender->setColorFill(sf::Color::Red);
+                    spriteRender->SetFillColor(sf::Color::Red);
                     //spriteRender->SetTexture(GameEngine::eTexture::Hook);
 
                    sf::Vector2f mousePos{ static_cast<float>(sf::Mouse::getPosition().x),  static_cast<float>(sf::Mouse::getPosition().y) };
