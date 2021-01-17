@@ -13,9 +13,16 @@ namespace Game
 
 		virtual void OnAddToWorld() override;
 		virtual void OnRemoveFromWorld() override;
+		virtual void Update() override;
+
+		virtual int GetSecondsRemaining() { return secondsRemaining; };
 
 	protected:
 		GameEngine::TextRenderComponent* m_timerTextRenderComponent;
+		// Number of seconds set on the timer;
+		int timerSeconds;
+		int secondsRemaining;
+		time_t startTimeInSeconds;
 	};
 }
 

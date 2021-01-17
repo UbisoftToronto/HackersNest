@@ -27,9 +27,7 @@ GameBoard::~GameBoard()
 
 void GameBoard::Update()
 {	
-	
 		Border->UpdatePixel(s / 10, s / 10);
-	
 }
 
 

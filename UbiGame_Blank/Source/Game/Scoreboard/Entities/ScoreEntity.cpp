@@ -3,7 +3,7 @@
 
 using namespace Game;
 
-ScoreEntity::ScoreEntity(std::string score)
+ScoreEntity::ScoreEntity(int score)
 {
 	// Render
 	m_scoreTextRenderComponent = AddComponent<GameEngine::TextRenderComponent>();
@@ -13,7 +13,7 @@ ScoreEntity::ScoreEntity(std::string score)
 	m_scoreTextRenderComponent->SetFillColor(sf::Color::Transparent);
 	m_scoreTextRenderComponent->SetZLevel(2);
 
-	m_scoreTextRenderComponent->SetString(score);
+	m_scoreTextRenderComponent->SetString(std::to_string(score));
 }
 
 
@@ -32,4 +32,9 @@ void ScoreEntity::OnAddToWorld()
 void ScoreEntity::OnRemoveFromWorld()
 {
 	Entity::OnRemoveFromWorld();
+}
+
+void ScoreEntity::UpdateScore(int score)
+{
+	m_scoreTextRenderComponent->SetString(std::to_string(score));
 }
