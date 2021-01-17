@@ -7,7 +7,7 @@ namespace Game
     class HookComponent : public GameEngine::Component
     {
     public:
-        float destination_x, destination_y;
+        float destination_x=0.f, destination_y=0.f;
         float liveTime;
         float retractTime;
         bool retracting = false;
