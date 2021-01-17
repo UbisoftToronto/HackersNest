@@ -2,6 +2,7 @@
 
 #include "../Component.h"
 #include "HookComponent.h"
+#include "NetComponent.h"
 
 namespace Game
 {

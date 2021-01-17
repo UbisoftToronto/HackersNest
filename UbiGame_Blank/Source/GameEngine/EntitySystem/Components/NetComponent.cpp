@@ -1,4 +1,4 @@
-#include "HookComponent.h"
+#include "NetComponent.h"
 #include <SFML/Window/Keyboard.hpp>   //<-- Add the keyboard include in order to get keyboard inputs
 #include <SFML/Window/Mouse.hpp>
 #include <SFML/Window/Window.hpp>
@@ -10,31 +10,35 @@
 
 using namespace Game;
 
-void HookComponent::Update()
+void NetComponent::Update()
 {
     Component::Update();
 
-    //Grabs how much time has passed since last frame
     const float dt = GameEngine::GameEngineMain::GetTimeDelta();
 
-        //By default the displacement is 0,0
     sf::Vector2f displacement{ 0.0f,0.0f };
 
-    //The amount of speed that we will apply when input is received
     float inputAmount = 145.0f;
 
+    sf::Vector2f windowPos{ static_cast<float>(GetEntity()->window->getPosition().x), static_cast<float>(GetEntity()->window->getPosition().y) };
+
+    sf::Vector2f destination{destination_x, destination_y};
+    sf::Vector2f pos_diff = destination - GetEntity()->GetPos() - windowPos;
+
+    float vector_length = sqrt(pos_diff.x * pos_diff.x + pos_diff.y * pos_diff.y);
+
+    GetEntity()->SetRotation(GetEntity()->GetRot() + dt*5);
+
     if (liveTime > 0) {
-        displacement.x += inputAmount * destination_x * dt;
-        displacement.y += inputAmount * destination_y * dt;
+        displacement.x += inputAmount * (pos_diff.x / vector_length) * dt;
+        displacement.y += inputAmount * (pos_diff.y / vector_length) * dt;
         liveTime -= dt;
-    } else if (retractTime > -0.25f) {
-        displacement.x -= inputAmount * destination_x * dt;
-        displacement.y -= inputAmount * destination_y * dt;
-        retractTime -= dt;
     } else {
         GameEngine::GameEngineMain::GetInstance()->RemoveEntity(GetEntity());
     }
-    GetEntity()->SetPos(GetEntity()->GetPos() + displacement);
-}
 
-void HookComponent::OnAddToWorld() {}
+    GetEntity()->SetPos(GetEntity()->GetPos() + displacement);
+
+}  
+
+void NetComponent::OnAddToWorld() {}
