@@ -47,6 +47,8 @@ GameBoard::GameBoard()
 {
 	CreatePlayer();
     CreateBackground();
+    CreateObstacle(0,0,700,350,true); //window hitbox
+    CreateObstacle(105,0,140,700,true); //River hitbox
     
 }
 
