@@ -2,6 +2,8 @@
 #include "GameEngine/EntitySystem/Entity.h"
 #include "Game/Paddle/Paddlemovement2.h"
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
+#include "GameEngine/EntitySystem/Components/CollidableComponent.h"
+#include "GameEngine/EntitySystem/Components/CollidablePhysicsComponent.h"
 
 #include <SFML/System/Vector2.hpp>
 #include <vector>
@@ -19,6 +21,8 @@ namespace Game
 
 	protected:
 		Paddlemovement2* paddleMovement2;
+		GameEngine::CollidableComponent* collidableComponet2;
+		//GameEngine::CollidablePhysicsComponent* physicsComponet2;
 
 
 	};

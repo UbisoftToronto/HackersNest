@@ -24,6 +24,7 @@ void Paddlemovement2::OnAddToWorld()
 void Paddlemovement2::Update()
 //Add keyboard movements
 {
+	int paddlesize = 50;
 	__super::Update();
 
 	//return time between time updated frame 
@@ -36,12 +37,18 @@ void Paddlemovement2::Update()
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
-		wantedVel.y += playerVel * dt;
+		if ((GetEntity()->GetPos().y + wantedVel.y) >= (0 + paddlesize / 2))
+		{
+			wantedVel.y -= playerVel * dt;
+		}
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
-		wantedVel.y -= playerVel * dt;
+		if ((GetEntity()->GetPos().y + wantedVel.y) < (GameEngine::GameEngineMain::GetPixelHeight(90.f) - paddlesize / 2))
+		{
+			wantedVel.y += playerVel * dt;
+		}
 	}
 
 	GetEntity()->SetPos(GetEntity()->GetPos() + wantedVel);
