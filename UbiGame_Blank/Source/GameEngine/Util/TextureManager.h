@@ -16,7 +16,7 @@ namespace GameEngine
 			Count,
 			Hook,
 			PongBall,
-			GreyBlock
+			GreyBlock,
 			Enemy
 		};
 	}	
