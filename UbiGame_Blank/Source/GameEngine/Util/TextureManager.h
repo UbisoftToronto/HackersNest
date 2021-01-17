@@ -14,7 +14,7 @@ namespace GameEngine
 			Player,
 			Background, 
 			Count,
-			Ball,
+			PongBall,
 		};
 	}	
 
@@ -24,7 +24,7 @@ namespace GameEngine
 		{
 			case eTexture::type::Player: return "Player.png";
 			case eTexture::type::Background: return "Map.png";
-			case eTexture::type::Ball: return "PongBall.png";
+			case eTexture::type::PongBall: return "PongBall.png";
 		}
 		return "Pudge.png";
 	}

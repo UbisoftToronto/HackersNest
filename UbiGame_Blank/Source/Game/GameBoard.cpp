@@ -1,5 +1,5 @@
 #include "GameBoard.h"
-#include "../GameEngine/EntitySystem/Components/CollidablePhysicsComponent.cpp"
+#include "../GameEngine/EntitySystem/Components/CollidablePhysicsComponent.h"
 #include "GameEngine/GameEngineMain.h"
 #include "../GameEngine/EntitySystem/Components/PlayerMovementComponent.h"
 
@@ -67,14 +67,18 @@ void GameBoard::CreateObstacle(float x_cord, float y_cord,float width, float hei
     GameEngine::Entity* obstacle = new GameEngine::Entity();  
     GameEngine::GameEngineMain::GetInstance()->AddEntity(obstacle);
 
+    
+
     //Define Obstacle
     obstacle->SetPos(sf::Vector2f(x_cord, y_cord)); 
     obstacle->SetSize(sf::Vector2f(width, height));
     
     if(!hit_box) //if not a hit box, its a pong ball. Give it a visual.
     {
-        spriteRender->SetFillColor(sf::Color::Transparent);
-        spriteRender->SetTexture(GameEngine::eTexture::PongBall);
+        GameEngine::SpriteRenderComponent* render = static_cast<GameEngine::SpriteRenderComponent*>
+        (obstacle->AddComponent<GameEngine::SpriteRenderComponent>());
+        render->SetFillColor(sf::Color::Transparent);
+        render->SetTexture(GameEngine::eTexture::PongBall);
     }
 
     obstacle->AddComponent<GameEngine::CollidableComponent>();
