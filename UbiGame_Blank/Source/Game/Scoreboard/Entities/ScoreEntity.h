@@ -8,11 +8,13 @@ namespace Game
 	class ScoreEntity : public GameEngine::Entity
 	{
 	public:
-		ScoreEntity(std::string score);
+		ScoreEntity(int score);
 		~ScoreEntity();
 
 		virtual void OnAddToWorld() override;
 		virtual void OnRemoveFromWorld() override;
+		
+		virtual void UpdateScore(int score);
 
 	protected:
 		GameEngine::TextRenderComponent* m_scoreTextRenderComponent;
