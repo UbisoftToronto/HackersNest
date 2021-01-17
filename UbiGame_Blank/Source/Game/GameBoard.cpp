@@ -1,5 +1,5 @@
 #include "GameBoard.h"
-
+#include "../GameEngine/EntitySystem/Components/CollidablePhysicsComponent.cpp"
 #include "GameEngine/GameEngineMain.h"
 #include "../GameEngine/EntitySystem/Components/PlayerMovementComponent.h"
 #include "../GameEngine/EntitySystem/Components/PlayerAbilityComponent.h"
@@ -22,7 +22,13 @@ void GameBoard::CreatePlayer()
 
     spriteRender->SetTexture(GameEngine::eTexture::Player);
 
+<<<<<<< HEAD
     m_player->AddComponent<Game::PlayerAbilityComponent>();
+=======
+    //Adding CollidingPhysicsComponent to Player
+    m_player->AddComponent<GameEngine::CollidablePhysicsComponent>();
+
+>>>>>>> 1104fd4de8415b0f984e96990484945bb3aac448
 }
 
 void GameBoard::CreateBackground() {
@@ -58,3 +64,24 @@ void GameBoard::Update()
 {	
 	
 }
+
+void GameBoard::CreateObstacle(float x_cord, float y_cord,float width, float height, bool hit_box) 
+{
+    //Create Obstacle Entity and add into game
+    GameEngine::Entity* obstacle = new GameEngine::Entity();  
+    GameEngine::GameEngineMain::GetInstance()->AddEntity(obstacle);
+
+    //Define Obstacle
+    obstacle->SetPos(sf::Vector2f(x_cord, y_cord)); 
+    obstacle->SetSize(sf::Vector2f(width, height));
+    
+    if(!hit_box) //if not a hit box, its a pong ball. Give it a visual.
+    {
+        spriteRender->SetFillColor(sf::Color::Transparent);
+        spriteRender->SetTexture(GameEngine::eTexture::PongBall);
+    }
+
+    obstacle->AddComponent<GameEngine::CollidableComponent>();
+
+}
+
