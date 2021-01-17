@@ -33,36 +33,68 @@ void PlayerAbilityComponent::Update()
     }
     
     if (!GetEntity()->isAbility) {
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q) && GetEntity()->hookDown == 0) {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q) && GetEntity()->hookDown < 0.f) {
             GetEntity()->hooking = !GetEntity()->hooking;
             GetEntity()->netting = false;
             GetEntity()->dodging = false;
             if (GetEntity()->hooking) {
                 GetEntity()->isAbility = true;
             } else {
-                
+                GetEntity()->isAbility = false;
             }
         }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && GetEntity()->netDown == 0) {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && GetEntity()->netDown < 0.f) {
             GetEntity()->hooking = false;
             GetEntity()->netting = !GetEntity()->netting;
             GetEntity()->dodging = false;
-            GetEntity()->isAbility = true;
+                        if (GetEntity()->hooking) {
+                GetEntity()->isAbility = true;
+            } else {
+                GetEntity()->isAbility = false;
+            }
         }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q) && GetEntity()->dodgeDown == 0) {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q) && GetEntity()->dodgeDown < 0.f) {
             GetEntity()->hooking = false;
             GetEntity()->netting = false;
             GetEntity()->dodging = true;
-            GetEntity()->isAbility = true;
+                        if (GetEntity()->hooking) {
+                GetEntity()->isAbility = true;
+            } else {
+                GetEntity()->isAbility = false;
+            }
         }
     }
 
     if (GetEntity()->hooking) {
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-            GetEntity()->hooking = false;
-            GetEntity()->netting = false;
-            GetEntity()->dodging = false;
-            GetEntity()->isAbility = false;
+        if (hook != nullptr) {
+            if (hook->retractTime > 0) {
+                hook = nullptr;
+                GetEntity()->hooking = false;
+            }
+        } else {
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                    GameEngine::Entity* e = new GameEngine::Entity();
+	                GameEngine::GameEngineMain::GetInstance()->AddEntity(e);
+	
+	                e->SetPos(GetEntity()->GetPos());  // <-- Move its initial position
+	                e->SetSize(sf::Vector2f(50.0f, 50.0f)); // <-- Make the square bigger
+
+                    hook = static_cast<HookComponent*>
+                    (e->AddComponent<HookComponent>());
+
+                    GameEngine::SpriteRenderComponent* spriteRender = static_cast<GameEngine::SpriteRenderComponent*>
+                    (e->AddComponent<GameEngine::SpriteRenderComponent>());
+
+                    spriteRender->SetTexture(GameEngine::eTexture::Hook);
+
+                   sf::Vector2f mousePos{ static_cast<float>(sf::Mouse::getPosition().x),  static_cast<float>(sf::Mouse::getPosition().y) };
+                    hook->liveTime = 4.f;
+                    hook->retractTime = 2.f;
+                    hook->destination_x = mousePos.x;
+                    hook->destination_y = mousePos.y;
+
+
+            }
         }
     }
 

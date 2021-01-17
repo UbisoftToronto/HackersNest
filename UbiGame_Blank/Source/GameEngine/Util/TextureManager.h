@@ -14,6 +14,7 @@ namespace GameEngine
 			Player,
 			Background, 
 			Count,
+			Hook
 		};
 	}	
 
@@ -23,6 +24,7 @@ namespace GameEngine
 		{
 			case eTexture::type::Player: return "Player.png";
 			case eTexture::type::Background: return "Map.png";
+			case eTexture::type::Hook: return "Hook.png";
 		}
 		return "Pudge.png";
 	}
