@@ -48,16 +48,12 @@ void PlayerAbilityComponent::Update()
                 GetEntity()->hooking = false;
                 GetEntity()->isAbility = false;
             }
-           
         } else {
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-                    
-                
                     GameEngine::Entity* e = new GameEngine::Entity();
 	                GameEngine::GameEngineMain::GetInstance()->AddEntity(e);
 	                e->SetPos(GetEntity()->GetPos());  // <-- Move its initial position
 	                e->SetSize(sf::Vector2f(32.0f, 32.0f)); // <-- Make the square bigger
-std::cout << e->GetPos().x << std::endl;
                     hook = static_cast<HookComponent*>
                     (e->AddComponent<HookComponent>());
 
@@ -71,7 +67,7 @@ std::cout << e->GetPos().x << std::endl;
 
                     sf::Vector2f windowPos{ static_cast<float>(GetEntity()->window->getPosition().x),  static_cast<float>(GetEntity()->window->getPosition().y) };
 
-                   sf::Vector2f mousePos{ static_cast<float>(sf::Mouse::getPosition().x),  static_cast<float>(sf::Mouse::getPosition().y) };
+                    sf::Vector2f mousePos{ static_cast<float>(sf::Mouse::getPosition().x),  static_cast<float>(sf::Mouse::getPosition().y) };
 
                     sf::Vector2f pos_diff = mousePos - e->GetPos() - windowPos;
 
@@ -96,11 +92,33 @@ std::cout << e->GetPos().x << std::endl;
                     hook->retractTime = 2.1f;
                     hook->destination_x = displacement.x;
                     hook->destination_y = displacement.y;
-
-
             }
         }
     }
+
+    if (GetEntity()->netting) {
+        if (hook->retractTime <= 0.f) {
+            hook = nullptr;
+            GetEntity()->hooking = false;
+            GetEntity()->isAbility = false;
+        } else {
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                    GameEngine::Entity* e = new GameEngine::Entity();
+	                GameEngine::GameEngineMain::GetInstance()->AddEntity(e);
+	                e->SetPos(GetEntity()->GetPos());  // <-- Move its initial position
+	                e->SetSize(sf::Vector2f(64.0f, 64.0f)); // <-- Make the square bigger
+                    NetComponent* net = static_cast<NetComponent*>
+                    (e->AddComponent<NetComponent>());
+
+                    GameEngine::RenderComponent* spriteRender = e->AddComponent<GameEngine::RenderComponent>();
+
+                    spriteRender->SetFillColor(sf::Color::Red);
+
+                    net->liveTime = 3.5f;
+                    net->destination_x = static_cast<float>(sf::Mouse::getPosition().x);
+                    net->destination_y = static_cast<float>(sf::Mouse::getPosition().y);
+            }
+        }
 
     if (GetEntity()->hookDown > 0.f) {
         GetEntity()->hookDown -= dt;
