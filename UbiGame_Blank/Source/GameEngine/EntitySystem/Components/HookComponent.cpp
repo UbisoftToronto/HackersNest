@@ -21,7 +21,7 @@ void HookComponent::Update()
     sf::Vector2f displacement{ 0.0f,0.0f };
 
     //The amount of speed that we will apply when input is received
-    float inputAmount = 105.0f;
+    float inputAmount = 145.0f;
 
     if (liveTime > 0) {
         displacement.x += inputAmount * destination_x * dt;

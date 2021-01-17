@@ -21,7 +21,6 @@ void PlayerAbilityComponent::Update()
             GetEntity()->hooking = !GetEntity()->hooking;
             GetEntity()->netting = false;
             GetEntity()->dodging = false;
-            std::cout << "A";
             if (GetEntity()->hooking) {
                 GetEntity()->isAbility = true;
             } else {
@@ -74,11 +73,36 @@ std::cout << e->GetPos().x << std::endl;
 
                     //spriteRender->SetTexture(GameEngine::eTexture::Hook);
 
+
+                    sf::Vector2f displacement{ 0.0f,0.0f };
+
+                    sf::Vector2f windowPos{ static_cast<float>(GetEntity()->window->getPosition().x),  static_cast<float>(GetEntity()->window->getPosition().y) };
+
                    sf::Vector2f mousePos{ static_cast<float>(sf::Mouse::getPosition().x),  static_cast<float>(sf::Mouse::getPosition().y) };
-                    hook->liveTime = 4.f;
-                    hook->retractTime = 2.f;
-                    hook->destination_x = mousePos.x;
-                    hook->destination_y = mousePos.y;
+
+                    sf::Vector2f pos_diff = mousePos - e->GetPos() - windowPos;
+
+                    // Find the length of the pos_diff vector
+                    float vector_length = sqrt(pos_diff.x * pos_diff.x + pos_diff.y * pos_diff.y);
+
+                    sf::Vector2f unit{0.f,1.f};
+
+                    float dot = pos_diff.x*unit.x + pos_diff.y*unit.y;
+                    float det = pos_diff.x*unit.y - pos_diff.y*unit.x;
+                    float angle = 180*atan(dot/det)/3.14;
+                    if(pos_diff.x < 0){
+                        angle += 180;
+                    }
+                    e->SetRotation(angle);
+
+                    displacement.x += (pos_diff.x / vector_length);
+                    displacement.y += (pos_diff.y / vector_length);
+
+
+                    hook->liveTime = 2.5f;
+                    hook->retractTime = 2.1f;
+                    hook->destination_x = displacement.x;
+                    hook->destination_y = displacement.y;
 
 
             }
