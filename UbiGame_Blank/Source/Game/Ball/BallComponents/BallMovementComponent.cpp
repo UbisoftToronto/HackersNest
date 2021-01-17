@@ -8,7 +8,7 @@
 using namespace Game;
 
 BallMovementComponent::BallMovementComponent()
-	: xDirection(0.f), yDirection(0.f), speed()
+	: xDirection(0.f), yDirection(0.f), speed(0.f)
 {
 
 }
@@ -22,8 +22,8 @@ void BallMovementComponent::OnAddToWorld()
 {
 	__super::OnAddToWorld();
 	srand(time(0));
-	speed = 120.f;
-	xDirection = 5 + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / 140));
+	speed = 200.f;
+	xDirection = 90 + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / 110));
 
 	int randBit = rand() % 2;
 

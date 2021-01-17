@@ -8,7 +8,7 @@ BallEntity::BallEntity()
 	ballMovementComponent = AddComponent<BallMovementComponent>();
 
 	//Collision
-	ball = AddComponent<GameEngine::CollidablePhysicsComponent>();
+	ball = AddComponent<GameEngine::BallCollideComponent>();
 
 	//Render
 	m_renderComponent = AddComponent<GameEngine::SpriteRenderComponent>();

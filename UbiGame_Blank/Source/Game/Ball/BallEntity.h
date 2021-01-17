@@ -3,6 +3,7 @@
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
 #include "GameEngine//EntitySystem/Components/CollidablePhysicsComponent.h"
 #include "Game/Ball/BallComponents/BallMovementComponent.h"
+#include "Game/Ball/BallComponents/BallCollideComponent.h"
 
 namespace Game
 {
@@ -16,6 +17,6 @@ namespace Game
 		// Add components
 		GameEngine::SpriteRenderComponent* m_renderComponent;
 		BallMovementComponent* ballMovementComponent;
-		GameEngine::CollidablePhysicsComponent* ball;
+		GameEngine::BallCollideComponent* ball;
 	};
 }

@@ -13,6 +13,8 @@ namespace GameEngine
 			None = -1,
 			Background = 0,
 			Ball,
+			LeftBall,
+			RightBall,
 			Count,
 		};
 	}	
@@ -21,6 +23,8 @@ namespace GameEngine
 	{
 		switch (texture) {
 		case eTexture::Ball: return "whiteball.png";
+		case eTexture::LeftBall: return "leftcolourball.png";
+		case eTexture::RightBall: return "rightcolourball.png";
 		case eTexture::Background:    return "Black.png";
 		
 		}
