@@ -6,8 +6,9 @@ namespace Game
 {
     class PlayerMovementComponent : public GameEngine::Component
     {
-        float destination_x = 500.f;
-        float destination_y = 500.f;
+        float destination_x = 150.0f;
+        float destination_y = 150.0f;
+        float inputAmount = 0.0f;
     public:
         virtual void Update() override;
         virtual void OnAddToWorld() override;
