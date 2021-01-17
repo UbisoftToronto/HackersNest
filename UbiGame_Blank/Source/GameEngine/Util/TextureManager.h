@@ -15,7 +15,8 @@ namespace GameEngine
 			Background, 
 			Count,
 			Hook,
-			PongBall
+			PongBall,
+			GreyBlock
 		};
 	}	
 
@@ -27,6 +28,7 @@ namespace GameEngine
 			case eTexture::type::Background: return "Map.png";
 			case eTexture::type::Hook: return "Hook.png";
 			case eTexture::type::PongBall: return "PongBall.png";
+			case eTexture::type::GreyBlock: return "GreyBlock.png";
 		}
 		return "Pudge.png";
 	}
