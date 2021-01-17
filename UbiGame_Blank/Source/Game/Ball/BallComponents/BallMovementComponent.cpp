@@ -22,8 +22,8 @@ void BallMovementComponent::OnAddToWorld()
 {
 	__super::OnAddToWorld();
 	srand(time(0));
-	speed = 200.f;
-	xDirection = 90 + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / 110));
+	speed = 300.f;
+	xDirection = 70 + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / 230));
 
 	int randBit = rand() % 2;
 
@@ -45,5 +45,4 @@ void BallMovementComponent::Update()
 	float dt = GameEngine::GameEngineMain::GetTimeDelta();
 	sf::Vector2f direction = sf::Vector2f(xDirection * dt, yDirection * dt);
 	GetEntity()->SetPos(GetEntity()->GetPos() + direction);
-
 }

@@ -21,11 +21,11 @@ namespace GameEngine
 
 		//For Tilled texture support, can be ignored for simple one file textures
 		void SetTileIndex(sf::Vector2i vect) { m_tileIndex = vect; }
-		void SetTileIndex(int xIdx, int yIdx) { m_tileIndex = sf::Vector2i(xIdx, yIdx); }		
+		void SetTileIndex(int xIdx, int yIdx) { m_tileIndex = sf::Vector2i(xIdx, yIdx); }	
+		void UpdateSpriteParams();
 
 	private:
 		void UpdateTileRect();
-		void UpdateSpriteParams();
 
 		eTexture::type  m_texture;
 		sf::Vector2i	m_tileIndex;
