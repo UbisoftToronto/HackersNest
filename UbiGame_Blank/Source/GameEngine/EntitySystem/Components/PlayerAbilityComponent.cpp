@@ -18,47 +18,40 @@ void PlayerAbilityComponent::Update()
     if (!GetEntity()->isAbility) {
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q) && GetEntity()->hookDown <= 0.f) {
-            GetEntity()->hooking = !GetEntity()->hooking;
+            GetEntity()->hooking = true;
             GetEntity()->netting = false;
             GetEntity()->dodging = false;
             std::cout << "A";
-            if (GetEntity()->hooking) {
-                GetEntity()->isAbility = true;
-            } else {
-                GetEntity()->isAbility = false;
-            }
+           
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && GetEntity()->netDown <= 0.f) {
             GetEntity()->hooking = false;
-            GetEntity()->netting = !GetEntity()->netting;
+            GetEntity()->netting = true;
             GetEntity()->dodging = false;
-                        if (GetEntity()->hooking) {
-                GetEntity()->isAbility = true;
-            } else {
-                GetEntity()->isAbility = false;
-            }
+ 
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::E) && GetEntity()->dodgeDown <= 0.f) {
             GetEntity()->hooking = false;
             GetEntity()->netting = false;
             GetEntity()->dodging = true;
-                        if (GetEntity()->hooking) {
-                GetEntity()->isAbility = true;
-            } else {
-                GetEntity()->isAbility = false;
-            }
+
         }
+
+        GetEntity()->isAbility = GetEntity()->hooking;
     }
+
 
     if (GetEntity()->hooking) {
         if (hook != nullptr) {
-            if (hook->retractTime > 0.f) {
+            if (hook->retractTime <= 0.f) {
                 hook = nullptr;
                 GetEntity()->hooking = false;
+                GetEntity()->isAbility = false;
             }
+           
         } else {
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-
+                    
                 
                     GameEngine::Entity* e = new GameEngine::Entity();
 	                GameEngine::GameEngineMain::GetInstance()->AddEntity(e);
@@ -68,17 +61,17 @@ std::cout << e->GetPos().x << std::endl;
                     hook = static_cast<HookComponent*>
                     (e->AddComponent<HookComponent>());
 
-                    GameEngine::SpriteRenderComponent* spriteRender = e->AddComponent<GameEngine::SpriteRenderComponent>();
+                    GameEngine::RenderComponent* spriteRender = e->AddComponent<GameEngine::RenderComponent>();
 
                     spriteRender->SetFillColor(sf::Color::Red);
-                    sf::Texture texture;
-                    texture.loadFromFile("Resources/img/Hook.png");
+                    //sf::Texture texture;
+                    //texture.loadFromFile("Resources/img/Hook.png");
 
-                    spriteRender->m_sprite.setTexture(texture);
+                    //spriteRender->SetTexture(texture);
 
                     //spriteRender->SetTexture(GameEngine::eTexture::Hook);
 
-                   sf::Vector2f mousePos{ static_cast<float>(sf::Mouse::getPosition().x),  static_cast<float>(sf::Mouse::getPosition().y) };
+                    sf::Vector2f mousePos{ static_cast<float>(sf::Mouse::getPosition().x),  static_cast<float>(sf::Mouse::getPosition().y) };
                     hook->liveTime = 4.f;
                     hook->retractTime = 2.f;
                     hook->destination_x = mousePos.x;
