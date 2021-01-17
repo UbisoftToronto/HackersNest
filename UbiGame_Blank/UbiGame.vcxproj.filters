@@ -75,7 +75,16 @@
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\TextRenderComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerMovementComponent.cpp">
+    <ClCompile Include="Source\GameEngine\EntitySystem\Components\PlayerMovementComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameEngine\EntitySystem\Components\PlayerAbilityComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameEngine\EntitySystem\Components\HookComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameEngine\EntitySystem\Components\EnemyMovementComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
