@@ -25,7 +25,7 @@ namespace Game
 		GameEngine::Entity* m_enemy;
 		void CreateBackground();
 		void CreateEnemy();
-		void CreateObstacle(float x_cord, float y_cord, float width, float height, bool hit_box);
+		void CreateObstacle(float x_cord, float y_cord, float width, float height, std::string object_type);
 
 	};
 }

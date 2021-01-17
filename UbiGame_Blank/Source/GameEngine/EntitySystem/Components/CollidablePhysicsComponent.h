@@ -1,5 +1,6 @@
 #pragma once
 #include "GameEngine/EntitySystem/Components/CollidableComponent.h"
+#include <string.h>
 
 namespace GameEngine
 {
@@ -12,8 +13,10 @@ namespace GameEngine
 
 		virtual void OnAddToWorld() override;
 		virtual void OnRemoveFromWorld() override;
-
+		
 		virtual void Update() override;
+
+		void sort_collision(std::string type1);
 	};
 }
 
