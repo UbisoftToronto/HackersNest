@@ -21,7 +21,7 @@ void HookComponent::Update()
     sf::Vector2f displacement{ 0.0f,0.0f };
 
     //The amount of speed that we will apply when input is received
-    float inputAmount = 50.0f;
+    float inputAmount = 125.0f;
 
     sf::Vector2f windowPos{ static_cast<float>(GetEntity()->window->getPosition().x),  static_cast<float>(GetEntity()->window->getPosition().y) };
 
