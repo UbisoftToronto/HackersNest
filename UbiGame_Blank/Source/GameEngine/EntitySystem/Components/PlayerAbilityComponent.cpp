@@ -62,16 +62,20 @@ void PlayerAbilityComponent::Update()
                 
                     GameEngine::Entity* e = new GameEngine::Entity();
 	                GameEngine::GameEngineMain::GetInstance()->AddEntity(e);
-	
 	                e->SetPos(GetEntity()->GetPos());  // <-- Move its initial position
 	                e->SetSize(sf::Vector2f(32.0f, 32.0f)); // <-- Make the square bigger
-
+std::cout << e->GetPos().x << std::endl;
                     hook = static_cast<HookComponent*>
                     (e->AddComponent<HookComponent>());
 
-                    GameEngine::RenderComponent* spriteRender = e->AddComponent<GameEngine::RenderComponent>();
+                    GameEngine::SpriteRenderComponent* spriteRender = e->AddComponent<GameEngine::SpriteRenderComponent>();
 
                     spriteRender->SetFillColor(sf::Color::Red);
+                    sf::Texture texture;
+                    texture.loadFromFile("Resources/img/Hook.png");
+
+                    spriteRender->m_sprite.setTexture(texture);
+
                     //spriteRender->SetTexture(GameEngine::eTexture::Hook);
 
                    sf::Vector2f mousePos{ static_cast<float>(sf::Mouse::getPosition().x),  static_cast<float>(sf::Mouse::getPosition().y) };
