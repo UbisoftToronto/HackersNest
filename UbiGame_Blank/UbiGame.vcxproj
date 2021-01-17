@@ -163,6 +163,7 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Game\Ball\BallComponents\BallCollideComponent.cpp" />
     <ClCompile Include="Source\Game\Paddle\Paddlemovement.cpp" />
     <ClCompile Include="Source\GameEngine\Grid.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\TextRenderComponent.cpp" />
@@ -196,6 +197,7 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
   <ItemGroup>
     <ClInclude Include="Source\Game\Paddle\PaddleEntity2.h" />
     <ClInclude Include="Source\Game\Paddle\Paddlemovement2.h" />
+    <ClInclude Include="Source\Game\Ball\BallComponents\BallCollideComponent.h" />
     <ClInclude Include="Source\Game\Paddle\PaddleEntity.h" />
     <ClInclude Include="Source\Game\Paddle\Paddlemovement.h" />
     <ClInclude Include="Source\GameEngine\Grid.h" />
@@ -228,6 +230,8 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\img\Black.png" />
+    <Image Include="Resources\img\leftcolourball.png" />
+    <Image Include="Resources\img\rightcolourball.png" />
     <Image Include="Resources\img\whiteball.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

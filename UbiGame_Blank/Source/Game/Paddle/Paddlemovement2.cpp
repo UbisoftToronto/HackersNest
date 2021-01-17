@@ -33,7 +33,7 @@ void Paddlemovement2::Update()
 
 	sf::Vector2f wantedVel = sf::Vector2f(0.f, 0.f);
 
-	float playerVel = 100.f;
+	float playerVel = 150.f;
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
