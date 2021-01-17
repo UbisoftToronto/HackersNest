@@ -65,13 +65,19 @@ void Grid::CreateBorder() {
 	bottom_border->AddComponent<GameEngine::CollidableComponent>();
 	left_border->AddComponent<GameEngine::CollidableComponent>();
 	right_border->AddComponent<GameEngine::CollidableComponent>();
+
+	top_border->flag = 1;
+	bottom_border->flag = 1;
+	left_border->flag = 0;
+	right_border->flag = 0;
 	
 }
 
 void Grid::UpdatePixel(float x, float y) {
 	
 	sf::Texture* background = GameEngine::TextureManager::GetInstance()->GetTexture(GameEngine::eTexture::Background);
-	sf::Image i = background->copyToImage();
-	i.setPixel(x, y,sf::Color::Blue);
-	background->loadFromImage(i);
+	sf::Image img = background->copyToImage();
+	sf::Color check = img.getPixel(x, y);
+	img.setPixel(x, y,sf::Color::Blue);
+	background->loadFromImage(img);
 }

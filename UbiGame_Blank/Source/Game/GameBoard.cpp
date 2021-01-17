@@ -5,6 +5,7 @@
 #include "Game/Ball/BallEntity.h"
 #include "Game/Paddle/PaddleEntity.h"
 #include "Game/Paddle/PaddleEntity2.h"
+#include "GameEngine/EntitySystem/Entity.h"
 
 using namespace Game;
 float s = 0;
@@ -26,10 +27,8 @@ GameBoard::~GameBoard()
 
 void GameBoard::Update()
 {	
-	if (s < 5000) {
+	
 		Border->UpdatePixel(s / 10, s / 10);
-		s++;
-	}
 	
 }
 
