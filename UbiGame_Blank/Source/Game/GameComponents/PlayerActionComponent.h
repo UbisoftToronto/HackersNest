@@ -15,10 +15,11 @@ namespace Game
 		virtual void OnAddToWorld();
 
 		void setPlayerAction(int playerAction);
+		void disableInput(bool disable);
 	private:
 		int playerActionKey;
-		Game::Bullet* bullet;
 		bool firePressed;
+		bool inputDisabled = false;
 
 		void spawnBullet();
 	};

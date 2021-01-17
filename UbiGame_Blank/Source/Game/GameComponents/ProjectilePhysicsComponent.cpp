@@ -43,7 +43,13 @@ void ProjectilePhysicsComponent::updateProjectileHit()
 		//Remove self
 		GameEngine::GameEngineMain::GetInstance()->RemoveEntity(GetEntity());
 		//Remove hit entity
-		GameEngine::GameEngineMain::GetInstance()->RemoveEntity(colPhys->getCollidedEntity());
+		GameEngine::Entity* collidedEntity = colPhys->getCollidedEntity();
+
+		if (collidedEntity->getEntityType() == GameEngine::EntityType::PLAYER) 
+		{
+			Game::Player* hitPlayer = static_cast<Game::Player*>(collidedEntity);
+			hitPlayer->setPlayerHealth(hitPlayer->getPlayerHealth() - 20);
+		}
 	}
 }
 

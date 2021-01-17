@@ -21,49 +21,93 @@ GameBoard::~GameBoard()
 
 void GameBoard::Update()
 {
-  //Listen for SPACE to change gameStarted
-  if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && !gameStarted){
-    gameStarted = true;
-    buildGame();
-    clearMenuGUIEntities();
-    buildGameGUI();
-    return;
-  }
+    //Listen for SPACE to change gameStarted
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && !gameStarted){
+        gameStarted = true;
+        buildGame();
+        buildRound(1);
+        clearMenuGUIEntities();
+        buildGameGUI();
+        return;
+    }
 
-  if(gameStarted)
-  {
-    updateRoundState();
-    updateGUI();
-  }
+    if(gameStarted)
+    {
+        if (!roundEnded)
+        {
+            checkPlayersHealthState();    
+        }
+        else 
+        {
+            buildRound(currentRound);
+        }
+
+        updateRoundState();
+        updateGUI();
+    }
+
+    if (gameOver) 
+    {
+        while (true);
+    }
 }
 
 void GameBoard::updateRoundState()
 {
   if(roundStartCountdown > 0){
-    roundStartCountdown -= GameEngine::GameEngineMain::GetTimeDelta();
-    return;
+      roundStartCountdown -= GameEngine::GameEngineMain::GetTimeDelta();
+      return;
+  }
+  else 
+  {
+      player1->disableInput(false);
+      player2->disableInput(false);
   }
 
   if(currentRoundTimer > 0){
-    currentRoundTimer -= GameEngine::GameEngineMain::GetTimeDelta();
+      currentRoundTimer -= GameEngine::GameEngineMain::GetTimeDelta();
   } else {
-    currentRoundTimer = 20;
-    currentRound++;
-    roundStartCountdown = 3;
+      roundEnded = true;
+      currentRound++;
   }
+}
+
+void Game::GameBoard::checkPlayersHealthState()
+{
+    if (player1->getPlayerHealth() <= 0 || player2->getPlayerHealth() <= 0)
+    {
+        gameOver = true;
+    }
+}
+
+void Game::GameBoard::buildRound(int currentRound)
+{
+    //Initalize round states
+    this->currentRound = currentRound;
+    currentRoundTimer = ROUND_DURATION;
+    roundStartCountdown = 4;
+    roundEnded = false;
+
+    resetPlayers();
+}
+
+void Game::GameBoard::resetPlayers()
+{
+    float screenHeight = 720.f;
+    float screenWidth = 1280.f;
+
+    player1->SetPos(sf::Vector2f(50.f, screenHeight / 2.f));
+    player2->SetPos(sf::Vector2f(screenWidth - 50.f, screenHeight / 2.f));
+
+    player1->clearBullets();
+    player2->clearBullets();
+
+    player1->disableInput(true);
+    player2->disableInput(true);
 }
 
 void GameBoard::buildGame()
 {
-    drawBackground();
-
-    //Initalize game states
-    currentRound = 1;
-    currentRoundTimer = 20;
-    roundStartCountdown = 4;
-    player1NumWins = 0;
-    player2NumWins = 0;
-
     int player1Controls[6] = { sf::Keyboard::A, sf::Keyboard::D, sf::Keyboard::W, sf::Keyboard::S, sf::Keyboard::Q, sf::Keyboard::E };
     int player2Controls[6] = { sf::Keyboard::Numpad1, sf::Keyboard::Numpad3, sf::Keyboard::Numpad5, sf::Keyboard::Numpad2, sf::Keyboard::Numpad4, sf::Keyboard::Numpad6 };
 
@@ -104,9 +148,10 @@ void GameBoard::buildMenuGUI()
 
   titleText = new Text(gameName, sf::Color::White, 75, sf::Vector2f(windowWidth/2, 50.0f));
   GameEngine::GameEngineMain::GetInstance()->AddEntity(titleText);
-  startText = new Text(startGameText, sf::Color::White, 30, sf::Vector2f(windowWidth/2, 650.0f));
+  startText = new Text(startGameText, sf::Color::White, 30, sf::Vector2f(windowWidth/2, 700.0f));
   GameEngine::GameEngineMain::GetInstance()->AddEntity(startText);
 
+  
   htnText = new Text("Hack the North 2020++", sf::Color::White, 20, sf::Vector2f(windowWidth/2, 700.0f));
   GameEngine::GameEngineMain::GetInstance()->AddEntity(htnText);
   htnLogo = new GameEngine::Entity;
@@ -116,8 +161,6 @@ void GameBoard::buildMenuGUI()
   GameEngine::SpriteRenderComponent* renderhtn = htnLogo -> AddComponent<GameEngine::SpriteRenderComponent>();
   renderhtn -> SetTexture(GameEngine::eTexture::htn);
   renderhtn -> SetFillColor(sf::Color::Transparent);
-
-
 }
 
 void GameBoard::buildGameGUI() 
@@ -142,6 +185,7 @@ void GameBoard::clearMenuGUIEntities()
     GameEngine::GameEngineMain::GetInstance()->RemoveEntity(titleText);
     GameEngine::GameEngineMain::GetInstance()->RemoveEntity(startText);
     GameEngine::GameEngineMain::GetInstance()->RemoveEntity(htnText);
+    GameEngine::GameEngineMain::GetInstance()->RemoveEntity(htnLogo);
 }
 
 void GameBoard::clearGUIEntities()
@@ -151,19 +195,6 @@ void GameBoard::clearGUIEntities()
     GameEngine::GameEngineMain::GetInstance()->RemoveEntity(countDownTimer);
     GameEngine::GameEngineMain::GetInstance()->RemoveEntity(roundTimer);
     GameEngine::GameEngineMain::GetInstance()->RemoveEntity(currentRoundGUI);
-}
-
-void GameBoard::drawBackground()
-{
-  GameEngine::Entity* background = new GameEngine::Entity();
-  GameEngine::GameEngineMain::GetInstance()->AddEntity(background);
-
-  background -> SetPos(sf::Vector2f(640.0f, 360.0f));
-  background -> SetSize(sf::Vector2f(1280.0f, 720.0f));
-
-  GameEngine::SpriteRenderComponent* render = background -> AddComponent<GameEngine::SpriteRenderComponent>();
-  render -> SetTexture(GameEngine::eTexture::Background);
-  render -> SetFillColor(sf::Color::Transparent);
 }
 
 void GameBoard::setGameStarted(bool newState) {
