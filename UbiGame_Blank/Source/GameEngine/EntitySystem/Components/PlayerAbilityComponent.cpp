@@ -55,11 +55,10 @@ void PlayerAbilityComponent::Update()
                     hook = static_cast<HookComponent*>
                     (e->AddComponent<HookComponent>());
 
-                    GameEngine::RenderComponent* spriteRender = e->AddComponent<GameEngine::RenderComponent>();
+                    GameEngine::SpriteRenderComponent* spriteRender = e->AddComponent<GameEngine::SpriteRenderComponent>();
 
-                    spriteRender->SetFillColor(sf::Color::Red);
-
-                    //spriteRender->SetTexture(GameEngine::eTexture::Hook);
+                    spriteRender->SetFillColor(sf::Color::Transparent);
+                    spriteRender->SetTexture(GameEngine::eTexture::Player);
 
                     sf::Vector2f displacement{ 0.0f,0.0f };
 
@@ -105,9 +104,10 @@ void PlayerAbilityComponent::Update()
                     NetComponent* net = static_cast<NetComponent*>
                     (e->AddComponent<NetComponent>());
 
-                    GameEngine::RenderComponent* spriteRender = e->AddComponent<GameEngine::RenderComponent>();
-
-                    spriteRender->SetFillColor(sf::Color::Red);
+                    GameEngine::SpriteRenderComponent* spriteRender = e->AddComponent<GameEngine::SpriteRenderComponent>();
+                    
+                    spriteRender->SetFillColor(sf::Color::Transparent);
+                    spriteRender->SetTexture(GameEngine::eTexture::Player);
 
                     net->liveTime = 3.5f;
                     net->destination_x = static_cast<float>(sf::Mouse::getPosition().x);

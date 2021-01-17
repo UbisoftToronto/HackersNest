@@ -12,6 +12,7 @@ namespace GameEngine
 		{
 			None = -1,
 			Player,
+			Net,
 			Background, 
 			Hook,
 			PongBall,
@@ -26,13 +27,14 @@ namespace GameEngine
 		switch (texture)
 		{
 			case eTexture::type::Player: return "Player.png";
+			case eTexture::type::Net: return "Net.png";
 			case eTexture::type::Background: return "Map.png";
 			case eTexture::type::Hook: return "Hook.png";
 			case eTexture::type::PongBall: return "PongBall.png";
 			case eTexture::type::GreyBlock: return "GreyBlock.png";
 			case eTexture::type::Enemy: return "Enemy.png";
 		}
-		return "Pudge.png";
+		return "Player.png";
 	}
 
 	class TextureManager
