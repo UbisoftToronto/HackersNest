@@ -62,8 +62,40 @@ void CollidablePhysicsComponent::Update()
 				else
 					pos.y += intersection.height;
 			}
-
-			GetEntity()->SetPos(pos);
+			if ((colComponent->type =="wall" || colComponent->type =="river") && type=="pudge")
+				GetEntity()->SetPos(pos);
+			else if (colComponent->type =="pudge" && (colComponent->type =="wall" || colComponent->type =="river"))
+				GetEntity()->SetPos(pos);
+			
+			else
+				sort_collision(colComponent->type);
+		
 		}
 	}
+}
+
+void sort_collision(std::string type1) 
+{
+	//if (type1 == "pongball" && type =="wall")
+		//insert app. call here;
+	//else if (type1 == "wall" && type =="pongball")
+		//insert app. call here
+
+	//else if (type1 == "pudge" && type =="hook")
+		//insert app. call here
+	//else if (type1 == "hook" && type =="pudge")
+		//insert app. call here
+
+	//else if (type1 == "hook" && type =="pongball")
+		//insert app. call here	
+	//else if (type1 == "pongball" && type =="hook")
+		//insert app. call here	
+
+	//else if (type1 == "pudge" && type =="pongball")
+		//insert app. call here	
+	//else if (type1 == "pongball" && type =="pudge")
+		//insert app. call here	
+
+
+				
 }

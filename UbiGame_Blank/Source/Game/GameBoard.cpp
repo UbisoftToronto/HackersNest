@@ -24,7 +24,9 @@ void GameBoard::CreatePlayer()
 
     m_player->AddComponent<Game::PlayerAbilityComponent>();
     //Adding CollidingPhysicsComponent to Player
-    m_player->AddComponent<GameEngine::CollidablePhysicsComponent>();
+    GameEngine::CollidablePhysicsComponent* collisionTyper = static_cast<GameEngine::CollidablePhysicsComponent*>
+        (m_player->AddComponent<GameEngine::CollidablePhysicsComponent>());
+    collisionTyper->type="pudge";
 
 }
 
@@ -42,7 +44,14 @@ void GameBoard::CreateEnemy(){
 
     spriteRender->SetTexture(GameEngine::eTexture::Player);
 
-    m_enemy->AddComponent<GameEngine::CollidablePhysicsComponent>();
+    GameEngine::CollidableComponent* collisionTyper = static_cast<GameEngine::CollidableComponent*>
+        (m_enemy->AddComponent<GameEngine::CollidableComponent>());
+    collisionTyper->type="pudge"; //give enemy pudge(s) collision type of "pudge"
+
+    
+
+
+   
 }
 
 void GameBoard::CreateBackground() {
@@ -66,12 +75,14 @@ GameBoard::GameBoard()
     CreateBackground();
     CreateEnemy();
 
+    
+
     //ENVIRONMENTAL HITBOXES 
-    CreateObstacle(0,350,50,700,true); //left wall hitbox
-    CreateObstacle(350,0,700,50,true); //top wall hitbox
-    CreateObstacle(700,350,50,700,true); //right wall hitbox
-    CreateObstacle(350,700,700,50,true); //bottom wall hitbox
-    CreateObstacle(350,350,145,700,true); //River hitbox
+    CreateObstacle(0,350,50,700,"wall"); //left wall hitbox
+    CreateObstacle(350,0,700,50,"wall"); //top wall hitbox
+    CreateObstacle(700,350,50,700,"wall"); //right wall hitbox
+    CreateObstacle(350,700,700,50,"wall"); //bottom wall hitbox
+    CreateObstacle(350,350,145,700,"river"); //River hitbox
     
 }
 
@@ -87,27 +98,43 @@ void GameBoard::Update()
 	
 }
 
-void GameBoard::CreateObstacle(float x_cord, float y_cord,float width, float height, bool hit_box) 
+void GameBoard::CreateObstacle(float x_cord, float y_cord,float width, float height, std::string object_type) 
+//fn that makes pongballs, walls and rivers
 {
     //Create Obstacle Entity and add into game
     GameEngine::Entity* obstacle = new GameEngine::Entity();  
     GameEngine::GameEngineMain::GetInstance()->AddEntity(obstacle);
+
+
 
     
 
     //Define Obstacle
     obstacle->SetPos(sf::Vector2f(x_cord, y_cord)); 
     obstacle->SetSize(sf::Vector2f(width, height));
+
+    //Pointer To Identify Hitbox types AND add collider component
+    GameEngine::CollidableComponent* collisionTyper = static_cast<GameEngine::CollidableComponent*>
+    (obstacle->AddComponent<GameEngine::CollidableComponent>());
+   
     
-    if(!hit_box) //if not a hit box, its a pong ball. Give it a visual.
+    if(object_type=="pongball") //if a pong ball. Give it a visual.
     {
         GameEngine::SpriteRenderComponent* spriteRender = static_cast<GameEngine::SpriteRenderComponent*>
         (obstacle->AddComponent<GameEngine::SpriteRenderComponent>());
         spriteRender->SetFillColor(sf::Color::Transparent);
         spriteRender->SetTexture(GameEngine::eTexture::PongBall);
-    }
+        collisionTyper->type = "pongball"; //Give collisionComponent type: pongball
+    } 
+    else if (object_type=="river")
+        collisionTyper->type = "river"; //if river, no collisions
+                                           // Give collisionComponent type: river
+    else
+        collisionTyper->type = "wall"; //if wall, no collisions
+                                           // Give collisionComponent type: wall
 
-    obstacle->AddComponent<GameEngine::CollidableComponent>();
+
+    
 
 }
 
