@@ -18,7 +18,7 @@ void EnemyMovementComponent::Update()
     if(timer - dt <= 0){
         timer = (float)(rand() % 5);
         destination_x = (float)(rand() % 500 + 200);
-        destination_y = (float)(rand() % 500 + 200);//random position on screen
+        destination_y = (float)(rand() % 700);//random position on screen
     }
 
     //By default the displacement is 0,0
