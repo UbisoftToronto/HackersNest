@@ -4,12 +4,12 @@
 
 namespace Game
 {
-    class HookComponent : public GameEngine::Component
+    class NetComponent : public GameEngine::Component
     {
         public:
             float destination_x=0.f, destination_y=0.f;
             float liveTime;
             virtual void Update() override;
-            virtual void OnAddToWorld() override;5
-    }
+            virtual void OnAddToWorld() override;
+    };
 }

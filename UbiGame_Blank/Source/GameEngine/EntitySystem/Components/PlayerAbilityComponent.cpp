@@ -73,7 +73,6 @@ std::cout << e->GetPos().x << std::endl;
 
                     //spriteRender->SetTexture(GameEngine::eTexture::Hook);
 
-
                     sf::Vector2f displacement{ 0.0f,0.0f };
 
                     sf::Vector2f windowPos{ static_cast<float>(GetEntity()->window->getPosition().x),  static_cast<float>(GetEntity()->window->getPosition().y) };
