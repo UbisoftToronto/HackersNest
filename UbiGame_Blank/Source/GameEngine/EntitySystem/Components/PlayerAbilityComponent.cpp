@@ -105,7 +105,7 @@ void PlayerAbilityComponent::Update()
                     NetComponent* net = static_cast<NetComponent*>
                     (e->AddComponent<NetComponent>());
 
-                    GameEngine::SpriteRenderComponent* spriteRender = e->AddComponent<GameEngine::SpriteRenderComponent>();
+                    GameEngine::RenderComponent* spriteRender = e->AddComponent<GameEngine::RenderComponent>();
 
                     spriteRender->SetFillColor(sf::Color::Red);
 
@@ -113,6 +113,7 @@ void PlayerAbilityComponent::Update()
                     net->destination_x = static_cast<float>(sf::Mouse::getPosition().x);
                     net->destination_y = static_cast<float>(sf::Mouse::getPosition().y);
                     GetEntity()->netDown = 10.f;
+                    GetEntity()->netting = false;
             }
     }
 
