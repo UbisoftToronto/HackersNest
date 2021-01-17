@@ -64,7 +64,7 @@ void PlayerAbilityComponent::Update()
 	                GameEngine::GameEngineMain::GetInstance()->AddEntity(e);
 	
 	                e->SetPos(GetEntity()->GetPos());  // <-- Move its initial position
-	                e->SetSize(sf::Vector2f(50.0f, 50.0f)); // <-- Make the square bigger
+	                e->SetSize(sf::Vector2f(32.0f, 32.0f)); // <-- Make the square bigger
 
                     hook = static_cast<HookComponent*>
                     (e->AddComponent<HookComponent>());
