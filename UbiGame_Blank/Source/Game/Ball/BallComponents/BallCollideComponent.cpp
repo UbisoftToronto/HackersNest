@@ -52,31 +52,40 @@ void BallCollideComponent::Update()
 		{
 			Game::BallMovementComponent* ballMove = GetEntity()->GetComponent<Game::BallMovementComponent>();
 			SpriteRenderComponent* ballColor = GetEntity()->GetComponent<SpriteRenderComponent>();
-			if (colComponent->GetEntity()->flag == 0) {
-				ballMove->SetXDirection(-ballMove->GetXDirection());
-			}
-			else if (colComponent->GetEntity()->flag == 1) {
-				ballMove->SetYDirection(-ballMove->GetYDirection());
-			}
-			else if (colComponent->GetEntity()->flag == 2) {
-				ballMove->SetXDirection(-ballMove->GetXDirection());
-				//if (/*check to make sure its in front*/true) {
-				//	// Red
-				//	ballColor->SetTexture(GameEngine::eTexture::LeftBall);
-				//}
+
+			if (colComponent->GetEntity()->flag == 2) {
+				if (/*check to make sure its in front*/true) {
+					ballColor->SetTexture(GameEngine::eTexture::LeftBall);
+					ballColor->UpdateSpriteParams();
+				}
 			}
 			else if (colComponent->GetEntity()->flag == 3) {
-				ballMove->SetXDirection(-ballMove->GetXDirection());
-				ballColor->SetTexture(GameEngine::eTexture::RightBall);
-				//if (/*Check to make sure its in front*/true) {
-				//	// Blue
-				//	ballColor->SetTexture(GameEngine::eTexture::RightBall);
-				//}
+				if (/*Check to make sure its in front*/true) {
+					ballColor->SetTexture(GameEngine::eTexture::RightBall);
+					ballColor->UpdateSpriteParams();
+				}
 			}
-			else {
+
+			sf::Vector2f pos = GetEntity()->GetPos();
+			if (intersection.width < intersection.height)
+			{
+				if (ballMove->GetXDirection() > 0)
+					pos.x -= intersection.width;
+				else
+					pos.x += intersection.width;
+				
 				ballMove->SetXDirection(-ballMove->GetXDirection());
+			}
+			else
+			{
+				if (ballMove->GetYDirection() > 0)
+					pos.y -= intersection.height;
+				else
+					pos.y += intersection.height;
+
 				ballMove->SetYDirection(-ballMove->GetYDirection());
 			}
+			GetEntity()->SetPos(pos);
 		}
 	}
 }
