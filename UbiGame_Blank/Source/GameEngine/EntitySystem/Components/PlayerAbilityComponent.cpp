@@ -101,4 +101,4 @@ void PlayerAbilityComponent::Update()
 
 }
 
-void PlayerAbilityComponent::OnAddToWorld() {}
+void PlayerAbilityComponent::OnAddToWorld() {};
