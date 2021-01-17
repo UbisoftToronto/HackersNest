@@ -97,11 +97,6 @@ void PlayerAbilityComponent::Update()
     }
 
     if (GetEntity()->netting) {
-        if (hook->retractTime <= 0.f) {
-            hook = nullptr;
-            GetEntity()->hooking = false;
-            GetEntity()->isAbility = false;
-        } else {
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
                     GameEngine::Entity* e = new GameEngine::Entity();
 	                GameEngine::GameEngineMain::GetInstance()->AddEntity(e);
@@ -119,7 +114,11 @@ void PlayerAbilityComponent::Update()
                     net->destination_y = static_cast<float>(sf::Mouse::getPosition().y);
                     GetEntity()->netDown = 10.f;
             }
-        }
+    }
+
+    if (GetEntity()->dodging) {
+
+            GetEntity()->dodgeDown = 10.f;
     }
 
     if (GetEntity()->hookDown > 0.f) {
