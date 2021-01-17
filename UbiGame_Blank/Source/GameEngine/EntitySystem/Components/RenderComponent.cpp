@@ -9,7 +9,7 @@
 using namespace GameEngine;
 
 RenderComponent::RenderComponent()
-	: m_fillColor(sf::Color::Green)
+	: m_fillColor(sf::Color::Transparent)
 	, m_zLevel(0)
 {
 

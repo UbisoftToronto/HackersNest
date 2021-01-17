@@ -22,7 +22,9 @@ namespace Game
 	private:
 		void CreatePlayer();
 		GameEngine::Entity* m_player;
+		GameEngine::Entity* m_enemy;
 		void CreateBackground();
+		void CreateEnemy();
 		void CreateObstacle(float x_cord, float y_cord, float width, float height, bool hit_box);
 
 	};

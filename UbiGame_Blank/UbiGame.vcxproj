@@ -163,6 +163,7 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\GameEngine\EntitySystem\Components\EnemyMovementComponent.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\HookComponent.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\PlayerAbilityComponent.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\PlayerMovementComponent.cpp" />

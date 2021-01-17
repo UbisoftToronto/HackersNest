@@ -3,7 +3,7 @@
 #include "GameEngine/GameEngineMain.h"
 #include "../GameEngine/EntitySystem/Components/PlayerMovementComponent.h"
 #include "../GameEngine/EntitySystem/Components/PlayerAbilityComponent.h"
-
+#include "../GameEngine/EntitySystem/Components/EnemyMovementComponent.h"
 
 using namespace Game;
 
@@ -28,6 +28,23 @@ void GameBoard::CreatePlayer()
 
 }
 
+void GameBoard::CreateEnemy(){
+    m_enemy = new GameEngine::Entity();
+    GameEngine::GameEngineMain::GetInstance()->AddEntity(m_enemy);
+    m_enemy->SetPos(sf::Vector2f(550.0f, (float)(rand() % 600 + 50)));
+    m_enemy->SetSize(sf::Vector2f(64.0f, 64.0f));
+
+    Game::EnemyMovementComponent* enemyMovement = static_cast<Game::EnemyMovementComponent*>(m_enemy->AddComponent<Game::EnemyMovementComponent>());
+
+    enemyMovement->player = m_player;
+
+    GameEngine::SpriteRenderComponent* spriteRender = static_cast<GameEngine::SpriteRenderComponent*>(m_enemy->AddComponent<GameEngine::SpriteRenderComponent>());
+
+    spriteRender->SetTexture(GameEngine::eTexture::Player);
+
+    m_enemy->AddComponent<GameEngine::CollidablePhysicsComponent>();
+}
+
 void GameBoard::CreateBackground() {
     GameEngine::Entity* background = new GameEngine::Entity();
     GameEngine::GameEngineMain::GetInstance()->AddEntity(background);
@@ -47,6 +64,7 @@ GameBoard::GameBoard()
 {
 	CreatePlayer();
     CreateBackground();
+    CreateEnemy();
 
     //ENVIRONMENTAL HITBOXES 
     CreateObstacle(0,350,50,700,true); //left wall hitbox

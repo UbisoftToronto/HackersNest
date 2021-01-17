@@ -84,6 +84,9 @@
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\HookComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GameEngine\EntitySystem\Components\EnemyMovementComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\GameEngine\GameEngineMain.h">
