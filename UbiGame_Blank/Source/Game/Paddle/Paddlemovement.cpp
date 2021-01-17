@@ -35,15 +35,15 @@ void Paddlemovement::Update()
 
 	float playerVel = 100.f;
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
-		if ((GetEntity()->GetPos().y + wantedVel.y) >= (0+paddlesize/2) )
+		if ((GetEntity()->GetPos().y + wantedVel.y) > (0+paddlesize/2) +6)
 		{
 			wantedVel.y -= playerVel * dt;
 		}
 	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
 		if ((GetEntity()->GetPos().y + wantedVel.y) < (GameEngine::GameEngineMain::GetPixelHeight(90.f)-paddlesize/2))
 		{
