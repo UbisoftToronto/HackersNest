@@ -13,7 +13,7 @@ void GameBoard::CreatePlayer()
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(m_player);
 	
 	m_player->SetPos(sf::Vector2f(150.0f, 150.0f));  // <-- Move its initial position
-	m_player->SetSize(sf::Vector2f(50.0f, 50.0f)); // <-- Make the square bigger
+	m_player->SetSize(sf::Vector2f(64.0f, 64.0f)); // <-- Make the square bigger
 
 	m_player->AddComponent<Game::PlayerMovementComponent>();  // <-- Added the movement component to the player
 
@@ -65,6 +65,14 @@ GameBoard::GameBoard()
 	CreatePlayer();
     CreateBackground();
     CreateEnemy();
+
+    //ENVIRONMENTAL HITBOXES 
+    CreateObstacle(0,350,50,700,true); //left wall hitbox
+    CreateObstacle(350,0,700,50,true); //top wall hitbox
+    CreateObstacle(700,350,50,700,true); //right wall hitbox
+    CreateObstacle(350,700,700,50,true); //bottom wall hitbox
+    CreateObstacle(350,350,145,700,true); //River hitbox
+    
 }
 
 
