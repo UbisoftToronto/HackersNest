@@ -30,7 +30,7 @@ void HookComponent::Update()
 
     // Find the length of the pos_diff vector
     float vector_length = sqrt(pos_diff.x * pos_diff.x + pos_diff.y * pos_diff.y);
-
+    
     //Update the entity position
     GetEntity()->SetPos(GetEntity()->GetPos() + displacement);
 
@@ -44,6 +44,7 @@ void HookComponent::Update()
     }
     GetEntity()->SetRotation(angle);
 
+    std::cout << vector_length << std::endl;
 
     if (liveTime > 0) {
         displacement.x += inputAmount * (pos_diff.x / vector_length) * dt;
@@ -56,6 +57,7 @@ void HookComponent::Update()
     } else {
         GameEngine::GameEngineMain::GetInstance()->RemoveEntity(GetEntity());
     }
+    GetEntity()->SetPos(GetEntity()->GetPos() + displacement);
 }
 
 void HookComponent::OnAddToWorld() {}

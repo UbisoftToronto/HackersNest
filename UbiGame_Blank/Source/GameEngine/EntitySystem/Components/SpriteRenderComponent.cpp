@@ -15,7 +15,7 @@ SpriteRenderComponent::SpriteRenderComponent()
 
 SpriteRenderComponent::~SpriteRenderComponent()
 {
-
+	
 }
 
 

@@ -13,11 +13,11 @@ namespace GameEngine
 			None = -1,
 			Player,
 			Background, 
-			Count,
 			Hook,
 			PongBall,
 			GreyBlock,
-			Enemy
+			Enemy,
+			Count,
 		};
 	}	
 

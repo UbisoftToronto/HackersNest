@@ -71,10 +71,6 @@ std::cout << e->GetPos().x << std::endl;
                     GameEngine::SpriteRenderComponent* spriteRender = e->AddComponent<GameEngine::SpriteRenderComponent>();
 
                     spriteRender->SetFillColor(sf::Color::Red);
-                    sf::Texture texture;
-                    texture.loadFromFile("Resources/img/Hook.png");
-
-                    spriteRender->m_sprite.setTexture(texture);
 
                     //spriteRender->SetTexture(GameEngine::eTexture::Hook);
 
