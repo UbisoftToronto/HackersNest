@@ -15,6 +15,12 @@ void EnemyMovementComponent::Update()
 
     //Grabs how much time has passed since last frame
     const float dt = GameEngine::GameEngineMain::GetTimeDelta();
+    timer -= dt;
+    if(timer - dt <= 0){
+        timer = (float)(rand() % 5);
+        destination_x = (float)(rand() % 500 + 200);
+        destination_y = (float)(rand() % 500 + 200);//random position on screen
+    }
 
     //By default the displacement is 0,0
     sf::Vector2f displacement{ 0.0f,0.0f };
@@ -22,18 +28,15 @@ void EnemyMovementComponent::Update()
     //The amount of speed that we will apply when input is received
     float inputAmount = 50.0f;
 
-    sf::Vector2f windowPos{ static_cast<float>(GetEntity()->window->getPosition().x),  static_cast<float>(GetEntity()->window->getPosition().y) };
-
     
-    destination_x = (float)(rand() % 700);
-    destination_y = (float)(rand() % 700);//random position on screen
+    
     
 
     sf::Vector2f destination{ destination_x, destination_y };
-    if(GetEntity()->hookDown <= 0){ //If the hook is ready and not on cooldown
-        destination = player->GetPos();
-    }
-    sf::Vector2f pos_diff = destination - GetEntity()->GetPos() - windowPos;
+    // if(GetEntity()->hookDown <= 0){ //If the hook is ready and not on cooldown, comment this in and out to enable smart targeting or random
+    //     destination = player->GetPos();
+    // }
+    sf::Vector2f pos_diff = destination - GetEntity()->GetPos();
 
     // Find the length of the pos_diff vector
     float vector_length = sqrt(pos_diff.x * pos_diff.x + pos_diff.y * pos_diff.y);

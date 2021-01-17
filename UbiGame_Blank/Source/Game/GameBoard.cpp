@@ -32,7 +32,7 @@ void GameBoard::CreateEnemy(){
     m_enemy = new GameEngine::Entity();
     GameEngine::GameEngineMain::GetInstance()->AddEntity(m_enemy);
     m_enemy->SetPos(sf::Vector2f(550.0f, (float)(rand() % 600 + 50)));
-    m_enemy->SetSize(sf::Vector2f(50.0f, 50.0f));
+    m_enemy->SetSize(sf::Vector2f(64.0f, 64.0f));
 
     Game::EnemyMovementComponent* enemyMovement = static_cast<Game::EnemyMovementComponent*>(m_enemy->AddComponent<Game::EnemyMovementComponent>());
 
