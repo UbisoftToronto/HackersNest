@@ -108,6 +108,8 @@ void Game::GameBoard::resetPlayers()
 
 void GameBoard::buildGame()
 {
+    drawBackground();
+
     int player1Controls[6] = { sf::Keyboard::A, sf::Keyboard::D, sf::Keyboard::W, sf::Keyboard::S, sf::Keyboard::Q, sf::Keyboard::E };
     int player2Controls[6] = { sf::Keyboard::Numpad1, sf::Keyboard::Numpad3, sf::Keyboard::Numpad5, sf::Keyboard::Numpad2, sf::Keyboard::Numpad4, sf::Keyboard::Numpad6 };
 
@@ -148,7 +150,7 @@ void GameBoard::buildMenuGUI()
 
   titleText = new Text(gameName, sf::Color::White, 75, sf::Vector2f(windowWidth/2, 50.0f));
   GameEngine::GameEngineMain::GetInstance()->AddEntity(titleText);
-  startText = new Text(startGameText, sf::Color::White, 30, sf::Vector2f(windowWidth/2, 700.0f));
+  startText = new Text(startGameText, sf::Color::White, 30, sf::Vector2f(windowWidth/2, 650.0f));
   GameEngine::GameEngineMain::GetInstance()->AddEntity(startText);
 
   
@@ -195,6 +197,19 @@ void GameBoard::clearGUIEntities()
     GameEngine::GameEngineMain::GetInstance()->RemoveEntity(countDownTimer);
     GameEngine::GameEngineMain::GetInstance()->RemoveEntity(roundTimer);
     GameEngine::GameEngineMain::GetInstance()->RemoveEntity(currentRoundGUI);
+}
+
+void GameBoard::drawBackground()
+{
+  GameEngine::Entity* background = new GameEngine::Entity();
+  GameEngine::GameEngineMain::GetInstance()->AddEntity(background);
+
+  background -> SetPos(sf::Vector2f(640.0f, 360.0f));
+  background -> SetSize(sf::Vector2f(1280.0f, 720.0f));
+
+  GameEngine::SpriteRenderComponent* render = background -> AddComponent<GameEngine::SpriteRenderComponent>();
+  render -> SetTexture(GameEngine::eTexture::Background);
+  render -> SetFillColor(sf::Color::Transparent);
 }
 
 void GameBoard::setGameStarted(bool newState) {
