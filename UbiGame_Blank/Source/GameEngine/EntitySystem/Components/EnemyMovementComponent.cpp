@@ -12,7 +12,6 @@ using namespace Game;
 void EnemyMovementComponent::Update()
 {
     Component::Update();
-
     //Grabs how much time has passed since last frame
     const float dt = GameEngine::GameEngineMain::GetTimeDelta();
     timer -= dt;
@@ -45,6 +44,10 @@ void EnemyMovementComponent::Update()
         inputAmount = 0.f;
     }
 
+    if (abs(vector_length) < 1) {
+        vector_length = 1.f;
+    }
+
     displacement.x += inputAmount * (pos_diff.x / vector_length) * dt;
     displacement.y += inputAmount * (pos_diff.y / vector_length) * dt;
 
@@ -60,6 +63,7 @@ void EnemyMovementComponent::Update()
         angle += 180;
     }
     GetEntity()->SetRotation(angle);
+
 }
 
 void EnemyMovementComponent::OnAddToWorld() {}

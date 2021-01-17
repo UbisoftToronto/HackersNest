@@ -40,6 +40,11 @@ void PlayerMovementComponent::Update()
         inputAmount = 0.f;
     }
 
+    if (abs(vector_length) < 1) {
+        vector_length = 1.f;
+    }
+
+
     displacement.x += inputAmount * (pos_diff.x / vector_length) * dt;
     displacement.y += inputAmount * (pos_diff.y / vector_length) * dt;
 
