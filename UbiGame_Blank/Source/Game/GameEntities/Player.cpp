@@ -9,7 +9,11 @@ Game::Player::Player() : playerHealth(100)
 	SetPos(sf::Vector2f(50.0f, 50.0f));
 	SetSize(sf::Vector2f(50.0f, 50.0f));
 
-	AddComponent<GameEngine::RenderComponent>();
+  //Render Sprite
+	renderComponent = AddComponent<GameEngine::SpriteRenderComponent>();
+  renderComponent -> SetTexture(GameEngine::eTexture::Player1);
+  renderComponent -> SetFillColor(sf::Color::Transparent);
+
 	AddComponent<GameEngine::CollidablePhysicsComponent>();
 	actionComponent = AddComponent<Game::PlayerActionComponent>();
 	movementComponent = AddComponent<Game::PlayerMovementComponent>();

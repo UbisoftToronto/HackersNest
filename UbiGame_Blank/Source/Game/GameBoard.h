@@ -31,13 +31,15 @@ namespace Game
 
         void buildGame();
         void updateRoundState();
+        void drawBackground();
 
     private:
         Game::Text* player1HealthGUI, * player2HealthGUI;
         Game::Text* countDownTimer, * roundTimer, * currentRoundGUI;
-        Game::Text* titleText, * startText;
+        Game::Text* titleText, * startText, * htnText;
+        GameEngine::Entity* htnLogo;
 
-	    Game::Player *player1;
+	      Game::Player *player1;
         Game::Player *player2;
 
         bool gameStarted = false;

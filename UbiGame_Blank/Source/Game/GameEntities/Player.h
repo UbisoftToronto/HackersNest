@@ -1,5 +1,6 @@
 #pragma once
 #include "GameEngine/EntitySystem/Entity.h"
+#include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
 #include <Game/GameComponents/PlayerMovementComponent.h>
 #include <Game/GameComponents/PlayerActionComponent.h>
 
@@ -25,5 +26,6 @@ namespace Game
 		// Components 
 		Game::PlayerMovementComponent* movementComponent;
 		Game::PlayerActionComponent* actionComponent;
+    GameEngine::SpriteRenderComponent* renderComponent;
 	};
 }
