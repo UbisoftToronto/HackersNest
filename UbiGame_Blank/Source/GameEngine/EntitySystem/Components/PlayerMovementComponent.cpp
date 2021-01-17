@@ -56,9 +56,7 @@ void PlayerMovementComponent::Update()
     if (GetEntity()->isAbility) {
         inputAmount = 0.f;
     }
-    else {
-        inputAmount = 50.f;
-    }
+    
 
     if (abs(vector_length) < 1) {
         vector_length = 1.f;
