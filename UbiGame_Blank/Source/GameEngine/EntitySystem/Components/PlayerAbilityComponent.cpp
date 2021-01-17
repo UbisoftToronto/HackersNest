@@ -90,6 +90,8 @@ void PlayerAbilityComponent::Update()
                     hook->retractTime = 2.1f;
                     hook->destination_x = displacement.x;
                     hook->destination_y = displacement.y;
+
+                    GetEntity()->hookDown = 8.f;
             }
         }
     }
@@ -115,6 +117,7 @@ void PlayerAbilityComponent::Update()
                     net->liveTime = 3.5f;
                     net->destination_x = static_cast<float>(sf::Mouse::getPosition().x);
                     net->destination_y = static_cast<float>(sf::Mouse::getPosition().y);
+                    GetEntity()->netDown = 10.f;
             }
         }
     }
