@@ -1,4 +1,5 @@
 #include "Wall.h"
+#include "GameEngine/EntitySystem/Components/CollidableComponent.h"
 
 Game::Wall::Wall(sf::Vector2f size, sf::Vector2f pos)
 {
@@ -13,9 +14,18 @@ Game::Wall::Wall(sf::Vector2f size, sf::Vector2f pos)
   renderComponent -> SetFillColor(sf::Color::Transparent);
 }
 
-Game::Wall::Wall(int textureType, sf::Vector2f size, sf::Vector2f pos)
+Game::Wall::Wall(GameEngine::eTexture::type textureType, sf::Vector2f size, sf::Vector2f pos)
 {
+  setEntityType(GameEngine::EntityType::WALL);
+  SetSize(size);
+  SetPos(pos);
 
+  AddComponent<GameEngine::CollidableComponent>();
+
+  //Render no sprite
+  renderTextureComponent = AddComponent<GameEngine::SpriteRenderComponent>();
+  renderTextureComponent -> SetTexture(textureType);
+  renderTextureComponent -> SetFillColor(sf::Color::Transparent);
 }
 
 Game::Wall::~Wall()

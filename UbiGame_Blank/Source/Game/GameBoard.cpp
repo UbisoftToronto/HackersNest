@@ -2,9 +2,12 @@
 #include "GameEngine/GameEngineMain.h"
 #include "Game/GameComponents/PlayerMovementComponent.h"
 #include "Game/GameEntities/Text.h"
+#include "Game/GameEntities/Wall.h"
 
 #include <string>
 #include <math.h>
+#include <stdlib.h>
+#include <time.h> 
 
 using namespace Game;
 
@@ -109,8 +112,16 @@ void Game::GameBoard::resetPlayers()
 void GameBoard::buildGame()
 {
     drawBackground();
-    Game::Wall wallTest(sf::Vector2f(1280.0f, 40.0f), sf::Vector2f(640.0f, 20.0f));
-    GameEngine::GameEngineMain::GetInstance()->AddEntity(wallTest);
+    //Boundary Walls
+    Wall* wallTop = new Wall(sf::Vector2f(1280.0f, 40.0f), sf::Vector2f(640.0f, 20.0f));
+    GameEngine::GameEngineMain::GetInstance()->AddEntity(wallTop);
+    Wall* wallBot = new Wall(sf::Vector2f(1280.0f, 40.0f), sf::Vector2f(640.0f, 700.0f));
+    GameEngine::GameEngineMain::GetInstance()->AddEntity(wallBot);
+    Wall* wallLeft = new Wall(sf::Vector2f(40.0f, 720.0f), sf::Vector2f(20.0f, 360.0f));
+    GameEngine::GameEngineMain::GetInstance()->AddEntity(wallLeft);
+    Wall* wallRight = new Wall(sf::Vector2f(40.0f, 720.0f), sf::Vector2f(1260.0f, 360.0f));
+    GameEngine::GameEngineMain::GetInstance()->AddEntity(wallRight);
+    buildMap();
 
     int player1Controls[6] = { sf::Keyboard::A, sf::Keyboard::D, sf::Keyboard::W, sf::Keyboard::S, sf::Keyboard::Q, sf::Keyboard::E };
     int player2Controls[6] = { sf::Keyboard::Numpad1, sf::Keyboard::Numpad3, sf::Keyboard::Numpad5, sf::Keyboard::Numpad2, sf::Keyboard::Numpad4, sf::Keyboard::Numpad6 };
@@ -212,6 +223,22 @@ void GameBoard::drawBackground()
   GameEngine::SpriteRenderComponent* render = background -> AddComponent<GameEngine::SpriteRenderComponent>();
   render -> SetTexture(GameEngine::eTexture::Background);
   render -> SetFillColor(sf::Color::Transparent);
+}
+
+void GameBoard::buildMap()
+{
+  srand(time(0));
+  const int maxBoxes = 25;
+  const int xGrid = 23;
+  const int yGrid = 12;
+
+  for(int currBox = 0; currBox < maxBoxes; currBox++)
+  {
+    sf::Vector2f pos = sf::Vector2f((rand() % xGrid + 1) * 50.0f + 40, (rand() % yGrid + 1) * 50.0f + 40);
+    Wall* mapBox = new Wall(GameEngine::eTexture::Box, sf::Vector2(50.0f, 50.0f), pos);
+    GameEngine::GameEngineMain::GetInstance()->AddEntity(mapBox);
+    mapBoxes.push_back(mapBox);
+  }
 }
 
 void GameBoard::setGameStarted(bool newState) {

@@ -14,6 +14,7 @@ namespace GameEngine
 			Player1,
       Player2,
       Background,
+      Box,
       htn,
       Count,
 		};
@@ -26,6 +27,7 @@ namespace GameEngine
       case eTexture::Player1: return "PlayerOne.png";
       case eTexture::Player2: return "PlayerOne.png";
       case eTexture::Background: return "Background.png";
+      case eTexture::Box:return "Box.png";
       case eTexture::htn: return "htn.png";
     }
     return "UnknownTexType";

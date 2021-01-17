@@ -8,7 +8,7 @@ namespace Game
   {
   public:
     Wall(sf::Vector2f size, sf::Vector2f pos);
-    Wall(int textureType, sf::Vector2f size, sf::Vector2f pos);
+    Wall(GameEngine::eTexture::type textureType, sf::Vector2f size, sf::Vector2f pos);
     ~Wall();
     virtual void OnAddToWorld();
 		virtual void OnRemoveFromWorld();

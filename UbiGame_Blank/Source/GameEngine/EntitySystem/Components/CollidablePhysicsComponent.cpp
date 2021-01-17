@@ -68,7 +68,11 @@ void CollidablePhysicsComponent::Update()
 				m_didCollide = true;
 				collidedEntity = colComponent->GetEntity();
 				GetEntity()->SetPos(pos);
-			}
+			} else if (colComponent->GetEntity()->getEntityType() == EntityType::WALL){
+        m_didCollide = true;
+        collidedEntity = colComponent->GetEntity();
+        GetEntity()->SetPos(pos);
+      }
 		}
 	}
 }
