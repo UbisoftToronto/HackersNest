@@ -20,9 +20,7 @@ void PlayerAbilityComponent::Update()
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q) && GetEntity()->hookDown <= 0.f) {
             GetEntity()->hooking = true;
             GetEntity()->netting = false;
-            GetEntity()->dodging = false;
-            std::cout << "A";
-           
+            GetEntity()->dodging = false; 
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && GetEntity()->netDown <= 0.f) {
             GetEntity()->hooking = false;
@@ -110,7 +108,7 @@ void PlayerAbilityComponent::Update()
                     NetComponent* net = static_cast<NetComponent*>
                     (e->AddComponent<NetComponent>());
 
-                    GameEngine::RenderComponent* spriteRender = e->AddComponent<GameEngine::RenderComponent>();
+                    GameEngine::SpriteRenderComponent* spriteRender = e->AddComponent<GameEngine::SpriteRenderComponent>();
 
                     spriteRender->SetFillColor(sf::Color::Red);
 
@@ -119,6 +117,7 @@ void PlayerAbilityComponent::Update()
                     net->destination_y = static_cast<float>(sf::Mouse::getPosition().y);
             }
         }
+    }
 
     if (GetEntity()->hookDown > 0.f) {
         GetEntity()->hookDown -= dt;
