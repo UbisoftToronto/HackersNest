@@ -1,3 +1,4 @@
+#pragma once
 #include "PlayerMovementComponent.h"
 #include <SFML/Window/Keyboard.hpp>   //<-- Add the keyboard include in order to get keyboard inputs
 #include <SFML/Window/Mouse.hpp>
