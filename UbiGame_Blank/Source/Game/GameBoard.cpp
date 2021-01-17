@@ -47,7 +47,6 @@ GameBoard::GameBoard()
 {
 	CreatePlayer();
     CreateBackground();
-    
 }
 
 
