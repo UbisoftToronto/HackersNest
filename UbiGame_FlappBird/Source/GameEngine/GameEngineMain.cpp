@@ -7,6 +7,7 @@
 #include <SFML/Graphics.hpp>
 #include "Util/TextureManager.h"
 #include "Util/AnimationManager.h"
+#include "Util/ButtonManager.h"
 #include "Util/CameraManager.h"
 
 using namespace GameEngine;
@@ -165,6 +166,10 @@ void GameEngineMain::UpdateWindowEvents()
 			m_renderWindow->close();
 			m_renderTarget = nullptr;		
 			break;
+		}
+		if (event.type == sf::Event::MouseButtonPressed)
+		{
+			ButtonManager::GetInstance()->OnMouseButtonPressedEvent(event.mouseButton.x, event.mouseButton.y);
 		}
 	}
 }

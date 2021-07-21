@@ -75,6 +75,12 @@
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\TextRenderComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GameEngine\Util\ButtonManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameEngine\EntitySystem\Components\ButtonComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\GameEngine\GameEngineMain.h">
@@ -129,6 +135,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\TextRenderComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GameEngine\Util\ButtonManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GameEngine\EntitySystem\Components\ButtonComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

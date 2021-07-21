@@ -7,6 +7,7 @@
 #include <SFML/Graphics.hpp>
 #include "Util/TextureManager.h"
 #include "Util/AnimationManager.h"
+#include "Util/ButtonManager.h"
 #include "Util/CameraManager.h"
 
 using namespace GameEngine;
@@ -19,7 +20,7 @@ sf::Clock		GameEngineMain::sm_deltaTimeClock;
 sf::Clock		GameEngineMain::sm_gameClock;
 
 GameEngineMain::GameEngineMain()
-	: m_renderTarget(nullptr)
+	: m_renderTarget(nullptr)	
 	, m_gameBoard(nullptr)
 	, m_windowInitialised(false)
 {
@@ -62,48 +63,48 @@ void GameEngineMain::AddEntity(Entity* entity)
 	assert(found == m_entities.end()); //Drop an assert if we add duplicate;
 	if (found == m_entities.end())
 	{
-		m_entitiesToAdd.push_back(entity);
-	}
+		m_entitiesToAdd.push_back(entity);		
+	}	
 }
 
 
 void GameEngineMain::RemoveEntity(Entity* entity)
 {
-	{
-		auto found = std::find(m_entitiesToAdd.begin(), m_entitiesToAdd.end(), entity);
-		if (found != m_entitiesToAdd.end())
-		{
-			m_entitiesToAdd.erase(found);
-			return;
-		}
-	}
+    {
+        auto found = std::find(m_entitiesToAdd.begin(), m_entitiesToAdd.end(), entity);
+        if (found != m_entitiesToAdd.end())
+        {
+            m_entitiesToAdd.erase(found);
+            return;
+        }
+    }
 
 	auto found = std::find(m_entities.begin(), m_entities.end(), entity);
 	if (found == m_entities.end())
 	{
 		found = std::find(m_entitiesToRemove.begin(), m_entitiesToRemove.end(), entity);
 		assert(found != m_entitiesToRemove.end()); //Drop an assert if we remove a non existing entity (neither on entity list and on entity to remove list);
-	}
+	}	
 
 	if (found != m_entities.end())
 	{
 		m_entitiesToRemove.push_back(entity);
 		entity->OnRemoveFromWorld();
-	}
+	}	
 }
 
 
 void GameEngineMain::Update()
-{
+{		
 	//First update will happen after init for the time being (we will add loading later)
 	if (!m_windowInitialised)
 	{
 		m_windowInitialised = true;
 		OnInitialised();
 	}
-
+	
 	RemovePendingEntities();
-
+	
 	UpdateWindowEvents();
 	if (m_gameBoard)
 		m_gameBoard->Update();
@@ -112,7 +113,7 @@ void GameEngineMain::Update()
 	RenderEntities();
 
 	AddPendingEntities();
-
+	
 	//We pool last delta and will pass it as GetTimeDelta - from game perspective it's more important that DT stays the same the whole frame, rather than be updated halfway through the frame
 	m_lastDT = sm_deltaTimeClock.getElapsedTime().asSeconds();
 	sm_deltaTimeClock.restart();
@@ -163,8 +164,12 @@ void GameEngineMain::UpdateWindowEvents()
 		if (event.type == sf::Event::Closed)
 		{
 			m_renderWindow->close();
-			m_renderTarget = nullptr;
+			m_renderTarget = nullptr;		
 			break;
+		}
+		if (event.type == sf::Event::MouseButtonPressed)
+		{
+			ButtonManager::GetInstance()->OnMouseButtonPressedEvent(event.mouseButton.x, event.mouseButton.y);
 		}
 	}
 }
@@ -198,31 +203,31 @@ void GameEngineMain::RenderEntities()
 
 	//Render que
 	std::vector<RenderComponent*> renderers;
-	//Every entity that has RenderComponent, or a component that extends RenderComponent - should end up in a render que
-	for (auto entity : m_entities)
-	{
-		std::vector<RenderComponent*> renderComponents = entity->GetAllComponents< RenderComponent >();
-		if (!renderComponents.empty())
-		{
-			renderers.insert(renderers.end(), renderComponents.begin(), renderComponents.end());
-		}
-	}
+    //Every entity that has RenderComponent, or a component that extends RenderComponent - should end up in a render que
+    for (auto entity : m_entities)
+    {
+        std::vector<RenderComponent*> renderComponents = entity->GetAllComponents< RenderComponent >();
+        if (!renderComponents.empty())
+        {
+            renderers.insert(renderers.end(), renderComponents.begin(), renderComponents.end());
+        }
+    }
 
 	// sort using a lambda expression
 	// We sort entities according to their Z level, meaning that the ones with that value lower will be draw FIRST (background), and higher LAST (player)
-	std::sort(renderers.begin(), renderers.end(), [](RenderComponent* a, RenderComponent* b)
+	std::sort(renderers.begin(), renderers.end(), [](RenderComponent* a, RenderComponent* b) 
 	{
 		return a->GetZLevel() < b->GetZLevel();
-	});
+	});	
 
 	for (auto renderer : renderers)
-	{
+	{		
 		renderer->Render(m_renderTarget);
 	}
 
 	if (m_renderWindow && m_renderWindow->isOpen())
 	{
 		m_renderWindow->display();
-	}
+	}	
 }
 

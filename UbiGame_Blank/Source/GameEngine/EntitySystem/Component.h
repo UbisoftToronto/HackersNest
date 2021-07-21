@@ -13,7 +13,6 @@ namespace GameEngine
 		virtual void OnAddToWorld() {};
 		virtual void OnRemoveFromWorld() {};
 
-		//No need to call that, entity is set automatically in GameEngineMain
 		void    SetEntity(Entity* ent) { m_entity = ent; }
 		Entity* GetEntity() const { return m_entity; }
 

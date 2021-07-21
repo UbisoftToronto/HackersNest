@@ -1,6 +1,7 @@
 #include "ObstacleEntity.h"
 
 #include "GameEngine/EntitySystem/Components/CollidableComponent.h"
+#include "GameEngine/EntitySystem/Components/ButtonComponent.h"
 
 #include <SFML/Graphics.hpp>
 
@@ -15,6 +16,7 @@ ObstacleEntity::ObstacleEntity()
 	m_renderComponent->SetTileIndex(0, 0);
 
 	AddComponent<GameEngine::CollidableComponent>();
+	AddComponent<GameEngine::ButtonComponent>();
 }
 
 

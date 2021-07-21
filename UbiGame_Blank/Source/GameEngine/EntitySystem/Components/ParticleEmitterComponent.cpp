@@ -57,9 +57,9 @@ void ParticleEmitterComponent::EmitParticle()
 	sf::Vector2f emitPos = GetEntity()->GetPos();
 
 	Entity* particleEntity = new Entity();
-	SpriteRenderComponent* render = static_cast<SpriteRenderComponent*>(particleEntity->AddComponent<SpriteRenderComponent>());
-	ParticleComponent* particleCMP = static_cast<ParticleComponent*>(particleEntity->AddComponent<ParticleComponent>());
-	AnimationComponent* animComponent = static_cast<AnimationComponent*>(particleEntity->AddComponent<AnimationComponent>());
+	SpriteRenderComponent* render = particleEntity->AddComponent<SpriteRenderComponent>();
+	ParticleComponent* particleCMP = particleEntity->AddComponent<ParticleComponent>();
+	AnimationComponent* animComponent = particleEntity->AddComponent<AnimationComponent>();
 
 	render->SetTexture(m_particleDefinition.m_texture);
 	render->SetZLevel(m_particleDefinition.m_zLevel);

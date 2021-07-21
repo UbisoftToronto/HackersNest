@@ -18,7 +18,7 @@ SoundManager::SoundManager(unsigned int numSimultaneousSounds)
 	{
 		soundInstance->m_recentlyPlayedIndex = numSimultaneousSounds;
 	}
-	m_nextAvailableSoundId = 0;
+    m_nextAvailableSoundId = 0;
 }
 
 
@@ -39,11 +39,11 @@ SoundManager::SoundId SoundManager::LoadSoundFromFile(std::string const& filenam
 	{
 		if (std::find(m_loadedSounds.begin(), m_loadedSounds.end(), resourceId) == m_loadedSounds.end()) // This manager hasn't loaded this sound yet.
 		{
-			if (SoundResource * soundResource = FindSoundResourceById(resourceId))
-			{
-				soundResource->m_numInstances += 1;
-				m_loadedSounds.push_back(resourceId);
-			}
+            if (SoundResource * soundResource = FindSoundResourceById(resourceId))
+            {
+                soundResource->m_numInstances += 1;
+                m_loadedSounds.push_back(resourceId);
+            }
 		}
 		return resourceId;
 	}
@@ -100,28 +100,28 @@ SoundManager::SoundId SoundManager::CreateNewSoundResource(std::string const& fi
 	SoundManager::SoundResource newResource;
 	newResource.m_numInstances = 1;
 	newResource.m_filename = filename;
-	newResource.m_soundId = m_nextAvailableSoundId;
+    newResource.m_soundId = m_nextAvailableSoundId;
 	if (!newResource.m_soundBuffer.loadFromFile(filename))
 	{
 		return SoundManager::INVALID_SOUND_ID;
 	}
 	sm_soundResources.push_back(newResource);
-	++m_nextAvailableSoundId;
+    ++m_nextAvailableSoundId;
 	return resourceId;
 }
 
 
 void SoundManager::ReleaseSound(SoundManager::SoundId const soundId)
 {
-	if (SoundManager::SoundResource * soundResource = FindSoundResourceById(soundId))
-	{
-		soundResource->m_numInstances -= 1;
+    if (SoundManager::SoundResource * soundResource = FindSoundResourceById(soundId))
+    {
+        soundResource->m_numInstances -= 1;
 
-		if (soundResource->m_numInstances == 0)
-		{
-			std::remove_if(sm_soundResources.begin(), sm_soundResources.end(), [&](SoundManager::SoundResource& soundRes) { return soundRes.m_soundId == soundId; });
-		}
-	}
+        if (soundResource->m_numInstances == 0)
+        {
+            std::remove_if(sm_soundResources.begin(), sm_soundResources.end(), [&](SoundManager::SoundResource& soundRes) { return soundRes.m_soundId == soundId; });
+        }
+    }
 }
 
 
@@ -143,31 +143,31 @@ SoundManager::SoundId SoundManager::FindSoundResource(std::string const& filenam
 
 SoundManager::SoundResource* SoundManager::FindSoundResourceById(SoundId const soundId) const
 {
-	if (!IsValidSoundId(soundId))
-	{
-		return nullptr;
-	}
+    if (!IsValidSoundId(soundId))
+    {
+        return nullptr;
+    }
 
-	auto findSoundResFunc = [&](SoundManager::SoundResource const& soundResource) { return soundResource.m_soundId == soundId; };
-	auto soundResourceIt = std::find_if(sm_soundResources.begin(), sm_soundResources.end(), findSoundResFunc);
+    auto findSoundResFunc = [&](SoundManager::SoundResource const& soundResource) { return soundResource.m_soundId == soundId; };
+    auto soundResourceIt = std::find_if(sm_soundResources.begin(), sm_soundResources.end(), findSoundResFunc);
 
-	if (soundResourceIt == sm_soundResources.end())
-	{
-		return nullptr;
-	}
+    if (soundResourceIt == sm_soundResources.end())
+    {
+        return nullptr;
+    }
 
-	return &(*soundResourceIt);
+    return &(*soundResourceIt);
 }
 
 
 void SoundManager::PlaySoundWithSoundInstance(SoundManager::SoundId const resourceId, SoundManager::SoundInstancePtr soundInstance)
 {
-	SoundResource* soundResource = FindSoundResourceById(resourceId);
+    SoundResource* soundResource = FindSoundResourceById(resourceId);
 
-	if (soundResource == nullptr)
-	{
-		return;
-	}
+    if (soundResource == nullptr)
+    {
+        return;
+    }
 
 	soundInstance->m_sound.stop();
 	soundInstance->m_sound.setBuffer(soundResource->m_soundBuffer);
@@ -184,7 +184,7 @@ void SoundManager::PlaySoundWithSoundInstance(SoundManager::SoundId const resour
 
 bool SoundManager::IsValidSoundId(SoundManager::SoundId const soundId) const
 {
-	return soundId != SoundManager::INVALID_SOUND_ID;
+    return soundId != SoundManager::INVALID_SOUND_ID;
 }
 
 
@@ -219,16 +219,16 @@ SoundManager::SoundInstancePtr SoundManager::FindLeastRecentlyUsedSoundInstance(
 
 SoundManager::SoundInstancePtr SoundManager::FindSoundInstancePlayingSoundId(SoundManager::SoundId const soundId)
 {
-	if (SoundManager::SoundResource * soundResource = FindSoundResourceById(soundId))
-	{
-		for (SoundManager::SoundInstancePtr soundInstance = m_soundInstances.begin(); soundInstance != m_soundInstances.end(); ++soundInstance)
-		{
-			if (soundInstance->m_sound.getBuffer() == &(soundResource->m_soundBuffer))
-			{
-				return soundInstance;
-			}
-		}
-	}
-
+    if (SoundManager::SoundResource* soundResource = FindSoundResourceById(soundId))
+    {
+        for (SoundManager::SoundInstancePtr soundInstance = m_soundInstances.begin(); soundInstance != m_soundInstances.end(); ++soundInstance)
+        {
+            if (soundInstance->m_sound.getBuffer() == &(soundResource->m_soundBuffer))
+            {
+                return soundInstance;
+            }
+        }
+    }
+	
 	return m_soundInstances.end();
 }

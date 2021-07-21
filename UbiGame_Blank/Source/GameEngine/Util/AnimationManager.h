@@ -5,19 +5,22 @@
 #include <vector>
 
 namespace GameEngine
-{
-	struct SAnimationDefinition;
+{		
+	struct SAnimationDefinition;	
 	namespace EAnimationId
 	{
 		enum type
-		{			
+		{
+			BirdIdle,
+			BirdFly,
+			Smoke,
 			None,
 		};
 	}
 
 	class AnimationManager
 	{
-	public:
+	public:		
 		~AnimationManager();
 
 		static AnimationManager* GetInstance() { if (!sm_instance) sm_instance = new AnimationManager(); return sm_instance; }
@@ -47,12 +50,12 @@ namespace GameEngine
 			, m_texture(eTexture::None)
 			, m_startTile(sf::Vector2i(0, 0))
 			, m_frameCount(5)
-			, m_fps(20)
+			, m_fps(20)			
 		{
 
 		}
 
-		SAnimationDefinition(EAnimationId::type animId, eTexture::type texture, sf::Vector2i startTile, int frameCount, int fps)
+		SAnimationDefinition(EAnimationId::type animId, eTexture::type texture, sf::Vector2i startTile, int frameCount, int fps )
 			: m_animId(animId)
 			, m_texture(texture)
 			, m_startTile(startTile)

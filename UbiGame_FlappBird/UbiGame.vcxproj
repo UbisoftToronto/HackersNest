@@ -163,7 +163,9 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\GameEngine\EntitySystem\Components\ButtonComponent.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\TextRenderComponent.cpp" />
+    <ClCompile Include="Source\GameEngine\Util\ButtonManager.cpp" />
     <ClCompile Include="Source\Game\GameComponents\PlayerCameraComponent.cpp" />
     <ClCompile Include="Source\GameEngine\Util\CameraManager.cpp" />
     <ClCompile Include="Source\Game\GameComponents\PlayerSoundComponent.cpp" />
@@ -189,7 +191,9 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\SpriteRenderComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\GameEngine\EntitySystem\Components\ButtonComponent.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\TextRenderComponent.h" />
+    <ClInclude Include="Source\GameEngine\Util\ButtonManager.h" />
     <ClInclude Include="Source\Game\GameComponents\PlayerCameraComponent.h" />
     <ClInclude Include="Source\GameEngine\Util\CameraManager.h" />
     <ClInclude Include="Source\Game\GameComponents\PlayerSoundComponent.h" />
