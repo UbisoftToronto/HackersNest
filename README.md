@@ -8,7 +8,7 @@ Base framework for the Ubisoft Toronto Hackathon challenges
 
 Demonstrate your abilities as a game developer and take us on a journey! Our mentors will help you succeed by providing hands on demonstrations, documentation and consultations along the way.
 
-**Please attend our workshop (to be scheduled)** and visit our Hopin booth and Discord channel to meet our mentors Radoslaw Malicki, Alexander 'Mordred' Andonov, Xavier Sadoulet and Kevin Jeong.
+**Please attend our workshop (to be scheduled)** and visit our Hopin booth and Discord channel to meet our mentors Radoslaw Malicki, Alexander 'Mordred' Andonov, and Xavier Sadoulet.
 
 ## Documentation
 
