@@ -3,6 +3,7 @@
 #include "GameEngine/GameEngineMain.h"
 #include "GameEngine/EntitySystem/Components/CollidableComponent.h"
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
+#include "GameEngine/EntitySystem/Components/TextRenderComponent.h"
 #include "GameEngine/Util/CameraManager.h"
 #include "Game/GameEntities/PlayerEntity.h"
 #include "Game/GameEntities/ObstacleEntity.h"
@@ -21,6 +22,17 @@ GameBoard::GameBoard()
 	m_player->SetPos(sf::Vector2f(50.f, 50.f));	
 	m_player->SetSize(sf::Vector2f(40.f, 40.f));
 	
+	m_text = new GameEngine::Entity();
+
+    GameEngine::GameEngineMain::GetInstance()->AddEntity(m_text);
+	m_text->SetParent(m_player);
+    GameEngine::TextRenderComponent* textRenderComponent = m_text->AddComponent<GameEngine::TextRenderComponent>();
+    textRenderComponent->SetFont("arial.ttf");
+	textRenderComponent->SetString("Player!!!");
+	textRenderComponent->SetZLevel(3);
+	m_text->SetLocalPosOffset(sf::Vector2f(1.f, 1.f));
+	m_text->SetLocalRotOffset(90.f);
+
 	CreateBackGround();
 	//Debug
 	for (int a = 0; a < 3; ++a)

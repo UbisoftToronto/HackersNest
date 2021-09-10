@@ -17,13 +17,28 @@ namespace GameEngine
 		virtual void Update();
 
 		//Base entity params
-		sf::Vector2f GetPos()  const { return m_pos; }
-		sf::Vector2f GetSize() const { return m_size; }
-		float		 GetRot()  const { return m_rotation; }
+		sf::Vector2f GetPos() const;
+		sf::Vector2f GetSize() const;
+		float		 GetRot()  const;
 		
-		void		 SetPos(sf::Vector2f pos)   { m_pos = pos; }
+		void		 SetPos(sf::Vector2f pos);
 		void		 SetSize(sf::Vector2f size) { m_size = size; }
 		void	     SetRotation(float rotation) { m_rotation = rotation; }		
+
+        sf::Vector2f GetLocalPosOffset() const { return m_localPosOffset; }
+        float		 GetLocalRotOffset() const { return m_localRotOffset; }
+
+		void		 SetLocalPosOffset(sf::Vector2f localPosOffset) { m_localPosOffset = localPosOffset; }
+        void		 SetLocalRotOffset(float localRotOffset) { m_localRotOffset = localRotOffset; }
+
+		void		 SetParent(Entity* entity, bool retainWorldPos = false);
+		void		 RemoveParent();
+
+		void		 AddChild(Entity* entity);
+        void		 RemoveChild(Entity* entity);
+		void		 ClearChildren();
+
+		const std::vector<Entity*>& GetChildren() const { return m_children; }
 
 		//Components
 		template <class T>
@@ -71,5 +86,11 @@ namespace GameEngine
 		sf::Vector2f		   m_pos;
 		sf::Vector2f		   m_size;		
 		float				   m_rotation;
+
+		std::vector<Entity*>   m_children;
+		Entity*				   m_parent;
+
+		sf::Vector2f		   m_localPosOffset;
+		float				   m_localRotOffset;
 	};
 }

@@ -5,40 +5,55 @@
 
 namespace GameEngine
 {
-	class Entity
-	{
-	public:
-		Entity();
-		virtual ~Entity();
+    class Entity
+    {
+    public:
+        Entity();
+        virtual ~Entity();
 
-		virtual void OnAddToWorld();
-		virtual void OnRemoveFromWorld();
+        virtual void OnAddToWorld();
+        virtual void OnRemoveFromWorld();
 
-		virtual void Update();
+        virtual void Update();
 
-		//Base entity params
-		sf::Vector2f GetPos()  const { return m_pos; }
-		sf::Vector2f GetSize() const { return m_size; }
-		float		 GetRot()  const { return m_rotation; }
-		
-		void		 SetPos(sf::Vector2f pos)   { m_pos = pos; }
-		void		 SetSize(sf::Vector2f size) { m_size = size; }
-		void	     SetRotation(float rotation) { m_rotation = rotation; }		
+        //Base entity params
+        sf::Vector2f GetPos() const;
+        sf::Vector2f GetSize() const;
+        float		 GetRot()  const;
 
-		//Components
-		template <class T>
-		T* GetComponent()
-		{
-			for (int a = 0; a < m_components.size(); ++a)
-			{
-				Component* comp = m_components[a];
-				T* searched = dynamic_cast<T*>(comp);
-				if (searched)
-					return searched;
-			}
+        void		 SetPos(sf::Vector2f pos);
+        void		 SetSize(sf::Vector2f size) { m_size = size; }
+        void	     SetRotation(float rotation) { m_rotation = rotation; }
 
-			return nullptr;
-		}
+        sf::Vector2f GetLocalPosOffset() const { return m_localPosOffset; }
+        float		 GetLocalRotOffset() const { return m_localRotOffset; }
+
+        void		 SetLocalPosOffset(sf::Vector2f localPosOffset) { m_localPosOffset = localPosOffset; }
+        void		 SetLocalRotOffset(float localRotOffset) { m_localRotOffset = localRotOffset; }
+
+        void		 SetParent(Entity* entity, bool retainWorldPos = false);
+        void		 RemoveParent();
+
+        void		 AddChild(Entity* entity);
+        void		 RemoveChild(Entity* entity);
+        void		 ClearChildren();
+
+        const std::vector<Entity*>& GetChildren() const { return m_children; }
+
+        //Components
+        template <class T>
+        T* GetComponent()
+        {
+            for (int a = 0; a < m_components.size(); ++a)
+            {
+                Component* comp = m_components[a];
+                T* searched = dynamic_cast<T*>(comp);
+                if (searched)
+                    return searched;
+            }
+
+            return nullptr;
+        }
 
         template <class T>
         std::vector<T*> GetAllComponents()
@@ -54,22 +69,28 @@ namespace GameEngine
             return outVec;
         }
 
-		template <class T>
-		T* AddComponent()
-		{
-			T* newComponent = new T();
-			newComponent->SetEntity(this);
-			m_components.push_back(newComponent);
-			
-			return newComponent;
-		}
+        template <class T>
+        T* AddComponent()
+        {
+            T* newComponent = new T();
+            newComponent->SetEntity(this);
+            m_components.push_back(newComponent);
 
-	protected:
-		void DestroyComponents();
+            return newComponent;
+        }
 
-		std::vector<Component*> m_components;
-		sf::Vector2f		   m_pos;
-		sf::Vector2f		   m_size;		
-		float				   m_rotation;
-	};
+    protected:
+        void DestroyComponents();
+
+        std::vector<Component*> m_components;
+        sf::Vector2f		   m_pos;
+        sf::Vector2f		   m_size;
+        float				   m_rotation;
+
+        std::vector<Entity*>   m_children;
+        Entity* m_parent;
+
+        sf::Vector2f		   m_localPosOffset;
+        float				   m_localRotOffset;
+    };
 }
