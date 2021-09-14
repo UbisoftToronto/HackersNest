@@ -17,6 +17,8 @@ ObstacleEntity::ObstacleEntity()
 
 	AddComponent<GameEngine::CollidableComponent>();
 	AddComponent<GameEngine::ButtonComponent>();
+
+	SetEntityTag("Obstacle");
 }
 
 

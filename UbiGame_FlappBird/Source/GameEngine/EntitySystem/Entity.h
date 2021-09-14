@@ -1,5 +1,7 @@
 #pragma once
 #include <SFML/System/Vector2.hpp>
+#include <optional>
+#include <string>
 #include <vector>
 #include "GameEngine/EntitySystem/Component.h"
 
@@ -13,6 +15,11 @@ namespace GameEngine
 
 		virtual void OnAddToWorld();
 		virtual void OnRemoveFromWorld();
+
+		void SetEntityTag(std::string tag);
+		void ClearEntityTag();
+		std::string GetEntityTag() const;
+		bool HasEntityTag() const;
 
 		virtual void Update();
 
@@ -38,6 +45,7 @@ namespace GameEngine
         void		 RemoveChild(Entity* entity);
 		void		 ClearChildren();
 
+		const Entity* GetParent() const { return m_parent; }
 		const std::vector<Entity*>& GetChildren() const { return m_children; }
 
 		//Components
@@ -92,5 +100,7 @@ namespace GameEngine
 
 		sf::Vector2f		   m_localPosOffset;
 		float				   m_localRotOffset;
+
+		std::optional<std::string> m_entityTag;
 	};
 }

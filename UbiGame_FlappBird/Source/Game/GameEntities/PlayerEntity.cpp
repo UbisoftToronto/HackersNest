@@ -57,6 +57,8 @@ void PlayerEntity::OnAddToWorld()
 	{
 		m_animComponent->PlayAnim(GameEngine::EAnimationId::BirdIdle);
 	}
+
+	SetEntityTag("Player");
 }
 
 

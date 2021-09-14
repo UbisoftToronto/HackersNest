@@ -39,7 +39,6 @@ namespace Game
 		GameEngine::Entity* m_text;
 		GameEngine::Entity* m_backGround;
 
-		std::vector<GameEngine::Entity*> m_obstacles;
 		float m_lastObstacleSpawnTimer;
 		bool  m_isGameOver;
 	};

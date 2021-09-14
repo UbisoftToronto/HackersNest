@@ -2,6 +2,8 @@
 
 #include <assert.h>
 
+#include "GameEngine/GameEngineMain.h"
+
 using namespace GameEngine;
 
 Entity::Entity()
@@ -40,6 +42,44 @@ void Entity::OnRemoveFromWorld()
     {
         m_parent->RemoveChild(this);
     }
+
+    ClearEntityTag();
+}
+
+
+void Entity::SetEntityTag(std::string tag)
+{
+    if (m_entityTag.has_value())
+    {
+        ClearEntityTag();
+    }
+
+    m_entityTag = tag;
+    GameEngineMain::GetInstance()->RefreshEntityTag(this);
+}
+
+
+void Entity::ClearEntityTag()
+{
+    if (m_entityTag.has_value())
+    {
+        GameEngineMain::GetInstance()->RemoveEntityTagFromMap(this, m_entityTag.value());
+        m_entityTag.reset();
+    }
+}
+
+std::string Entity::GetEntityTag() const
+{
+    if (m_entityTag.has_value())
+    {
+        return m_entityTag.value();
+    }
+    return "";
+}
+
+bool Entity::HasEntityTag() const
+{
+    return m_entityTag.has_value();
 }
 
 

@@ -28,7 +28,7 @@ GameBoard::GameBoard()
 	m_text->SetParent(m_player);
     GameEngine::TextRenderComponent* textRenderComponent = m_text->AddComponent<GameEngine::TextRenderComponent>();
     textRenderComponent->SetFont("arial.ttf");
-	textRenderComponent->SetString("Player!!!");
+	textRenderComponent->SetString("Player!");
 	textRenderComponent->SetZLevel(3);
 	m_text->SetLocalPosOffset(sf::Vector2f(1.f, 1.f));
 	m_text->SetLocalRotOffset(90.f);
@@ -70,8 +70,10 @@ void GameBoard::Update()
 void GameBoard::UpdateObstacles(float dt)
 {
 	static float obstacleSpeed = 100.f;
+
+	std::vector<GameEngine::Entity*> obstacles = GameEngine::GameEngineMain::GetInstance()->GetEntitiesByTag("Obstacle");
 	
-	for (std::vector<GameEngine::Entity*>::iterator it = m_obstacles.begin(); it != m_obstacles.end();)
+	for (auto it = obstacles.begin(); it != obstacles.end(); ++it)
 	{
 		GameEngine::Entity* obstacle = (*it);
 		sf::Vector2f currPos = obstacle->GetPos();
@@ -81,11 +83,6 @@ void GameBoard::UpdateObstacles(float dt)
 		if (currPos.x < -50.f)
 		{
 			GameEngine::GameEngineMain::GetInstance()->RemoveEntity(obstacle);
-			it = m_obstacles.erase(it);
-		}
-		else
-		{
-			it++;
 		}
 	}
 }
@@ -163,8 +160,6 @@ void GameBoard::SpawnNewObstacle(const sf::Vector2f& pos, const sf::Vector2f& si
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(obstacle);
 	obstacle->SetPos(pos);
 	obstacle->SetSize(sf::Vector2f(size.x, size.y));
-
-	m_obstacles.push_back(obstacle);
 }
 
 

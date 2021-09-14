@@ -19,6 +19,8 @@ GameEngineMain* GameEngineMain::sm_instance = nullptr;
 sf::Clock		GameEngineMain::sm_deltaTimeClock;
 sf::Clock		GameEngineMain::sm_gameClock;
 
+std::vector<Entity*> GameEngineMain::s_emptyEntityTagList;
+
 GameEngineMain::GameEngineMain()
 	: m_renderTarget(nullptr)	
 	, m_gameBoard(nullptr)
@@ -64,7 +66,7 @@ void GameEngineMain::AddEntity(Entity* entity)
 	if (found == m_entities.end())
 	{
 		m_entitiesToAdd.push_back(entity);		
-	}	
+	}
 }
 
 
@@ -90,7 +92,54 @@ void GameEngineMain::RemoveEntity(Entity* entity)
 	{
 		m_entitiesToRemove.push_back(entity);
 		entity->OnRemoveFromWorld();
-	}	
+	}
+}
+
+
+void GameEngineMain::RefreshEntityTag(Entity* entity)
+{
+	if (entity != nullptr && entity->HasEntityTag())
+	{
+		const std::string& entityTag = entity->GetEntityTag();
+		std::vector<Entity*>& tagList = m_entityTagMap[entityTag];
+		tagList.push_back(entity);
+	}
+}
+
+
+void GameEngineMain::RemoveEntityTagFromMap(Entity* entity, std::string tag)
+{
+	bool hasFoundEntity = false;
+
+	if (entity != nullptr)
+    {
+		auto tagListIt = m_entityTagMap.find(tag);
+		if (tagListIt != m_entityTagMap.end())
+		{
+			std::vector<Entity*>& tagList = (*tagListIt).second;
+			auto tagEntityIt = std::find(tagList.begin(), tagList.end(), entity);
+			if (tagEntityIt != tagList.end())
+			{
+				tagList.erase(tagEntityIt);
+				hasFoundEntity = true;
+			}
+		}
+	}
+
+    assert(hasFoundEntity); //Trying to remove an entity tag from the map that doesn't exist! Call Entity::ClearEntityTag instead!
+}
+
+
+std::vector<Entity*> GameEngineMain::GetEntitiesByTag(std::string tag)
+{
+	auto it = m_entityTagMap.find(tag);
+	if (it == m_entityTagMap.end())
+    {
+        std::vector<Entity*> emptyVec;
+		return emptyVec;
+	}
+
+	return it->second;
 }
 
 
