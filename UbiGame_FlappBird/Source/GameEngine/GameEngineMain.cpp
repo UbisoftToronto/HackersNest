@@ -121,6 +121,12 @@ void GameEngineMain::RemoveEntityTagFromMap(Entity* entity, std::string tag)
 			if (tagEntityIt != tagList.end())
 			{
 				tagList.erase(tagEntityIt);
+
+				if (tagList.empty())
+				{
+					m_entityTagMap.erase(tagListIt);
+				}
+
 				hasFoundEntity = true;
 			}
 		}
