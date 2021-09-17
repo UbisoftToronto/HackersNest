@@ -10,6 +10,10 @@ Demonstrate your abilities as a game developer and take us on a journey! Our men
 
 **Please attend our workshop (5:30PM-6:00PM on Friday, September 17th 2021)** and visit our Hopin booth and Discord channel to meet our mentors Radoslaw Malicki, Alexander 'Mordred' Andonov, and Xavier Sadoulet.
 
+## Theme
+
+You must create a game that includes the theme of **BUILDING**.
+
 ## Documentation
 
 - [Build and Run](https://github.com/UbisoftToronto/HackersNest/wiki/Build-and-Run)
