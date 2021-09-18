@@ -3,6 +3,10 @@
 int main()
 {
 	GameEngine::GameEngineMain* mainEngine = GameEngine::GameEngineMain::GetInstance();
+
+	mainEngine->GetRenderWindow()->setTitle("Covid Game");
+	mainEngine->GetRenderWindow()->setSize(sf::Vector2u(1600, 1600));
+
 	while (mainEngine->GetRenderWindow()->isOpen())
 	{				
 		mainEngine->Update();
