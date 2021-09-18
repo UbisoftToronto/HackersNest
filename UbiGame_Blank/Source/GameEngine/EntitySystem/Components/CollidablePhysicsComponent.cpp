@@ -2,6 +2,7 @@
 
 #include "GameEngine/Util/CollisionManager.h"
 #include "GameEngine/EntitySystem/Entity.h"
+#include "GameEngine/GameEngineMain.h"
 
 #include <vector>
 
@@ -66,4 +67,22 @@ void CollidablePhysicsComponent::Update()
 			GetEntity()->SetPos(pos);
 		}
 	}
+}
+
+void GravityPhysicsComponent::Update()
+{
+    //Get DELTA time from the previous frame
+    float dt = GameEngine::GameEngineMain::GetTimeDelta();
+
+    if (dt > 0.f)
+    {
+        //Set the wanted velocity as current
+        m_velocity = m_wantedVelocity;
+
+        //V = Dx / Dt => Dx = V * Dt
+        sf::Vector2f deltaVelocity = dt * m_velocity;
+        GetEntity()->SetPos(GetEntity()->GetPos() + deltaVelocity);
+    }
+
+    CollidablePhysicsComponent::Update();
 }
