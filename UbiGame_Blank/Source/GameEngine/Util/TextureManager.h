@@ -14,39 +14,52 @@ namespace GameEngine
 			Player = 0,
 			Tileset,
 			BG,
+			Projectile,
 			Particles,
 			Count,
 		};
-	}	
+	}
 
-	inline const char* GetPath(eTexture::type texture)
+	inline const char *GetPath(eTexture::type texture)
 	{
 		switch (texture)
 		{
-		case eTexture::Player:    return "player.png";
-        case eTexture::Tileset:   return "tileset.png";
-		case eTexture::BG:		  return "bg.png";
-		case eTexture::Particles: return "particles.png";
-		default:       return "UnknownTexType";
+		case eTexture::Player:
+			return "player.png";
+		case eTexture::Tileset:
+			return "tileset.png";
+		case eTexture::BG:
+			return "bg.png";
+		case eTexture::Projectile:
+			return "antibody.png";
+		case eTexture::Particles:
+			return "particles.png";
+		default:
+			return "UnknownTexType";
 		}
 	}
 
 	class TextureManager
 	{
 	public:
-		static TextureManager* GetInstance() { if (!sm_instance) sm_instance = new TextureManager(); return sm_instance; }
+		static TextureManager *GetInstance()
+		{
+			if (!sm_instance)
+				sm_instance = new TextureManager();
+			return sm_instance;
+		}
 		~TextureManager();
 
 		void LoadTextures();
 		void UnLoadTextures();
 
-		sf::Texture* GetTexture(eTexture::type texture) const { return m_textures[(int)texture]; }
+		sf::Texture *GetTexture(eTexture::type texture) const { return m_textures[(int)texture]; }
 
 	private:
 		TextureManager();
-		static TextureManager* sm_instance;
+		static TextureManager *sm_instance;
 
-		sf::Texture* m_textures[eTexture::Count];
+		sf::Texture *m_textures[eTexture::Count];
 	};
 }
 
@@ -54,4 +67,3 @@ namespace TextureHelper
 {
 	sf::Vector2f GetTextureTileSize(GameEngine::eTexture::type texture);
 }
-

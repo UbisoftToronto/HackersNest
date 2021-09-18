@@ -7,7 +7,7 @@
 namespace Game
 {
 	//Used for storing and controling all game related entities
-	class PlayerEntity;	
+	class PlayerEntity;
 
 	class GameBoard
 	{
@@ -21,19 +21,18 @@ namespace Game
 		void CreatePlayer();
 		void CreateBackground();
 		void CreatePlatform();
+		void CreateTileset();
+		void CreateTestProjectile();
 
-		bool IsGameOver() const { return m_isGameOver; }		
+		bool IsGameOver() const { return m_isGameOver; }
 
 	protected:
 		//Placeholder temp - should go to helpers or smth.
 
-		PlayerEntity* m_player;
-		GameEngine::Entity* m_text;
-		GameEngine::Entity* m_backGround;
+		PlayerEntity *m_player;
+		GameEngine::Entity *m_text;
+		GameEngine::Entity *m_backGround;
 
-		bool  m_isGameOver;
+		bool m_isGameOver;
 	};
 }
-
-
-
