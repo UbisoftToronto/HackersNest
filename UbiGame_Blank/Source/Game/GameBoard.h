@@ -6,7 +6,7 @@
 
 namespace Game
 {
-	//Used for storing and controlling all game related entities, as well as providing an entry point for the "game" side of application	
+	//Used for storing and controling all game related entities
 	class PlayerEntity;	
 
 	class GameBoard
@@ -15,8 +15,24 @@ namespace Game
 		GameBoard();
 		virtual ~GameBoard();
 
-		void Update();		
-		bool IsGameOver() { return false; }
+		//Temp - for nice architecture this should be within some sort of IUpdatable interface that GameEngine handles (so that not only entities can be updated)
+		void Update();
+
+		void CreatePlayer();
+		void CreateBackground();
+
+		bool IsGameOver() const { return m_isGameOver; }		
+
+	protected:
+		//Placeholder temp - should go to helpers or smth.
+
+		PlayerEntity* m_player;
+		GameEngine::Entity* m_text;
+		GameEngine::Entity* m_backGround;
+
+		bool  m_isGameOver;
 	};
 }
+
+
 
