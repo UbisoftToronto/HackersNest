@@ -2,7 +2,7 @@
 
 [![Build Targets](https://github.com/UbisoftToronto/HackersNest/workflows/Build%20Targets/badge.svg)](https://github.com/UbisoftToronto/HackersNest/actions)
 
-Base framework for the Ubisoft Toronto Hackathon challenges
+Game made from the base framework for the Ubisoft Toronto Hackathon challenges
 
 # HackTheNorth Challenge
 
