@@ -20,7 +20,7 @@ namespace Game
 
 		void CreatePlayer();
 		void CreateBackground();
-		void CreatePlatform(float x, float y);
+		void CreatePlatform(float x, float y, float w=60.f, float h=20.f);
 
 		bool IsGameOver() const { return m_isGameOver; }		
 

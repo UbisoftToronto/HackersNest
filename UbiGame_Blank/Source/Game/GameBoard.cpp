@@ -19,6 +19,7 @@ GameBoard::GameBoard()
     CreatePlatform(100.f, 200.f);
     CreatePlatform(200.f, 200.f);
     CreatePlatform(300.f, 250.f);
+    CreatePlatform(200.f, 450.f, 800.f, 20.f);
 }
 
 void GameBoard::CreatePlayer()
@@ -47,12 +48,12 @@ void GameBoard::CreateBackground()
     m_backGround = bgEntity;
 }
 
-void GameBoard::CreatePlatform(float x, float y)
+void GameBoard::CreatePlatform(float x, float y, float w, float h)
 {
     PlatformEntity* platform = new PlatformEntity();
     GameEngine::GameEngineMain::GetInstance()->AddEntity(platform);
     platform->SetPos(sf::Vector2f(x, y));
-    platform->SetSize(sf::Vector2f(60.f, 20.f));
+    platform->SetSize(sf::Vector2f(w, h));
 
     platform->AddComponent<GameEngine::CollidableComponent>();
 }
