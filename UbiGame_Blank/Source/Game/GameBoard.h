@@ -20,6 +20,7 @@ namespace Game
 
 		void CreatePlayer();
 		void CreateBackground();
+		void CreateTileset();
 
 		bool IsGameOver() const { return m_isGameOver; }		
 
