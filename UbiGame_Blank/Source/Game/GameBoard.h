@@ -8,6 +8,7 @@ namespace Game
 {
 	//Used for storing and controling all game related entities
 	class PlayerEntity;	
+	class VirusEntity;
 
 	class GameBoard
 	{
@@ -21,6 +22,7 @@ namespace Game
 		void CreatePlayer();
 		void CreateBackground();
 		void CreatePlatform(float x, float y);
+		void CreateVirus();
 
 		bool IsGameOver() const { return m_isGameOver; }		
 
@@ -30,6 +32,7 @@ namespace Game
 		PlayerEntity* m_player;
 		GameEngine::Entity* m_text;
 		GameEngine::Entity* m_backGround;
+		VirusEntity* m_virus;
 
 		bool  m_isGameOver;
 	};

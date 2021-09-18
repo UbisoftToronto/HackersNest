@@ -7,6 +7,7 @@
 #include "GameEngine/EntitySystem/Components/TextRenderComponent.h"
 #include "Game/GameEntities/PlayerEntity.h"
 #include "Game/GameEntities/PlatformEntity.h"
+#include "Game/GameEntities/VirusEntity.h"
 #include "Game/GameComponents/PlayerMovementComponent.h"
 
 using namespace Game;
@@ -19,6 +20,7 @@ GameBoard::GameBoard()
     CreatePlatform(100.f, 200.f);
     CreatePlatform(200.f, 200.f);
     CreatePlatform(300.f, 250.f);
+    CreateVirus();
 }
 
 void GameBoard::CreatePlayer()
@@ -55,6 +57,14 @@ void GameBoard::CreatePlatform(float x, float y)
     platform->SetSize(sf::Vector2f(60.f, 20.f));
 
     platform->AddComponent<GameEngine::CollidableComponent>();
+}
+
+void GameBoard::CreateVirus()
+{
+    VirusEntity* virus = new VirusEntity();
+    GameEngine::GameEngineMain::GetInstance()->AddEntity(virus);
+    virus->SetPos(sf::Vector2f(100.f, 100.f));
+    virus->SetSize(sf::Vector2f(35.f, 35.f));
 }
 
 GameBoard::~GameBoard()

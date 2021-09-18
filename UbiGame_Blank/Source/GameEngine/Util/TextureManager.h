@@ -15,6 +15,7 @@ namespace GameEngine
 			Tileset,
 			BG,
 			Particles,
+			Virus,
 			Count,
 		};
 	}	
@@ -27,6 +28,7 @@ namespace GameEngine
         case eTexture::Tileset:   return "tileset.png";
 		case eTexture::BG:		  return "bg.png";
 		case eTexture::Particles: return "particles.png";
+		case eTexture::Virus: return "virus.png";
 		default:       return "UnknownTexType";
 		}
 	}
