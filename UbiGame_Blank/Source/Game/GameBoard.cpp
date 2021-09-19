@@ -3,6 +3,7 @@
 #include "GameEngine/GameEngineMain.h"
 #include "GameEngine/EntitySystem/Components/CollidableComponent.h"
 #include "GameEngine/EntitySystem/Components/CollidablePhysicsComponent.h"
+#include "GameEngine/EntitySystem/Components/GravityPhysicsComponent.h"
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
 #include "GameEngine/EntitySystem/Components/TextRenderComponent.h"
 #include "Game/GameEntities/PlayerEntity.h"
@@ -30,9 +31,9 @@ void GameBoard::CreatePlayer()
     m_player->SetPos(sf::Vector2f(60.f, 60.f));	
     m_player->SetSize(sf::Vector2f(35.f, 35.f));
 
-    //Movement
     m_player->AddComponent<Game::PlayerMovementComponent>();
     m_player->AddComponent<GameEngine::CollidablePhysicsComponent>();
+    m_player->AddComponent<GameEngine::GravityPhysicsComponent>();
 }
 
 void GameBoard::CreateBackground()
