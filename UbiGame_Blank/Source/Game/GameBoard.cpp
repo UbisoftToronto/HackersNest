@@ -33,7 +33,12 @@ GameBoard::GameBoard()
     CreatePlatform(150.f, 480.f, 1);
     CreatePlatform(250.f, 480.f, 3);
     CreatePlatform(410.f, 480.f, 4);
-    CreateVirus(sf::Vector2f(80.f, 200.f), sf::Vector2f(120.f, 200.f), sf::Vector2f(80.f, 200.f));
+    CreatePlatform(280.f, 10.f, 5);
+    CreatePlatform(6.f, 280.f, 6);
+    CreatePlatform(494.f, 280.f, 6);
+    CreateVirus(sf::Vector2f(180.f, 200.f), sf::Vector2f(300.f, 200.f), sf::Vector2f(180.f, 200.f));
+    CreateVirus(sf::Vector2f(365.f, 420.f), sf::Vector2f(475.f, 420.f), sf::Vector2f(430.f, 420.f));
+    CreateVirus(sf::Vector2f(23.f, 350.f), sf::Vector2f(130.f, 350.f), sf::Vector2f(130.f, 350.f));
 }
 
 void GameBoard::CreatePlayer()
@@ -72,8 +77,12 @@ void GameBoard::CreatePlatform(float x, float y, int id)
     platform->SetSize(sf::Vector2f(60.f, 20.f));
   } else if (id == 3) {
     platform->SetSize(sf::Vector2f(135.f, 20.f));
-  } else {
+  } else if (id == 4) {
     platform->SetSize(sf::Vector2f(175.f, 20.f));
+  } else if (id == 5) {
+    platform->SetSize(sf::Vector2f(600.f, 10.f));
+  } else {
+    platform->SetSize(sf::Vector2f(10.f, 600.f));
   }
 
   platform->AddComponent<GameEngine::CollidableComponent>();
@@ -104,7 +113,7 @@ void GameBoard::CreateVirus(sf::Vector2f start, sf::Vector2f end, sf::Vector2f i
 {
     VirusEntity* virus = new VirusEntity(start, end);
     virus->SetPos(initialPos);
-    virus->SetSize(sf::Vector2f(35.f, 35.f));
+    virus->SetSize(sf::Vector2f(25.f, 25.f));
     GameEngine::GameEngineMain::GetInstance()->AddEntity(virus);
 }
 

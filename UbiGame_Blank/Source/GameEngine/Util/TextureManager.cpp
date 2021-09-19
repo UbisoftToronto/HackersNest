@@ -62,6 +62,8 @@ namespace TextureHelper
 			return sf::Vector2f(31.f, 32.f);
     case GameEngine::eTexture::Virus:
       return sf::Vector2f(43.f, 43.f);
+		case GameEngine::eTexture::Border:
+			return sf::Vector2f(30.f, 8.f);
 		default:
 			return sf::Vector2f(-1.f, -1.f);
 		}
