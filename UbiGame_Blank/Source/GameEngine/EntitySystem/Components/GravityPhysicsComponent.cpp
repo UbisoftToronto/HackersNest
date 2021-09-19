@@ -56,13 +56,13 @@ void GravityPhysicsComponent::Update()
     {
         //Our actual velocity is that position different in time:
         //m_velocity.y = deltaY / dt;
-        if (m_velocity.y > 500)
+        if (m_velocity.y > 200)
         {
-            m_velocity.y = 500;
+            m_velocity.y = 200;
         }
-        else if (m_velocity.y < -500)
+        else if (m_velocity.y < -300)
         {
-            m_velocity.y = -500;
+            m_velocity.y = -300;
         }
     }
 }
