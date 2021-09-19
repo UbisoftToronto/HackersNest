@@ -11,7 +11,7 @@
 #include "GameEngine/EntitySystem/Components/TextRenderComponent.h"
 
 Game::ProjectileSpawnerComponent::ProjectileSpawnerComponent()
-    : m_wasFirePressed(false), direction(sf::Vector2f(50.f, 0.f))
+    : m_wasFirePressed(false), direction(sf::Vector2f(500.f, 0.f))
 {
 }
 
@@ -29,11 +29,11 @@ void Game::ProjectileSpawnerComponent::Update()
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {
-        direction.x = 50.f;
+        direction.x = 500.f;
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
     {
-        direction.x = -50.f;
+        direction.x = -500.f;
     }
     else
     {
