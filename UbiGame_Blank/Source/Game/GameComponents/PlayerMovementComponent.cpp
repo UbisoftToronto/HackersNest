@@ -1,44 +1,53 @@
 #include "PlayerMovementComponent.h"
 #include <SFML/Window/Keyboard.hpp>
 #include "GameEngine/GameEngineMain.h"
+#include "GameEngine/EntitySystem/Components/GravityPhysicsComponent.h"
 
 using namespace Game;
 
 void PlayerMovementComponent::Update() 
 {
     Component::Update();
+    float playerVelocity = 250.f;
+    float jumpVelocity = 200.f;
+    bool m_wasJumpButtonPressed = false;
 
-    //Grabs how much time has passed since last frame
-    const float dt = GameEngine::GameEngineMain::GetTimeDelta();
-
-    //By default the displacement is 0,0
-    sf::Vector2f displacement{ 0.0f,0.0f };
-
-    //The amount of speed that we will apply when input is received
-    const float inputAmount = 300.0f;
+    sf::Vector2f wantedVelocity = sf::Vector2f(0.f, 0.f);
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
     {
-        displacement.y -= inputAmount * dt;
+        if (!m_wasJumpButtonPressed && wantedVelocity.y >= 0)
+        {
+            wantedVelocity.y -= jumpVelocity;
+            m_wasJumpButtonPressed = true;
+        }
+    }
+    else
+    {
+        wantedVelocity.y = 0;
+        m_wasJumpButtonPressed = false;
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
     {
-        displacement.x -= inputAmount * dt;
+        wantedVelocity.x -= playerVelocity;
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
     {
-        displacement.y += inputAmount * dt;
+        wantedVelocity.y += playerVelocity;
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {
-        displacement.x += inputAmount * dt;
+        wantedVelocity.x += playerVelocity;
     }
 
-    //Update the entity position
-    GetEntity()->SetPos(GetEntity()->GetPos() + displacement);
+    GameEngine::GravityPhysicsComponent* gravPhys = GetEntity()->GetComponent<GameEngine::GravityPhysicsComponent>();
+    if (gravPhys)
+    {
+        gravPhys->SetVelocity(wantedVelocity);
+    }
 }
 
 void PlayerMovementComponent::OnAddToWorld() {}

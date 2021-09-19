@@ -7,11 +7,17 @@
 
 using namespace Game;
 
-PlatformEntity::PlatformEntity()	
+PlatformEntity::PlatformEntity(int id)	
 {
 	m_renderComponent = AddComponent<GameEngine::SpriteRenderComponent>();
 	m_renderComponent->SetFillColor(sf::Color::Red);
-	m_renderComponent->SetTexture(GameEngine::eTexture::Tileset);
+	if (id == 1) {
+		m_renderComponent->SetTexture(GameEngine::eTexture::Tileset);
+	} else if (id == 3) {
+		m_renderComponent->SetTexture(GameEngine::eTexture::Tileset3);
+	} else {
+		m_renderComponent->SetTexture(GameEngine::eTexture::Tileset4);
+	}
 	m_renderComponent->SetZLevel(2);
 	m_renderComponent->SetTileIndex(0, 0);
 

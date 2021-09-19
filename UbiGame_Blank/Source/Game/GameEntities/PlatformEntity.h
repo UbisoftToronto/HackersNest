@@ -7,7 +7,7 @@ namespace Game
     class PlatformEntity : public GameEngine::Entity
     {
     public:
-        PlatformEntity();
+        PlatformEntity(int);
         ~PlatformEntity();
 
         virtual void OnAddToWorld() override;

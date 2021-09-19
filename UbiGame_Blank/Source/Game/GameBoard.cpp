@@ -4,6 +4,7 @@
 #include "GameEngine/GameEngineMain.h"
 #include "GameEngine/EntitySystem/Components/CollidableComponent.h"
 #include "GameEngine/EntitySystem/Components/CollidablePhysicsComponent.h"
+#include "GameEngine/EntitySystem/Components/GravityPhysicsComponent.h"
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
 #include "GameEngine/EntitySystem/Components/TextRenderComponent.h"
 #include "Game/GameEntities/PlayerEntity.h"
@@ -20,9 +21,18 @@ GameBoard::GameBoard()
 {
     CreatePlayer();
     CreateBackground();
-    CreatePlatform(100.f, 200.f);
-    CreatePlatform(200.f, 200.f);
-    CreatePlatform(300.f, 250.f);
+    CreatePlatform(50.f, 89.f, 4);
+    CreatePlatform(100.f, 200.f, 1);
+    CreatePlatform(240.f, 200.f, 3);
+    CreatePlatform(340.f, 290.f, 4);
+    CreatePlatform(480.f, 100.f, 1);
+    CreatePlatform(50.f, 350.f, 4);
+    CreatePlatform(420.f, 420.f, 3);
+    CreatePlatform(210.f, 410.f, 1);
+    CreatePlatform(50.f, 480.f, 3);
+    CreatePlatform(150.f, 480.f, 1);
+    CreatePlatform(250.f, 480.f, 3);
+    CreatePlatform(410.f, 480.f, 4);
     CreateVirus(sf::Vector2f(80.f, 200.f), sf::Vector2f(120.f, 200.f), sf::Vector2f(80.f, 200.f));
 }
 
@@ -34,9 +44,9 @@ void GameBoard::CreatePlayer()
     m_player->SetPos(sf::Vector2f(60.f, 60.f));	
     m_player->SetSize(sf::Vector2f(35.f, 35.f));
 
-  //Movement
   m_player->AddComponent<Game::PlayerMovementComponent>();
   m_player->AddComponent<GameEngine::CollidablePhysicsComponent>();
+    m_player->AddComponent<GameEngine::GravityPhysicsComponent>();
   m_player->AddComponent<Game::ProjectileSpawnerComponent>();
 }
 
@@ -53,12 +63,18 @@ void GameBoard::CreateBackground()
   m_backGround = bgEntity;
 }
 
-void GameBoard::CreatePlatform(float x, float y)
+void GameBoard::CreatePlatform(float x, float y, int id)
 {
-  PlatformEntity* platform = new PlatformEntity();
+  PlatformEntity* platform = new PlatformEntity(id);
   GameEngine::GameEngineMain::GetInstance()->AddEntity(platform);
   platform->SetPos(sf::Vector2f(x, y));
-  platform->SetSize(sf::Vector2f(60.f, 20.f));
+  if (id == 1) {
+    platform->SetSize(sf::Vector2f(60.f, 20.f));
+  } else if (id == 3) {
+    platform->SetSize(sf::Vector2f(135.f, 20.f));
+  } else {
+    platform->SetSize(sf::Vector2f(175.f, 20.f));
+  }
 
   platform->AddComponent<GameEngine::CollidableComponent>();
 }

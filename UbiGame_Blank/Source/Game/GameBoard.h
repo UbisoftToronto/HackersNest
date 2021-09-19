@@ -21,9 +21,8 @@ namespace Game
 
 		void CreatePlayer();
 		void CreateBackground();
-		void CreatePlatform(float x, float y);
+		void CreatePlatform(float x, float y, int id);
 		void CreateVirus(sf::Vector2f start, sf::Vector2f end, sf::Vector2f initialPos);
-		void CreateTileset();
 		void CreateTestProjectile();
 
 		bool IsGameOver() const { return m_isGameOver; }
