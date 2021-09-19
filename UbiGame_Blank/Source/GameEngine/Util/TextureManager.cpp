@@ -2,7 +2,7 @@
 
 using namespace GameEngine;
 
-TextureManager* TextureManager::sm_instance = nullptr;
+TextureManager *TextureManager::sm_instance = nullptr;
 
 TextureManager::TextureManager()
 {
@@ -12,18 +12,16 @@ TextureManager::TextureManager()
 	}
 }
 
-
 TextureManager::~TextureManager()
 {
 	UnLoadTextures();
 }
 
-
 void TextureManager::LoadTextures()
 {
 	for (int a = 0; a < (int)eTexture::Count; ++a)
 	{
-		sf::Texture* texture = new sf::Texture();
+		sf::Texture *texture = new sf::Texture();
 		std::string filePath;
 		filePath.append("Resources/img/");
 		filePath.append(GetPath((eTexture::type)a));
@@ -32,7 +30,6 @@ void TextureManager::LoadTextures()
 		m_textures[a] = texture;
 	}
 }
-
 
 void TextureManager::UnLoadTextures()
 {
@@ -45,16 +42,24 @@ void TextureManager::UnLoadTextures()
 
 namespace TextureHelper
 {
-    sf::Vector2f GetTextureTileSize(GameEngine::eTexture::type texture)
-    {
-        switch (texture)
-        {
-        case  GameEngine::eTexture::Player:  return sf::Vector2f(63.f, 58.f);
-        case  GameEngine::eTexture::Tileset: return sf::Vector2f(24.f, 8.f);
-        case  GameEngine::eTexture::BG:	     return sf::Vector2f(100.f, 100.f);
-        case  GameEngine::eTexture::Particles: return sf::Vector2f(31.f, 32.f);
-				case  GameEngine::eTexture::Virus: return sf::Vector2f(43.f, 43.f);
-        default:							 return sf::Vector2f(-1.f, -1.f);
-        }
-    }
+	sf::Vector2f GetTextureTileSize(GameEngine::eTexture::type texture)
+	{
+		switch (texture)
+		{
+		case GameEngine::eTexture::Player:
+			return sf::Vector2f(63.f, 58.f);
+		case GameEngine::eTexture::Tileset:
+			return sf::Vector2f(24.f, 8.f);
+		case GameEngine::eTexture::Projectile:
+			return sf::Vector2f(28.f, 17.f);
+		case GameEngine::eTexture::BG:
+			return sf::Vector2f(100.f, 100.f);
+		case GameEngine::eTexture::Particles:
+			return sf::Vector2f(31.f, 32.f);
+    case GameEngine::eTexture::Virus:
+      return sf::Vector2f(43.f, 43.f);
+		default:
+			return sf::Vector2f(-1.f, -1.f);
+		}
+	}
 }

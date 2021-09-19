@@ -23,8 +23,10 @@ namespace Game
 		void CreateBackground();
 		void CreatePlatform(float x, float y);
 		void CreateVirus(sf::Vector2f start, sf::Vector2f end, sf::Vector2f initialPos);
+		void CreateTileset();
+		void CreateTestProjectile();
 
-		bool IsGameOver() const { return m_isGameOver; }		
+		bool IsGameOver() const { return m_isGameOver; }
 
 	protected:
 		//Placeholder temp - should go to helpers or smth.
@@ -34,9 +36,6 @@ namespace Game
 		GameEngine::Entity* m_backGround;
 		VirusEntity* m_virus;
 
-		bool  m_isGameOver;
+		bool m_isGameOver;
 	};
 }
-
-
-
