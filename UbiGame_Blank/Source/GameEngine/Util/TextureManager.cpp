@@ -48,8 +48,6 @@ namespace TextureHelper
 		{
 		case GameEngine::eTexture::Player:
 			return sf::Vector2f(63.f, 58.f);
-		case GameEngine::eTexture::PlayerLeft:
-			return sf::Vector2f(63.f, 58.f);
 		case GameEngine::eTexture::Tileset:
 			return sf::Vector2f(24.f, 8.f);
 		case GameEngine::eTexture::Tileset3:

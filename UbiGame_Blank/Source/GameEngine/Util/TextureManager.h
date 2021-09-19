@@ -12,7 +12,6 @@ namespace GameEngine
 		{
 			None = -1,
 			Player = 0,
-			PlayerLeft,
 			Tileset,
 			Tileset3,
 			Tileset4,
@@ -33,8 +32,6 @@ namespace GameEngine
 		{
 		case eTexture::Player:
 			return "player.png";
-		case eTexture::PlayerLeft:
-			return "playerleft.png";
 		case eTexture::Tileset:
 			return "tileset.png";
 		case eTexture::Tileset3:
