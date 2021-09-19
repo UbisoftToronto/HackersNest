@@ -33,16 +33,12 @@ GameBoard::GameBoard()
     CreatePlatform(150.f, 480.f, 1);
     CreatePlatform(250.f, 480.f, 3);
     CreatePlatform(410.f, 480.f, 4);
-<<<<<<< HEAD
     CreatePlatform(280.f, 10.f, 5);
     CreatePlatform(6.f, 280.f, 6);
     CreatePlatform(494.f, 280.f, 6);
-    CreateVirus(sf::Vector2f(80.f, 200.f), sf::Vector2f(120.f, 200.f), sf::Vector2f(80.f, 200.f));
-=======
     CreateVirus(sf::Vector2f(180.f, 200.f), sf::Vector2f(300.f, 200.f), sf::Vector2f(180.f, 200.f));
     CreateVirus(sf::Vector2f(365.f, 420.f), sf::Vector2f(475.f, 420.f), sf::Vector2f(430.f, 420.f));
-    CreateVirus(sf::Vector2f(15.f, 350.f), sf::Vector2f(130.f, 350.f), sf::Vector2f(130.f, 350.f));
->>>>>>> f8fdda4b8915859bb2883bfc226546630f86727a
+    CreateVirus(sf::Vector2f(23.f, 350.f), sf::Vector2f(130.f, 350.f), sf::Vector2f(130.f, 350.f));
 }
 
 void GameBoard::CreatePlayer()
