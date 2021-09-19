@@ -63,7 +63,7 @@ void GameBoard::CreateBackground()
   m_backGround = bgEntity;
 }
 
-void GameBoard::CreatePlatform(float x, float y, int id, float w, float h)
+void GameBoard::CreatePlatform(float x, float y, int id)
 {
   PlatformEntity* platform = new PlatformEntity(id);
   GameEngine::GameEngineMain::GetInstance()->AddEntity(platform);
