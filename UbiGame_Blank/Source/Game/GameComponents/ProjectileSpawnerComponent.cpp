@@ -26,11 +26,11 @@ void Game::ProjectileSpawnerComponent::Update()
     {
         m_wasFirePressed = true;
     }
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {
         direction.x = 50.f;
     }
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
     {
         direction.x = -50.f;
     }
