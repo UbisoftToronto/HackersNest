@@ -13,6 +13,8 @@ namespace GameEngine
 			None = -1,
 			Player = 0,
 			Tileset,
+			Tileset3,
+			Tileset4,
 			BG,
 			Projectile,
 			Particles,
@@ -29,6 +31,10 @@ namespace GameEngine
 			return "player.png";
 		case eTexture::Tileset:
 			return "tileset.png";
+		case eTexture::Tileset3:
+			return "tileset3.png";
+		case eTexture::Tileset4:
+			return "tileset4.png";
 		case eTexture::BG:
 			return "bg.png";
 		case eTexture::Projectile:

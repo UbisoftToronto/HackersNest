@@ -21,7 +21,7 @@ namespace Game
 
 		void CreatePlayer();
 		void CreateBackground();
-		void CreatePlatform(float x, float y, float w=60.f, float h=20.f);
+		void CreatePlatform(float x, float y, int id);
 		void CreateVirus(sf::Vector2f start, sf::Vector2f end, sf::Vector2f initialPos);
 		void CreateTestProjectile();
 

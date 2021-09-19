@@ -50,6 +50,10 @@ namespace TextureHelper
 			return sf::Vector2f(63.f, 58.f);
 		case GameEngine::eTexture::Tileset:
 			return sf::Vector2f(24.f, 8.f);
+		case GameEngine::eTexture::Tileset3:
+			return sf::Vector2f(54.f, 8.f);
+		case GameEngine::eTexture::Tileset4:
+			return sf::Vector2f(70.f, 8.f);
 		case GameEngine::eTexture::Projectile:
 			return sf::Vector2f(28.f, 17.f);
 		case GameEngine::eTexture::BG:
