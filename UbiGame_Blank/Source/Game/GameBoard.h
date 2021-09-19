@@ -22,7 +22,7 @@ namespace Game
 		void CreatePlayer();
 		void CreateBackground();
 		void CreatePlatform(float x, float y);
-		void CreateVirus();
+		void CreateVirus(sf::Vector2f start, sf::Vector2f end, sf::Vector2f initialPos);
 
 		bool IsGameOver() const { return m_isGameOver; }		
 

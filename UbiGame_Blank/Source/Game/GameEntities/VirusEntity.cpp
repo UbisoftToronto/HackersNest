@@ -1,5 +1,5 @@
 #include "VirusEntity.h"
-
+#include <SFML/System/Vector2.hpp>
 #include "GameEngine/GameEngineMain.h"
 #include "GameEngine/EntitySystem/Components/CollidablePhysicsComponent.h"
 #include "GameEngine/EntitySystem/Components/ParticleEmitterComponent.h"
@@ -7,7 +7,7 @@
 
 using namespace Game;
 
-VirusEntity::VirusEntity()
+VirusEntity::VirusEntity(sf::Vector2f startPos,sf::Vector2f endPos)
 {
   m_renderComponent = AddComponent<GameEngine::SpriteRenderComponent>();
   m_renderComponent->SetTexture(GameEngine::eTexture::Virus);
@@ -16,8 +16,8 @@ VirusEntity::VirusEntity()
 
   hitBullet = false;
 
-  //m_virusMovementComponent = AddComponent<VirusMovementComponent>();
-  //m_virusMovementComponent->SetStartAndEndPos(startPos, endPos);
+  m_virusMovementComponent = AddComponent<VirusMovementComponent>();
+  m_virusMovementComponent->SetStartAndEndPos(startPos, endPos);
 
 }
 

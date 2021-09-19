@@ -1,5 +1,6 @@
 #include "GameBoard.h"
 
+#include <SFML/System/Vector2.hpp>
 #include "GameEngine/GameEngineMain.h"
 #include "GameEngine/EntitySystem/Components/CollidableComponent.h"
 #include "GameEngine/EntitySystem/Components/CollidablePhysicsComponent.h"
@@ -20,7 +21,7 @@ GameBoard::GameBoard()
     CreatePlatform(100.f, 200.f);
     CreatePlatform(200.f, 200.f);
     CreatePlatform(300.f, 250.f);
-    CreateVirus();
+    CreateVirus(sf::Vector2f(80.f, 200.f), sf::Vector2f(120.f, 200.f), sf::Vector2f(80.f, 200.f));
 }
 
 void GameBoard::CreatePlayer()
@@ -59,12 +60,12 @@ void GameBoard::CreatePlatform(float x, float y)
     platform->AddComponent<GameEngine::CollidableComponent>();
 }
 
-void GameBoard::CreateVirus()
+void GameBoard::CreateVirus(sf::Vector2f start, sf::Vector2f end, sf::Vector2f initialPos)
 {
-    VirusEntity* virus = new VirusEntity();
-    GameEngine::GameEngineMain::GetInstance()->AddEntity(virus);
-    virus->SetPos(sf::Vector2f(100.f, 100.f));
+    VirusEntity* virus = new VirusEntity(start, end);
+    virus->SetPos(initialPos);
     virus->SetSize(sf::Vector2f(35.f, 35.f));
+    GameEngine::GameEngineMain::GetInstance()->AddEntity(virus);
 }
 
 GameBoard::~GameBoard()
