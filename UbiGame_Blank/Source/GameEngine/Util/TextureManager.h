@@ -12,11 +12,13 @@ namespace GameEngine
 		{
 			None = -1,
 			Player = 0,
+			PlayerLeft,
 			Tileset,
 			Tileset3,
 			Tileset4,
 			BG,
 			Projectile,
+			ProjectileLeft,
 			Particles,
 			Virus,
 			Border,
@@ -30,6 +32,8 @@ namespace GameEngine
 		{
 		case eTexture::Player:
 			return "player.png";
+		case eTexture::PlayerLeft:
+			return "playerleft.png";
 		case eTexture::Tileset:
 			return "tileset.png";
 		case eTexture::Tileset3:
@@ -40,10 +44,12 @@ namespace GameEngine
 			return "bg.png";
 		case eTexture::Projectile:
 			return "antibody.png";
+		case eTexture::ProjectileLeft:
+			return "antibodyleft.png";
 		case eTexture::Particles:
 			return "particles.png";
-    case eTexture::Virus:
-      return "virus.png";
+		case eTexture::Virus:
+			return "virus.png";
 		case eTexture::Border:
 			return "border.png";
 		default:

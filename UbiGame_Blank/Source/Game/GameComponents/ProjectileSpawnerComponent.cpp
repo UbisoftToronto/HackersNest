@@ -21,7 +21,7 @@ Game::ProjectileSpawnerComponent::~ProjectileSpawnerComponent()
 
 void Game::ProjectileSpawnerComponent::OnAddToWorld()
 {
-  //CollidableComponent::OnAddToWorld();
+    //CollidableComponent::OnAddToWorld();
 }
 
 void Game::ProjectileSpawnerComponent::Update()
@@ -71,7 +71,14 @@ void Game::ProjectileSpawnerComponent::SpawnProjectile()
 
     GameEngine::SpriteRenderComponent *render = static_cast<GameEngine::SpriteRenderComponent *>(projectile->AddComponent<GameEngine::SpriteRenderComponent>());
 
-    render->SetTexture(GameEngine::eTexture::Projectile);
+    if (direction.x < 0)
+    {
+        render->SetTexture(GameEngine::eTexture::ProjectileLeft);
+    }
+    else
+    {
+        render->SetTexture(GameEngine::eTexture::Projectile);
+    }
     render->SetFillColor(sf::Color::Transparent);
     render->SetZLevel(3);
 
