@@ -10,7 +10,7 @@
 #include "GameEngine/EntitySystem/Components/TextRenderComponent.h"
 
 Game::ProjectileSpawnerComponent::ProjectileSpawnerComponent()
-    : m_wasFirePressed(false)
+    : m_wasFirePressed(false), direction(sf::Vector2f(50.f, 0.f))
 {
 }
 
@@ -25,6 +25,14 @@ void Game::ProjectileSpawnerComponent::Update()
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
     {
         m_wasFirePressed = true;
+    }
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+    {
+        direction.x = 50.f;
+    }
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+    {
+        direction.x = -50.f;
     }
     else
     {
@@ -45,6 +53,11 @@ void Game::ProjectileSpawnerComponent::SpawnProjectile()
     // displacement for projectile spawn point: change the float value to adjust
     sf::Vector2f d(GetEntity()->GetPos().x + 65.f, GetEntity()->GetPos().y);
 
+    if (direction.x < 0)
+    {
+        d.x = GetEntity()->GetPos().x - 65.f;
+    }
+
     projectile->SetPos(d);
     projectile->SetSize(sf::Vector2f(28.f, 17.f));
 
@@ -55,7 +68,7 @@ void Game::ProjectileSpawnerComponent::SpawnProjectile()
     render->SetZLevel(3);
 
     ProjectileComponent *projectileComponent = static_cast<ProjectileComponent *>(projectile->AddComponent<ProjectileComponent>());
-    projectileComponent->SetVelocity(sf::Vector2f(50.f, 0.f));
+    projectileComponent->SetVelocity(direction);
     projectileComponent->SetLifeTime(3.f);
 
     projectile->AddComponent<ProjectileComponent>();

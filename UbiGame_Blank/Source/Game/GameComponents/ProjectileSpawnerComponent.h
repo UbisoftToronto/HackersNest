@@ -1,5 +1,6 @@
 
 #include "GameEngine/EntitySystem/Component.h"
+#include <SFML/System/Vector2.hpp>
 
 namespace Game
 {
@@ -13,6 +14,7 @@ namespace Game
         void SpawnProjectile();
 
     private:
+        sf::Vector2f direction;
         bool m_wasFirePressed;
     };
 }
