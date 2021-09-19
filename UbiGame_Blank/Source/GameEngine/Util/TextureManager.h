@@ -20,6 +20,7 @@ namespace GameEngine
 			Particles,
 			Virus,
 			Border,
+			Timer,
 			Count,
 		};
 	}
@@ -46,6 +47,8 @@ namespace GameEngine
       return "virus.png";
 		case eTexture::Border:
 			return "border.png";
+		case eTexture::Timer:
+			return "bar.png";
 		default:
 			return "UnknownTexType";
 		}
