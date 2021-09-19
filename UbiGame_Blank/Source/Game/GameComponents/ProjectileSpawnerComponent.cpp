@@ -3,6 +3,7 @@
 #include "GameEngine/EntitySystem/Component.h"
 #include "GameEngine/Util/CollisionManager.h"
 #include "ProjectileComponent.h"
+#include "Game/GameEntities/ProjectileEntity.h"
 
 #include "GameEngine/EntitySystem/Components/CollidableComponent.h"
 #include "GameEngine/EntitySystem/Components/CollidablePhysicsComponent.h"
@@ -47,8 +48,10 @@ void Game::ProjectileSpawnerComponent::Update()
 
 void Game::ProjectileSpawnerComponent::SpawnProjectile()
 {
-    GameEngine::Entity *projectile = new GameEngine::Entity();
+    ProjectileEntity *projectile = new ProjectileEntity();
     GameEngine::GameEngineMain::GetInstance()->AddEntity(projectile);
+
+    projectile->SetEntityType(GameEngine::EEntityType::Projectile);
 
     // displacement for projectile spawn point: change the float value to adjust
     sf::Vector2f d(GetEntity()->GetPos().x + 65.f, GetEntity()->GetPos().y);
@@ -72,4 +75,5 @@ void Game::ProjectileSpawnerComponent::SpawnProjectile()
     projectileComponent->SetLifeTime(3.f);
 
     projectile->AddComponent<ProjectileComponent>();
+    projectile->AddComponent<GameEngine::CollidablePhysicsComponent>();
 }

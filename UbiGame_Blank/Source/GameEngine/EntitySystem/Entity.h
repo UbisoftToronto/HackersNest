@@ -7,6 +7,14 @@
 
 namespace GameEngine
 {
+    enum EEntityType
+    {
+        None,
+        Platform,
+        Player,
+        Virus,
+        Projectile
+    };
     class Entity
     {
     public:
@@ -26,36 +34,40 @@ namespace GameEngine
         //Base entity params
         sf::Vector2f GetPos() const;
         sf::Vector2f GetSize() const;
-        float		 GetRot()  const;
+        float GetRot() const;
 
-        void		 SetPos(sf::Vector2f pos);
-        void		 SetSize(sf::Vector2f size) { m_size = size; }
-        void	     SetRotation(float rotation) { m_rotation = rotation; }
+        void SetPos(sf::Vector2f pos);
+        void SetSize(sf::Vector2f size) { m_size = size; }
+        void SetRotation(float rotation) { m_rotation = rotation; }
+
+        // Entity type
+        void SetEntityType(EEntityType type) { m_type = type; }
+        EEntityType GetEntityType() const { return m_type; }
 
         sf::Vector2f GetLocalPosOffset() const { return m_localPosOffset; }
-        float		 GetLocalRotOffset() const { return m_localRotOffset; }
+        float GetLocalRotOffset() const { return m_localRotOffset; }
 
-        void		 SetLocalPosOffset(sf::Vector2f localPosOffset) { m_localPosOffset = localPosOffset; }
-        void		 SetLocalRotOffset(float localRotOffset) { m_localRotOffset = localRotOffset; }
+        void SetLocalPosOffset(sf::Vector2f localPosOffset) { m_localPosOffset = localPosOffset; }
+        void SetLocalRotOffset(float localRotOffset) { m_localRotOffset = localRotOffset; }
 
-        void		 SetParent(Entity* entity, bool retainWorldPos = false);
-        void		 RemoveParent();
+        void SetParent(Entity *entity, bool retainWorldPos = false);
+        void RemoveParent();
 
-        void		 AddChild(Entity* entity);
-        void		 RemoveChild(Entity* entity);
-        void		 ClearChildren();
+        void AddChild(Entity *entity);
+        void RemoveChild(Entity *entity);
+        void ClearChildren();
 
-        const Entity* GetParent() const { return m_parent; }
-        const std::vector<Entity*>& GetChildren() const { return m_children; }
+        const Entity *GetParent() const { return m_parent; }
+        const std::vector<Entity *> &GetChildren() const { return m_children; }
 
         //Components
         template <class T>
-        T* GetComponent()
+        T *GetComponent()
         {
             for (int a = 0; a < m_components.size(); ++a)
             {
-                Component* comp = m_components[a];
-                T* searched = dynamic_cast<T*>(comp);
+                Component *comp = m_components[a];
+                T *searched = dynamic_cast<T *>(comp);
                 if (searched)
                     return searched;
             }
@@ -64,13 +76,13 @@ namespace GameEngine
         }
 
         template <class T>
-        std::vector<T*> GetAllComponents()
+        std::vector<T *> GetAllComponents()
         {
-            std::vector<T*> outVec;
+            std::vector<T *> outVec;
             for (int a = 0; a < m_components.size(); ++a)
             {
-                Component* comp = m_components[a];
-                T* searched = dynamic_cast<T*>(comp);
+                Component *comp = m_components[a];
+                T *searched = dynamic_cast<T *>(comp);
                 if (searched)
                     outVec.push_back(searched);
             }
@@ -78,9 +90,9 @@ namespace GameEngine
         }
 
         template <class T>
-        T* AddComponent()
+        T *AddComponent()
         {
-            T* newComponent = new T();
+            T *newComponent = new T();
             newComponent->SetEntity(this);
             m_components.push_back(newComponent);
 
@@ -90,16 +102,17 @@ namespace GameEngine
     protected:
         void DestroyComponents();
 
-        std::vector<Component*> m_components;
-        sf::Vector2f		   m_pos;
-        sf::Vector2f		   m_size;
-        float				   m_rotation;
+        std::vector<Component *> m_components;
+        sf::Vector2f m_pos;
+        sf::Vector2f m_size;
+        float m_rotation;
+        EEntityType m_type;
 
-        std::vector<Entity*>   m_children;
-        Entity* m_parent;
+        std::vector<Entity *> m_children;
+        Entity *m_parent;
 
-        sf::Vector2f		   m_localPosOffset;
-        float				   m_localRotOffset;
+        sf::Vector2f m_localPosOffset;
+        float m_localRotOffset;
 
         std::optional<std::string> m_entityTag;
     };

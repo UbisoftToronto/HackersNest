@@ -7,19 +7,14 @@
 using namespace GameEngine;
 
 Entity::Entity()
-    : m_pos(0.f, 0.f)
-    , m_size(0.f, 0.f)
-    , m_rotation(0.f)
-    , m_parent(nullptr)
+    : m_pos(0.f, 0.f), m_size(0.f, 0.f), m_rotation(0.f), m_type(EEntityType::None), m_parent(nullptr)
 {
-
 }
 
 Entity::~Entity()
 {
     DestroyComponents();
 }
-
 
 void Entity::OnAddToWorld()
 {
@@ -28,7 +23,6 @@ void Entity::OnAddToWorld()
         component->OnAddToWorld();
     }
 }
-
 
 void Entity::OnRemoveFromWorld()
 {
@@ -46,7 +40,6 @@ void Entity::OnRemoveFromWorld()
     ClearEntityTag();
 }
 
-
 void Entity::SetEntityTag(std::string tag)
 {
     if (m_entityTag.has_value())
@@ -57,7 +50,6 @@ void Entity::SetEntityTag(std::string tag)
     m_entityTag = tag;
     GameEngineMain::GetInstance()->RefreshEntityTag(this);
 }
-
 
 void Entity::ClearEntityTag()
 {
@@ -82,7 +74,6 @@ bool Entity::HasEntityTag() const
     return m_entityTag.has_value();
 }
 
-
 void Entity::DestroyComponents()
 {
     for (auto component : m_components)
@@ -92,7 +83,6 @@ void Entity::DestroyComponents()
 
     m_components.clear();
 }
-
 
 void Entity::Update()
 {
@@ -139,7 +129,7 @@ void Entity::SetPos(sf::Vector2f pos)
     m_pos = pos;
 }
 
-void Entity::SetParent(Entity* entity, bool retainWorldPos /*= false*/)
+void Entity::SetParent(Entity *entity, bool retainWorldPos /*= false*/)
 {
     assert(entity != nullptr); //Assert if trying to set parent as nullptr, use RemoveParent instead!
 
@@ -170,7 +160,7 @@ void Entity::RemoveParent()
     m_parent = nullptr;
 }
 
-void Entity::AddChild(Entity* entity)
+void Entity::AddChild(Entity *entity)
 {
     auto it = std::find(m_children.cbegin(), m_children.cend(), entity);
     if (it == m_children.cend())
@@ -179,11 +169,11 @@ void Entity::AddChild(Entity* entity)
     }
 }
 
-void Entity::RemoveChild(Entity* entity)
+void Entity::RemoveChild(Entity *entity)
 {
     for (auto it = m_children.begin(); it != m_children.end();)
     {
-        Entity* child = (*it);
+        Entity *child = (*it);
         if (child != nullptr && child == entity)
         {
             it = m_children.erase(it);
@@ -200,7 +190,7 @@ void Entity::ClearChildren()
 {
     for (auto it = m_children.begin(); it != m_children.end();)
     {
-        Entity* child = (*it);
+        Entity *child = (*it);
         if (child != nullptr)
         {
             it = m_children.erase(it);

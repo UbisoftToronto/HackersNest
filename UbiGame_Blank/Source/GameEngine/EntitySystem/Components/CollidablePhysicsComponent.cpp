@@ -9,37 +9,34 @@
 using namespace GameEngine;
 
 CollidablePhysicsComponent::CollidablePhysicsComponent()
+	: m_didCollide(false), m_lastCollideEntity(nullptr)
 {
-
 }
-
 
 CollidablePhysicsComponent::~CollidablePhysicsComponent()
 {
-
 }
-
 
 void CollidablePhysicsComponent::OnAddToWorld()
 {
 	CollidableComponent::OnAddToWorld();
 }
 
-
 void CollidablePhysicsComponent::OnRemoveFromWorld()
 {
 	CollidableComponent::OnRemoveFromWorld();
 }
 
-
 void CollidablePhysicsComponent::Update()
 {
 	//For the time being just a simple intersection check that moves the entity out of all potential intersect boxes
-	std::vector<CollidableComponent*>& collidables = CollisionManager::GetInstance()->GetCollidables();
+	std::vector<CollidableComponent *> &collidables = CollisionManager::GetInstance()->GetCollidables();
+	m_didCollide = false;
+	m_lastCollideEntity = nullptr;
 
 	for (int a = 0; a < collidables.size(); ++a)
 	{
-		CollidableComponent* colComponent = collidables[a];
+		CollidableComponent *colComponent = collidables[a];
 		if (colComponent == this)
 			continue;
 
@@ -64,7 +61,13 @@ void CollidablePhysicsComponent::Update()
 					pos.y += intersection.height;
 			}
 
-			GetEntity()->SetPos(pos);
+			if (colComponent->GetEntity()->GetEntityType() == EEntityType::Platform ||
+				(GetEntity()->GetEntityType() == EEntityType::Projectile && colComponent->GetEntity()->GetEntityType() == EEntityType::Virus))
+			{
+				m_didCollide = true;
+				m_lastCollideEntity = colComponent->GetEntity();
+				GetEntity()->SetPos(pos);
+			}
 		}
 	}
 }

@@ -25,9 +25,30 @@ void ProjectileComponent::Update()
     sf::Vector2f wantedVel = m_velocity * dt;
     GetEntity()->SetPos(GetEntity()->GetPos() + wantedVel);
 
+    UpdateProjectileHit();
+
     // if below 0, projectile is dead, ask engine to remove it
     if (frameLifeTime < 0.f)
     {
         GameEngine::GameEngineMain::GetInstance()->RemoveEntity(GetEntity());
+    }
+}
+
+void ProjectileComponent::UpdateProjectileHit()
+{
+    GameEngine::CollidablePhysicsComponent *colPhys = GetEntity()->GetComponent<GameEngine::CollidablePhysicsComponent>();
+    if (!colPhys)
+    {
+        return;
+    }
+
+    if (colPhys->DidCollide() && colPhys->GetLastCollideEntity() != nullptr)
+    {
+        //GameEngine::GameEngineMain::GetInstance()->RemoveEntity(GetEntity());
+
+        if (colPhys->GetLastCollideEntity()->GetEntityType() == GameEngine::EEntityType::Virus)
+        {
+            //GameEngine::GameEngineMain::GetInstance()->RemoveEntity(colPhys->GetLastCollideEntity());
+        }
     }
 }

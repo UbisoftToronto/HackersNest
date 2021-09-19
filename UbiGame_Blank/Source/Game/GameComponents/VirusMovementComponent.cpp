@@ -11,18 +11,17 @@
 using namespace Game;
 
 VirusMovementComponent::VirusMovementComponent()
-: isGoingRight(true)
+    : isGoingRight(true)
 {
-
 }
 
 VirusMovementComponent::~VirusMovementComponent()
 {
-  
 }
 
 void VirusMovementComponent::OnAddToWorld()
 {
+  //CollidableComponent::OnAddToWorld();
 }
 
 void VirusMovementComponent::Update()
@@ -31,16 +30,20 @@ void VirusMovementComponent::Update()
 
   sf::Vector2f pos = GetEntity()->GetPos();
 
-  if (isGoingRight) pos += sf::Vector2f(0.75f, 0.f);
-  else pos -= sf::Vector2f(0.75f, 0.f);
+  if (isGoingRight)
+    pos += sf::Vector2f(0.75f, 0.f);
+  else
+    pos -= sf::Vector2f(0.75f, 0.f);
 
-  if (pos.x <= startPos.x) {
+  if (pos.x <= startPos.x)
+  {
     pos.x = startPos.x;
     velocity.x = 0;
     isGoingRight = true;
   }
 
-  if (pos.x >= endPos.x) {
+  if (pos.x >= endPos.x)
+  {
     pos.x = endPos.x;
     velocity.x = 0;
     isGoingRight = false;

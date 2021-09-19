@@ -15,6 +15,7 @@ namespace Game
 
         void SetVelocity(sf::Vector2f vel) { m_velocity = vel; }
         void SetLifeTime(float frames) { frameLifeTime = frames; }
+        void UpdateProjectileHit();
         //void SetDirection(int right) { direction = right; }
 
     private:

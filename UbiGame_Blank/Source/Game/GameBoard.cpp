@@ -19,39 +19,40 @@ using namespace Game;
 GameBoard::GameBoard()
     : m_player(nullptr)
 {
-    CreatePlayer();
-    CreateBackground();
-    CreatePlatform(50.f, 89.f, 4);
-    CreatePlatform(100.f, 200.f, 1);
-    CreatePlatform(240.f, 200.f, 3);
-    CreatePlatform(340.f, 290.f, 4);
-    CreatePlatform(480.f, 100.f, 1);
-    CreatePlatform(50.f, 350.f, 4);
-    CreatePlatform(420.f, 420.f, 3);
-    CreatePlatform(210.f, 410.f, 1);
-    CreatePlatform(50.f, 480.f, 3);
-    CreatePlatform(150.f, 480.f, 1);
-    CreatePlatform(250.f, 480.f, 3);
-    CreatePlatform(410.f, 480.f, 4);
-    CreatePlatform(280.f, 10.f, 5);
-    CreatePlatform(6.f, 280.f, 6);
-    CreatePlatform(494.f, 280.f, 6);
-    CreateVirus(sf::Vector2f(180.f, 200.f), sf::Vector2f(300.f, 200.f), sf::Vector2f(180.f, 200.f));
-    CreateVirus(sf::Vector2f(365.f, 420.f), sf::Vector2f(475.f, 420.f), sf::Vector2f(430.f, 420.f));
-    CreateVirus(sf::Vector2f(23.f, 350.f), sf::Vector2f(130.f, 350.f), sf::Vector2f(130.f, 350.f));
+  CreatePlayer();
+  CreateBackground();
+  CreatePlatform(50.f, 89.f, 4);
+  CreatePlatform(100.f, 200.f, 1);
+  CreatePlatform(240.f, 200.f, 3);
+  CreatePlatform(340.f, 290.f, 4);
+  CreatePlatform(480.f, 100.f, 1);
+  CreatePlatform(50.f, 350.f, 4);
+  CreatePlatform(420.f, 420.f, 3);
+  CreatePlatform(210.f, 410.f, 1);
+  CreatePlatform(50.f, 480.f, 3);
+  CreatePlatform(150.f, 480.f, 1);
+  CreatePlatform(250.f, 480.f, 3);
+  CreatePlatform(410.f, 480.f, 4);
+  CreatePlatform(280.f, 10.f, 5);
+  CreatePlatform(6.f, 280.f, 6);
+  CreatePlatform(494.f, 280.f, 6);
+  CreateVirus(sf::Vector2f(180.f, 200.f), sf::Vector2f(300.f, 200.f), sf::Vector2f(180.f, 200.f));
+  CreateVirus(sf::Vector2f(365.f, 420.f), sf::Vector2f(475.f, 420.f), sf::Vector2f(430.f, 420.f));
+  CreateVirus(sf::Vector2f(23.f, 350.f), sf::Vector2f(130.f, 350.f), sf::Vector2f(130.f, 350.f));
 }
 
 void GameBoard::CreatePlayer()
 {
   m_player = new PlayerEntity();
 
-    GameEngine::GameEngineMain::GetInstance()->AddEntity(m_player);
-    m_player->SetPos(sf::Vector2f(60.f, 60.f));	
-    m_player->SetSize(sf::Vector2f(35.f, 35.f));
+  GameEngine::GameEngineMain::GetInstance()->AddEntity(m_player);
+  m_player->SetPos(sf::Vector2f(60.f, 60.f));
+  m_player->SetSize(sf::Vector2f(35.f, 35.f));
+  m_player->SetEntityType(GameEngine::EEntityType::Player);
 
   m_player->AddComponent<Game::PlayerMovementComponent>();
   m_player->AddComponent<GameEngine::CollidablePhysicsComponent>();
-    m_player->AddComponent<GameEngine::GravityPhysicsComponent>();
+  m_player->AddComponent<GameEngine::GravityPhysicsComponent>();
   m_player->AddComponent<Game::ProjectileSpawnerComponent>();
 }
 
@@ -70,18 +71,28 @@ void GameBoard::CreateBackground()
 
 void GameBoard::CreatePlatform(float x, float y, int id)
 {
-  PlatformEntity* platform = new PlatformEntity(id);
+  PlatformEntity *platform = new PlatformEntity(id);
   GameEngine::GameEngineMain::GetInstance()->AddEntity(platform);
   platform->SetPos(sf::Vector2f(x, y));
-  if (id == 1) {
+  platform->SetEntityType(GameEngine::EEntityType::Platform);
+  if (id == 1)
+  {
     platform->SetSize(sf::Vector2f(60.f, 20.f));
-  } else if (id == 3) {
+  }
+  else if (id == 3)
+  {
     platform->SetSize(sf::Vector2f(135.f, 20.f));
-  } else if (id == 4) {
+  }
+  else if (id == 4)
+  {
     platform->SetSize(sf::Vector2f(175.f, 20.f));
-  } else if (id == 5) {
+  }
+  else if (id == 5)
+  {
     platform->SetSize(sf::Vector2f(600.f, 10.f));
-  } else {
+  }
+  else
+  {
     platform->SetSize(sf::Vector2f(10.f, 600.f));
   }
 
@@ -111,10 +122,11 @@ void GameBoard::CreateTestProjectile()
 
 void GameBoard::CreateVirus(sf::Vector2f start, sf::Vector2f end, sf::Vector2f initialPos)
 {
-    VirusEntity* virus = new VirusEntity(start, end);
-    virus->SetPos(initialPos);
-    virus->SetSize(sf::Vector2f(25.f, 25.f));
-    GameEngine::GameEngineMain::GetInstance()->AddEntity(virus);
+  VirusEntity *virus = new VirusEntity(start, end);
+  virus->SetPos(initialPos);
+  virus->SetSize(sf::Vector2f(25.f, 25.f));
+  virus->SetEntityType(GameEngine::EEntityType::Virus);
+  GameEngine::GameEngineMain::GetInstance()->AddEntity(virus);
 }
 
 GameBoard::~GameBoard()
