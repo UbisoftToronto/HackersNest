@@ -68,6 +68,8 @@ namespace TextureHelper
 			return sf::Vector2f(43.f, 43.f);
 		case GameEngine::eTexture::Border:
 			return sf::Vector2f(30.f, 8.f);
+		case GameEngine::eTexture::Timer:
+			return sf::Vector2f(1.f, 1.f);
 		default:
 			return sf::Vector2f(-1.f, -1.f);
 		}

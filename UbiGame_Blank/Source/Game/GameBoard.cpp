@@ -7,17 +7,24 @@
 #include "GameEngine/EntitySystem/Components/GravityPhysicsComponent.h"
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
 #include "GameEngine/EntitySystem/Components/TextRenderComponent.h"
+#include "Game/GameComponents/UIRenderComponent.h"
 #include "Game/GameEntities/PlayerEntity.h"
 #include "Game/GameEntities/PlatformEntity.h"
 #include "Game/GameEntities/VirusEntity.h"
+#include "Game/GameEntities/TimerBarEntity.h"
 #include "Game/GameComponents/PlayerMovementComponent.h"
 #include "Game/GameComponents/ProjectileComponent.h"
 #include "Game/GameComponents/ProjectileSpawnerComponent.h"
 
+#include <iostream>
+
 using namespace Game;
 
+int counter = 2500;
+
 GameBoard::GameBoard()
-    : m_player(nullptr)
+    : m_player(nullptr),
+    uiComponent(nullptr)
 {
   CreatePlayer();
   CreateBackground();
@@ -38,10 +45,11 @@ GameBoard::GameBoard()
   CreatePlatform(494.f, 280.f, 6);
   CreateVirus(sf::Vector2f(180.f, 200.f), sf::Vector2f(300.f, 200.f), sf::Vector2f(180.f, 200.f));
   CreateVirus(sf::Vector2f(180.f, 200.f), sf::Vector2f(300.f, 200.f), sf::Vector2f(280.f, 200.f));
-  CreateVirus(sf::Vector2f(365.f, 420.f), sf::Vector2f(475.f, 420.f), sf::Vector2f(430.f, 420.f));
+  CreateVirus(sf::Vector2f(365.f, 420.f), sf::Vector2f(475.f, 420.f), sf::Vector2f(410.f, 420.f));
   CreateVirus(sf::Vector2f(365.f, 420.f), sf::Vector2f(475.f, 420.f), sf::Vector2f(470.f, 420.f));
   CreateVirus(sf::Vector2f(23.f, 350.f), sf::Vector2f(130.f, 350.f), sf::Vector2f(35.f, 350.f));
   CreateVirus(sf::Vector2f(23.f, 350.f), sf::Vector2f(130.f, 350.f), sf::Vector2f(130.f, 350.f));
+    CreateTimerBar();
 }
 
 void GameBoard::CreatePlayer()
@@ -132,10 +140,31 @@ void GameBoard::CreateVirus(sf::Vector2f start, sf::Vector2f end, sf::Vector2f i
   GameEngine::GameEngineMain::GetInstance()->AddEntity(virus);
 }
 
+void GameBoard::CreateTimerBar()
+{
+    TimerEntity* bar = new TimerEntity();
+    bar->SetPos(sf::Vector2f(250.f, 5.f));
+    bar->SetSize(sf::Vector2f(500.f, 10.f));
+    GameEngine::GameEngineMain::GetInstance()->AddEntity(bar);
+}
+
 GameBoard::~GameBoard()
 {
 }
 
 void GameBoard::Update()
 {
+    counter--;
+    if (counter == 0) {
+      std::cout << counter;
+      screenEntity = new GameEngine::Entity();
+      uiComponent = screenEntity->AddComponent<UIRenderComponent>();
+      uiComponent->SetFont("arial.ttf");
+		  uiComponent->SetCharacterSizePixels(40);
+      uiComponent->SetZLevel(zIndex::UI);
+      uiComponent->title = std::string("Time's up!");
+      uiComponent->displayState = 1;
+		  GameEngine::GameEngineMain::GetInstance()->AddEntity(screenEntity);
+    }
+
 }
