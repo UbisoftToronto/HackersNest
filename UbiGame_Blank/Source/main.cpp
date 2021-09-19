@@ -6,6 +6,7 @@ int main()
 
 	mainEngine->GetRenderWindow()->setTitle("Covid Game");
 	mainEngine->GetRenderWindow()->setSize(sf::Vector2u(1600, 1600));
+	mainEngine->GetRenderWindow()->setFramerateLimit(60);
 
 	while (mainEngine->GetRenderWindow()->isOpen())
 	{				

@@ -17,24 +17,24 @@ void PlayerMovementComponent::Update()
     //The amount of speed that we will apply when input is received
     const float inputAmount = 300.0f;
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-    {
-        displacement.x -= inputAmount * dt;
-    }
-
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-    {
-        displacement.x += inputAmount * dt;
-    }
-
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
     {
         displacement.y -= inputAmount * dt;
     }
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+    {
+        displacement.x -= inputAmount * dt;
+    }
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
     {
         displacement.y += inputAmount * dt;
+    }
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+    {
+        displacement.x += inputAmount * dt;
     }
 
     //Update the entity position

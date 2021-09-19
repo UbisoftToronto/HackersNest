@@ -16,6 +16,7 @@ namespace GameEngine
 			BG,
 			Projectile,
 			Particles,
+			Virus,
 			Count,
 		};
 	}
@@ -34,6 +35,8 @@ namespace GameEngine
 			return "antibody.png";
 		case eTexture::Particles:
 			return "particles.png";
+    case eTexture::Virus:
+      return "virus.png";
 		default:
 			return "UnknownTexType";
 		}

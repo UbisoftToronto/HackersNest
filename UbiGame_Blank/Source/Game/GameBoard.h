@@ -7,7 +7,8 @@
 namespace Game
 {
 	//Used for storing and controling all game related entities
-	class PlayerEntity;
+	class PlayerEntity;	
+	class VirusEntity;
 
 	class GameBoard
 	{
@@ -20,7 +21,8 @@ namespace Game
 
 		void CreatePlayer();
 		void CreateBackground();
-		void CreatePlatform();
+		void CreatePlatform(float x, float y);
+		void CreateVirus(sf::Vector2f start, sf::Vector2f end, sf::Vector2f initialPos);
 		void CreateTileset();
 		void CreateTestProjectile();
 
@@ -29,9 +31,10 @@ namespace Game
 	protected:
 		//Placeholder temp - should go to helpers or smth.
 
-		PlayerEntity *m_player;
-		GameEngine::Entity *m_text;
-		GameEngine::Entity *m_backGround;
+		PlayerEntity* m_player;
+		GameEngine::Entity* m_text;
+		GameEngine::Entity* m_backGround;
+		VirusEntity* m_virus;
 
 		bool m_isGameOver;
 	};
