@@ -14,6 +14,11 @@ ProjectileComponent::~ProjectileComponent()
 {
 }
 
+void ProjectileComponent::OnAddToWorld()
+{
+  //CollidableComponent::OnAddToWorld();
+}
+
 void ProjectileComponent::Update()
 {
     Component::Update();
@@ -30,7 +35,8 @@ void ProjectileComponent::Update()
     // if below 0, projectile is dead, ask engine to remove it
     if (frameLifeTime < 0.f)
     {
-        GameEngine::GameEngineMain::GetInstance()->RemoveEntity(GetEntity());
+        //GameEngine::GameEngineMain::GetInstance()->RemoveEntity(GetEntity());
+        GetEntity()->SetPos(sf::Vector2f(10000.f, 10000.f));
     }
 }
 
@@ -45,10 +51,12 @@ void ProjectileComponent::UpdateProjectileHit()
     if (colPhys->DidCollide() && colPhys->GetLastCollideEntity() != nullptr)
     {
         //GameEngine::GameEngineMain::GetInstance()->RemoveEntity(GetEntity());
+        GetEntity()->SetPos(sf::Vector2f(10000.f, 10000.f));
 
         if (colPhys->GetLastCollideEntity()->GetEntityType() == GameEngine::EEntityType::Virus)
         {
             //GameEngine::GameEngineMain::GetInstance()->RemoveEntity(colPhys->GetLastCollideEntity());
+            colPhys->GetLastCollideEntity()->SetPos(sf::Vector2f(10000.f, 10000.f));
         }
     }
 }

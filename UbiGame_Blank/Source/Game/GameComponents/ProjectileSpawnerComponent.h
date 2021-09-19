@@ -11,6 +11,7 @@ namespace Game
         ~ProjectileSpawnerComponent();
 
         virtual void Update() override;
+        virtual void OnAddToWorld() override;
         void SpawnProjectile();
 
     private:

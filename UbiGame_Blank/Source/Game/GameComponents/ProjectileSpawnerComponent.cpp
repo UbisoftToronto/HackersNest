@@ -19,6 +19,11 @@ Game::ProjectileSpawnerComponent::~ProjectileSpawnerComponent()
 {
 }
 
+void Game::ProjectileSpawnerComponent::OnAddToWorld()
+{
+  //CollidableComponent::OnAddToWorld();
+}
+
 void Game::ProjectileSpawnerComponent::Update()
 {
     Component::Update();

@@ -12,6 +12,7 @@ namespace Game
         ~ProjectileComponent();
 
         virtual void Update() override;
+        virtual void OnAddToWorld() override;
 
         void SetVelocity(sf::Vector2f vel) { m_velocity = vel; }
         void SetLifeTime(float frames) { frameLifeTime = frames; }
