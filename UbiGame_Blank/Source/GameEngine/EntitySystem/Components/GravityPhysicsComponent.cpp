@@ -18,6 +18,11 @@ GravityPhysicsComponent::~GravityPhysicsComponent()
 
 }
 
+float GravityPhysicsComponent::Lerp(float a, float b, float f)
+{
+    return (a * (1.0f - f)) + (b * f);
+}
+
 void GravityPhysicsComponent::Update()
 {
     //Get DELTA time from the previous frame
@@ -30,8 +35,9 @@ void GravityPhysicsComponent::Update()
 
     if (dt > 0.f)
     {
-        //Set the wanted velocity as current
-        m_velocity.x = m_wantedVelocity.x;
+        float lerpTime = 5.2f;
+        //Set the current velocity as a lerp of the last one towards wanted
+        m_velocity.x = Lerp(m_velocity.x, m_wantedVelocity.x, lerpTime * dt);
         m_velocity.y += m_wantedVelocity.y;
 
         //Accelerate Y of our velocity by gravity in time
@@ -49,7 +55,7 @@ void GravityPhysicsComponent::Update()
     if (dt > 0.f)
     {
         //Our actual velocity is that position different in time:
-        m_velocity.y = deltaY / dt;
+        //m_velocity.y = deltaY / dt;
         if (m_velocity.y > 500)
         {
             m_velocity.y = 500;

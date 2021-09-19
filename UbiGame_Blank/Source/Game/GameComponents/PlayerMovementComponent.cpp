@@ -8,8 +8,8 @@ using namespace Game;
 void PlayerMovementComponent::Update() 
 {
     Component::Update();
-    float playerVelocity = 100.f;
-    float jumpVelocity = 50.f;
+    float playerVelocity = 250.f;
+    float jumpVelocity = 200.f;
     bool m_wasJumpButtonPressed = false;
 
     sf::Vector2f wantedVelocity = sf::Vector2f(0.f, 0.f);

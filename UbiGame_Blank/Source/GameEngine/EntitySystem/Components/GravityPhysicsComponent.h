@@ -15,6 +15,8 @@ namespace GameEngine
 
         void SetVelocity(sf::Vector2f vel) { m_wantedVelocity = vel; }
 
+        float Lerp(float a, float b, float f);
+
     private:
         //Velocity that the object wants to have
         sf::Vector2f m_wantedVelocity;
