@@ -15,8 +15,10 @@ PlatformEntity::PlatformEntity(int id)
 		m_renderComponent->SetTexture(GameEngine::eTexture::Tileset);
 	} else if (id == 3) {
 		m_renderComponent->SetTexture(GameEngine::eTexture::Tileset3);
-	} else {
+	} else if (id == 4){
 		m_renderComponent->SetTexture(GameEngine::eTexture::Tileset4);
+	} else {
+		m_renderComponent->SetTexture(GameEngine::eTexture::Border);
 	}
 	m_renderComponent->SetZLevel(2);
 	m_renderComponent->SetTileIndex(0, 0);

@@ -19,6 +19,7 @@ namespace GameEngine
 			Projectile,
 			Particles,
 			Virus,
+			Border,
 			Count,
 		};
 	}
@@ -43,6 +44,8 @@ namespace GameEngine
 			return "particles.png";
     case eTexture::Virus:
       return "virus.png";
+		case eTexture::Border:
+			return "border.png";
 		default:
 			return "UnknownTexType";
 		}

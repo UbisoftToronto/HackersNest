@@ -33,6 +33,9 @@ GameBoard::GameBoard()
     CreatePlatform(150.f, 480.f, 1);
     CreatePlatform(250.f, 480.f, 3);
     CreatePlatform(410.f, 480.f, 4);
+    CreatePlatform(280.f, 10.f, 5);
+    CreatePlatform(6.f, 280.f, 6);
+    CreatePlatform(494.f, 280.f, 6);
     CreateVirus(sf::Vector2f(80.f, 200.f), sf::Vector2f(120.f, 200.f), sf::Vector2f(80.f, 200.f));
 }
 
@@ -72,8 +75,12 @@ void GameBoard::CreatePlatform(float x, float y, int id)
     platform->SetSize(sf::Vector2f(60.f, 20.f));
   } else if (id == 3) {
     platform->SetSize(sf::Vector2f(135.f, 20.f));
-  } else {
+  } else if (id == 4) {
     platform->SetSize(sf::Vector2f(175.f, 20.f));
+  } else if (id == 5) {
+    platform->SetSize(sf::Vector2f(600.f, 10.f));
+  } else {
+    platform->SetSize(sf::Vector2f(10.f, 600.f));
   }
 
   platform->AddComponent<GameEngine::CollidableComponent>();
